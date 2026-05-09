@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import { pickLang, type Locale } from '../lib/i18n';
+
+interface Props { locale: Locale; limit?: number; }
+const { locale, limit } = Astro.props;
+
+const items = (await getCollection('news')).sort((a, b) => b.data.date.localeCompare(a.data.date));
+const list = limit ? items.slice(0, limit) : items;
+---
+<ul class="space-y-3">
+  {list.map((it) => (
+    <li class="flex gap-3 text-sm leading-relaxed">
+      <span class="text-muted font-mono shrink-0 tabular-nums">[{it.data.date}]</span>
+      <span class="text-ink/90">
+        {pickLang(it.data.text, locale)}
+        {it.data.link && (
+          <>
+            {' · '}
+            <a href={it.data.link} target="_blank" rel="noopener">link</a>
+          </>
+        )}
+      </span>
+    </li>
+  ))}
+</ul>

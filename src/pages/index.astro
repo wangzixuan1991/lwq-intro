@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NewsList from '../components/NewsList.astro';
+import { t, pickLang, type Locale } from '../lib/i18n';
+import profile from '../data/profile.json';
+import { getCollection } from 'astro:content';
+
+const locale: Locale = 'zh';
+const s = t(locale);
+const edu = (await getCollection('education')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+const exp = (await getCollection('experience')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+---
+<BaseLayout locale={locale}>
+  <Hero locale={locale} />
+
+  <section class="max-w-page mx-auto px-6 mt-12">
+    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.bio}</h2>
+    <p class="max-w-prose text-base leading-relaxed text-ink/90 whitespace-pre-line">
+      {profile.bio[locale]}
+    </p>
+  </section>
+
+  <section class="max-w-page mx-auto px-6 mt-10">
+    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.research_areas}</h2>
+    <div class="flex flex-wrap gap-2">
+      {profile.researchAreas[locale].map((tag) => (
+        <span class="px-3 py-1 rounded-full border border-rule text-sm text-ink/80">{tag}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-page mx-auto px-6 mt-10">
+    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.education}</h2>
+    <ul class="space-y-2 text-sm">
+      {edu.map((e) => (
+        <li class="flex flex-col sm:flex-row sm:gap-4">
+          <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
+          <span><strong>{pickLang(e.data.school, locale)}</strong> · {pickLang(e.data.degree, locale)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="max-w-page mx-auto px-6 mt-10">
+    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.experience}</h2>
+    <ul class="space-y-2 text-sm">
+      {exp.map((e) => (
+        <li class="flex flex-col sm:flex-row sm:gap-4">
+          <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
+          <span><strong>{pickLang(e.data.org, locale)}</strong> · {pickLang(e.data.title, locale)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="emdash my-12 max-w-page mx-auto" />
+
+  <section class="max-w-page mx-auto px-6">
+    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.news}</h2>
+    <NewsList locale={locale} />
+  </section>
+</BaseLayout>

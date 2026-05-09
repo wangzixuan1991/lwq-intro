@@ -1,0 +1,33 @@
+---
+import { pickLang, type Locale, type Bilingual } from '../lib/i18n';
+
+interface ProjectData {
+  kind: 'research' | 'teaching';
+  title: Bilingual;
+  period: string;
+  role: Bilingual;
+  funder?: Bilingual;
+  note?: Bilingual;
+}
+interface Props { locale: Locale; project: ProjectData; }
+const { locale, project } = Astro.props;
+---
+<article class="border border-rule rounded-lg p-5 bg-surface flex flex-col gap-2 h-full">
+  <h4 class="font-display text-base font-semibold leading-snug">
+    {pickLang(project.title, locale)}
+  </h4>
+  <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
+    <span class="font-mono">{project.period}</span>
+    <span aria-hidden="true">·</span>
+    <span>{pickLang(project.role, locale)}</span>
+    {project.funder && (
+      <>
+        <span aria-hidden="true">·</span>
+        <span>{pickLang(project.funder, locale)}</span>
+      </>
+    )}
+  </div>
+  {project.note && (
+    <p class="text-sm text-ink/80 mt-1">{pickLang(project.note, locale)}</p>
+  )}
+</article>

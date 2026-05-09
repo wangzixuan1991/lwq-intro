@@ -1,0 +1,54 @@
+---
+import { t, localePath, type Locale } from '../lib/i18n';
+import LangSwitcher from './LangSwitcher.astro';
+import profile from '../data/profile.json';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const s = t(locale);
+
+const links = [
+  { href: localePath(locale, '/'), label: s.nav.home },
+  { href: localePath(locale, '/research'), label: s.nav.research },
+  { href: localePath(locale, '/projects'), label: s.nav.projects },
+  { href: localePath(locale, '/teaching'), label: s.nav.teaching },
+  { href: localePath(locale, '/cv'), label: s.nav.cv },
+];
+---
+<header class="border-b border-rule bg-bg/85 backdrop-blur sticky top-0 z-30">
+  <div class="max-w-page mx-auto px-6 h-16 flex items-center justify-between">
+    <a href={localePath(locale, '/')} class="font-display text-lg font-semibold text-ink no-underline hover:no-underline">
+      {profile.name[locale]}
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      {links.map((l) => (
+        <a href={l.href} class="text-ink/80 hover:text-accent no-underline">{l.label}</a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-3">
+      <LangSwitcher locale={locale} />
+      <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-ink" aria-label="menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zM3 9h14v2H3zM3 13h14v2H3z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-rule bg-bg">
+    <div class="max-w-page mx-auto px-6 py-3 flex flex-col gap-3 text-sm">
+      {links.map((l) => (
+        <a href={l.href} class="text-ink/80 hover:text-accent no-underline py-1">{l.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('mobile-menu-btn');
+    var menu = document.getElementById('mobile-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var open = menu.classList.toggle('hidden') === false;
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    }
+  })();
+</script>

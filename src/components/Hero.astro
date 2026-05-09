@@ -1,0 +1,44 @@
+---
+import { type Locale } from '../lib/i18n';
+import profile from '../data/profile.json';
+
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+
+const social: Array<{ key: string; label: string; href: string }> = [];
+if (profile.social.googleScholar) social.push({ key: 'gs', label: 'Google Scholar', href: profile.social.googleScholar });
+if (profile.social.orcid) social.push({ key: 'or', label: 'ORCID', href: profile.social.orcid });
+if (profile.social.github) social.push({ key: 'gh', label: 'GitHub', href: profile.social.github });
+if (profile.social.linkedin) social.push({ key: 'li', label: 'LinkedIn', href: profile.social.linkedin });
+if (profile.social.twitter) social.push({ key: 'tw', label: 'X', href: profile.social.twitter });
+---
+<section class="relative">
+  <div class="h-48 sm:h-64 md:h-80 w-full overflow-hidden">
+    <img src={profile.heroImage} alt="" class="w-full h-full object-cover" aria-hidden="true" />
+  </div>
+  <div class="max-w-page mx-auto px-6 -mt-16 sm:-mt-20 md:-mt-24 relative">
+    <div class="flex flex-col md:flex-row items-start gap-5 md:gap-10">
+      <img
+        src={profile.avatar}
+        alt={profile.name[locale]}
+        width="160"
+        height="160"
+        class="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-4 border-bg shadow-lg bg-surface object-cover shrink-0"
+      />
+      <div class="pt-3 md:pt-20 flex-1 min-w-0">
+        <h1 class="font-display text-3xl sm:text-4xl font-semibold leading-tight">
+          {profile.name[locale]}
+          {locale === 'zh' && <span class="text-muted text-xl ml-2 font-normal">Wenqi Li</span>}
+        </h1>
+        <p class="text-muted text-base mt-2">{profile.title[locale]}</p>
+        <p class="text-muted text-sm mt-1">{profile.affiliation[locale]}</p>
+        <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <a href={`mailto:${profile.email}`} class="text-ink/80 hover:text-accent no-underline">{profile.email}</a>
+          {social.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener" class="text-ink/80 hover:text-accent no-underline">{s.label}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

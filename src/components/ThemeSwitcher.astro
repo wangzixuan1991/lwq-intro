@@ -1,0 +1,30 @@
+---
+// Floating theme switcher. Persists to localStorage; restored on page load (in BaseLayout head script).
+---
+<div class="fixed bottom-5 right-5 z-40 flex items-center gap-1 bg-surface border border-rule rounded-full shadow-md px-3 py-1.5 text-xs">
+  <span class="text-muted hidden sm:inline mr-1">Theme</span>
+  <button data-theme-set="editorial" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Editorial theme">A</button>
+  <button data-theme-set="modern" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Modern theme">B</button>
+  <button data-theme-set="classical" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Classical theme">C</button>
+</div>
+<script is:inline>
+  (function () {
+    function refresh() {
+      var current = document.documentElement.dataset.theme || 'editorial';
+      document.querySelectorAll('[data-theme-set]').forEach(function (btn) {
+        var name = btn.getAttribute('data-theme-set');
+        btn.style.fontWeight = name === current ? '700' : '400';
+        btn.style.color = name === current ? 'var(--c-accent)' : 'var(--c-ink)';
+      });
+    }
+    document.querySelectorAll('[data-theme-set]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var name = btn.getAttribute('data-theme-set');
+        document.documentElement.dataset.theme = name;
+        try { localStorage.setItem('lwq-theme', name); } catch (e) {}
+        refresh();
+      });
+    });
+    refresh();
+  })();
+</script>

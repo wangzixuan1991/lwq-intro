@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { pickLang, t, type Locale } from '../lib/i18n';
+
+const locale: Locale = 'zh';
+const s = t(locale);
+
+const teaching = (await getCollection('teaching')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+const talksAll = await getCollection('talks');
+const talks = talksAll
+  .filter((x) => (x.data.kind ?? 'talk') === 'talk')
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+const organized = talksAll
+  .filter((x) => x.data.kind === 'organized')
+  .sort((a, b) => b.data.date.localeCompare(a.data.date));
+const awards = (await getCollection('awards')).sort((a, b) => b.data.year.localeCompare(a.data.year));
+---
+<BaseLayout locale={locale} title={s.nav.teaching}>
+  <section class="max-w-page mx-auto px-6 pt-14 space-y-12">
+    <div>
+      <h1 class="font-display text-3xl font-semibold mb-6">{s.nav.teaching}</h1>
+      <h2 class="font-display text-xl font-semibold mb-4">{s.sections.teaching_exp}</h2>
+      <ul class="space-y-2 text-sm">
+        {teaching.map((it) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-28 tabular-nums">{it.data.period}</span>
+            <span>
+              <strong>{pickLang(it.data.role, locale)}</strong> · {pickLang(it.data.course, locale)}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <hr class="emdash" />
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-4">{s.sections.talks}</h2>
+      <ul class="space-y-3 text-sm">
+        {talks.map((it) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-28 tabular-nums">{it.data.date}</span>
+            <span>
+              <strong>{pickLang(it.data.title, locale)}</strong>
+              <span class="text-muted"> · {pickLang(it.data.venue, locale)}</span>
+              {it.data.location && <span class="text-muted"> · {pickLang(it.data.location, locale)}</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-4">{s.sections.organized}</h2>
+      <ul class="space-y-2 text-sm">
+        {organized.map((it) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-28 tabular-nums">{it.data.date}</span>
+            <span>
+              {pickLang(it.data.title, locale)} <span class="text-muted">· {pickLang(it.data.venue, locale)}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <hr class="emdash" />
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-4">{s.sections.awards}</h2>
+      <ul class="space-y-2 text-sm">
+        {awards.map((a) => (
+          <li class="flex gap-4">
+            <span class="text-muted font-mono shrink-0 w-20 tabular-nums">{a.data.year}</span>
+            <span>{pickLang(a.data.title, locale)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

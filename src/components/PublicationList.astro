@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import { pickLang, t, type Locale } from '../lib/i18n';
+
+type Category = 'journal' | 'conference' | 'under_review' | 'book' | 'patent';
+interface Props { locale: Locale; category: Category; }
+const { locale, category } = Astro.props;
+const s = t(locale);
+
+const items = (await getCollection('publications', (e) => e.data.category === category))
+  .sort((a, b) =>
+    (b.data.year - a.data.year) ||
+    ((a.data.order ?? 99) - (b.data.order ?? 99))
+  );
+---
+{items.length > 0 && (
+  <section class="my-10">
+    <h3 class="font-display text-lg font-semibold mb-4">{s.sections[category]}</h3>
+    <ol class="space-y-4 list-none p-0 m-0">
+      {items.map((p) => (
+        <li class="text-sm leading-relaxed">
+          <span class="text-ink/80">{p.data.authors}. </span>
+          <span class="font-medium text-ink">{pickLang(p.data.title, locale)}.</span>
+          <span class="text-muted"> {pickLang(p.data.venue, locale)}.</span>
+          {p.data.note && <span class="text-muted"> {pickLang(p.data.note, locale)}</span>}
+          {p.data.link && (
+            <>
+              {' · '}
+              <a href={p.data.link} target="_blank" rel="noopener">link</a>
+            </>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

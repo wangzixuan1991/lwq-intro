@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { pickLang, t, type Locale } from '../lib/i18n';
+import profile from '../data/profile.json';
+
+const locale: Locale = 'zh';
+const s = t(locale);
+
+const edu = (await getCollection('education')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+const exp = (await getCollection('experience')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+const allPub = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year);
+const projects = (await getCollection('projects')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+const awards = (await getCollection('awards')).sort((a, b) => b.data.year.localeCompare(a.data.year));
+const teaching = (await getCollection('teaching')).sort((a, b) => b.data.period.localeCompare(a.data.period));
+---
+<BaseLayout locale={locale} title={s.nav.cv}>
+  <section class="max-w-page mx-auto px-6 pt-14 space-y-10">
+    <div class="flex items-baseline justify-between flex-wrap gap-4">
+      <h1 class="font-display text-3xl font-semibold">{s.nav.cv}</h1>
+      <a href={profile.cvPdf} class="text-sm border border-rule rounded-full px-4 py-2 hover:bg-surface no-underline">
+        {s.hero.downloadCV}
+      </a>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.experience}</h2>
+      <ul class="space-y-2 text-sm">
+        {exp.map((e) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
+            <span><strong>{pickLang(e.data.org, locale)}</strong> · {pickLang(e.data.title, locale)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.education}</h2>
+      <ul class="space-y-2 text-sm">
+        {edu.map((e) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
+            <span><strong>{pickLang(e.data.school, locale)}</strong> · {pickLang(e.data.degree, locale)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.publications}</h2>
+      <ol class="space-y-3 text-sm pl-0 list-none">
+        {allPub.map((p) => (
+          <li>
+            <span class="text-muted font-mono mr-2 tabular-nums">{p.data.year}</span>
+            {p.data.authors}. <strong>{pickLang(p.data.title, locale)}</strong>.
+            <span class="text-muted"> {pickLang(p.data.venue, locale)}.</span>
+            {p.data.note && <span class="text-muted"> {pickLang(p.data.note, locale)}</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.research_projects} & {s.sections.teaching_projects}</h2>
+      <ul class="space-y-2 text-sm">
+        {projects.map((p) => (
+          <li class="flex flex-col sm:flex-row sm:gap-4">
+            <span class="text-muted font-mono shrink-0 sm:w-28 tabular-nums">{p.data.period}</span>
+            <span>
+              <strong>{pickLang(p.data.title, locale)}</strong>
+              <span class="text-muted"> · {pickLang(p.data.role, locale)}</span>
+              {p.data.funder && <span class="text-muted"> · {pickLang(p.data.funder, locale)}</span>}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.awards}</h2>
+      <ul class="space-y-1 text-sm">
+        {awards.map((a) => (
+          <li class="flex gap-3">
+            <span class="text-muted font-mono w-20 tabular-nums shrink-0">{a.data.year}</span>
+            <span>{pickLang(a.data.title, locale)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display text-xl font-semibold mb-3">{s.sections.teaching_exp}</h2>
+      <ul class="space-y-1 text-sm">
+        {teaching.map((it) => (
+          <li class="flex gap-3 flex-col sm:flex-row">
+            <span class="text-muted font-mono shrink-0 sm:w-20 tabular-nums">{it.data.period}</span>
+            <span>{pickLang(it.data.role, locale)} · {pickLang(it.data.course, locale)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
