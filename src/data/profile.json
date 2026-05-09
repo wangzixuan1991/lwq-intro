@@ -1,0 +1,32 @@
+{
+  "name": { "zh": "李文琦", "en": "Wenqi Li" },
+  "title": {
+    "zh": "博雅博士后 · 助理研究员",
+    "en": "Boya Postdoctoral Fellow · Assistant Research Fellow"
+  },
+  "affiliation": {
+    "zh": "北京大学信息管理系 · 数字人文研究中心",
+    "en": "Department of Information Management & Digital Humanities Research Center, Peking University"
+  },
+  "email": "wenqili@pku.edu.cn",
+  "phone": "+86 18610656507",
+  "phonePublic": false,
+  "social": {
+    "googleScholar": "https://scholar.google.com/",
+    "orcid": "https://orcid.org/",
+    "github": "https://github.com/",
+    "linkedin": "https://www.linkedin.com/",
+    "twitter": ""
+  },
+  "researchAreas": {
+    "zh": ["数字人文", "数字文化遗产", "人机交互", "数据行为", "数据管护"],
+    "en": ["Digital Humanities", "Digital Cultural Heritage", "Human-Computer Interaction", "Data Behavior", "Data Curation"]
+  },
+  "bio": {
+    "zh": "李文琦，北京大学信息管理系博雅博士后。她于北京大学信息管理系获情报学博士学位，并在华盛顿大学人本设计与工程系获理学硕士学位。研究方向涵盖数字人文、人机交互与数据行为，关注人文学者的数据实践与数据管护，以及如何借助 AI 服务于文化遗产的保护与公众参与。研究成果发表于 JASIST、ACM CHI、JCDL 等国内外重要期刊与会议。在进入学术界之前，她在微软（美国）与阿里巴巴累计四年用户体验设计经验。",
+    "en": "Li Wenqi is a Boya Postdoctoral Fellow in the Department of Information Management and the Digital Humanities Research Center at Peking University. She holds a PhD in Information Science from Peking University and an M.S. in Human-Centered Design & Engineering from the University of Washington. Her research spans digital humanities, human-computer interaction, and data behavior. She has examined humanities scholars' data practices and data curation approaches that support the shift toward data-driven research in the humanities. More recently, her work explores how AI can be applied to the preservation and public engagement of cultural heritage. Her research has been published in venues including JASIST, ACM CHI, and JCDL, and she has contributed to digital curation projects focused on ancient Chinese texts. Prior to entering academia, she gained four years of industry experience as a user experience designer at Microsoft and Alibaba Cloud."
+  },
+  "heroImage": "/lwq-intro/images/hero-placeholder.svg",
+  "avatar": "/lwq-intro/images/avatar-placeholder.svg",
+  "cvPdf": "/lwq-intro/cv-placeholder.pdf"
+}

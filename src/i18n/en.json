@@ -1,0 +1,25 @@
+{
+  "nav": { "home": "Home", "research": "Research", "projects": "Projects", "teaching": "Teaching", "cv": "CV" },
+  "hero": { "viewCV": "View CV", "downloadCV": "Download CV (PDF)" },
+  "sections": {
+    "bio": "About",
+    "education": "Education",
+    "experience": "Experience",
+    "news": "News",
+    "research_areas": "Research Areas",
+    "publications": "Publications",
+    "journal": "Journal Articles",
+    "conference": "Conference Papers",
+    "under_review": "Under Review",
+    "book": "Books & Chapters",
+    "patent": "Patents",
+    "research_projects": "Research Projects",
+    "teaching_projects": "Teaching Projects",
+    "talks": "Talks",
+    "organized": "Service & Organization",
+    "awards": "Awards",
+    "teaching_exp": "Teaching",
+    "contact": "Contact"
+  },
+  "footer": { "rights": "All rights reserved", "switchLang": "中" }
+}

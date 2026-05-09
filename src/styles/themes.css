@@ -1,0 +1,36 @@
+:root,
+[data-theme="editorial"] {
+  --c-bg: #F8F5EE;
+  --c-surface: #FFFDF7;
+  --c-ink: #1F1B16;
+  --c-muted: #6B5F4E;
+  --c-accent: #9C8B6E;
+  --c-rule: #D7CDB8;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', 'Cormorant Garamond', Georgia, serif;
+  --font-display: var(--font-serif);
+}
+
+[data-theme="modern"] {
+  --c-bg: #FFFFFF;
+  --c-surface: #F7F7F8;
+  --c-ink: #0A0A0A;
+  --c-muted: #6B7280;
+  --c-accent: #0066FF;
+  --c-rule: #E5E7EB;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-display: 'Inter Tight', var(--font-sans);
+}
+
+[data-theme="classical"] {
+  --c-bg: #FAFAFA;
+  --c-surface: #FFFFFF;
+  --c-ink: #1D1D1F;
+  --c-muted: #86868B;
+  --c-accent: #1D1D1F;
+  --c-rule: #D2D2D7;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Inter Tight', sans-serif;
+  --font-display: var(--font-serif);
+}

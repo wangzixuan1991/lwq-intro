@@ -1,0 +1,25 @@
+{
+  "nav": { "home": "首页", "research": "研究", "projects": "项目", "teaching": "教学", "cv": "履历" },
+  "hero": { "viewCV": "查看履历", "downloadCV": "下载 CV (PDF)" },
+  "sections": {
+    "bio": "个人简介",
+    "education": "教育背景",
+    "experience": "工作经历",
+    "news": "动态",
+    "research_areas": "研究方向",
+    "publications": "学术成果",
+    "journal": "期刊论文",
+    "conference": "会议论文",
+    "under_review": "在审论文",
+    "book": "编著与章节",
+    "patent": "专利",
+    "research_projects": "科研项目",
+    "teaching_projects": "教学项目",
+    "talks": "学术报告",
+    "organized": "活动组织",
+    "awards": "荣誉奖励",
+    "teaching_exp": "教学经历",
+    "contact": "联系方式"
+  },
+  "footer": { "rights": "保留所有权利", "switchLang": "EN" }
+}
