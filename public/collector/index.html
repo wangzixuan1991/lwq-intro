@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李文琦 个人网站内容收集器</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#3b5bdb;--accent-light:#e8ecfd;--accent-hover:#2f4ac7;
+  --text:#1a1a2e;--text-muted:#6b7280;--border:#e5e7eb;
+  --bg:#fafafa;--surface:#fff;--surface2:#f3f4f6;
+  --radius:8px;--shadow:0 1px 3px rgba(0,0,0,.08);
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB',sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+/* TOP BAR */
+#topbar{
+  position:sticky;top:0;z-index:100;background:var(--surface);
+  border-bottom:1px solid var(--border);padding:10px 20px;
+  display:flex;flex-direction:column;gap:6px;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+#topbar-row1{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#topbar-title{font-weight:700;font-size:15px;color:var(--text);flex:1;min-width:200px}
+.btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:6px 14px;border-radius:6px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text);cursor:pointer;
+  font-size:13px;font-family:var(--font);font-weight:500;
+  transition:all .15s;white-space:nowrap;
+}
+.btn:hover{background:var(--surface2);border-color:#adb5bd}
+.btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.btn-danger{color:#dc2626;border-color:#fca5a5}
+.btn-danger:hover{background:#fef2f2}
+#progress-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted)}
+#progress-track{width:120px;height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden}
+#progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+#topbar-sub{font-size:12px;color:var(--text-muted)}
+/* TOAST */
+#toast{
+  position:fixed;bottom:24px;right:24px;z-index:9999;
+  background:#1a1a2e;color:#fff;padding:10px 18px;border-radius:8px;
+  font-size:13px;opacity:0;transition:opacity .3s;pointer-events:none;
+}
+#toast.show{opacity:1}
+/* LAYOUT */
+#main{max-width:960px;margin:0 auto;padding:24px 20px 80px}
+/* SECTION */
+.section{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;margin-bottom:20px;overflow:hidden;
+}
+.section-header{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 20px;cursor:pointer;user-select:none;
+  border-bottom:1px solid var(--border);
+}
+.section-header:hover{background:var(--surface2)}
+.section-title{font-weight:700;font-size:15px}
+.section-count{font-size:12px;color:var(--text-muted);margin-left:auto}
+.chevron{transition:transform .2s;color:var(--text-muted);font-style:normal}
+.section-body{padding:20px}
+.section.collapsed .section-body{display:none}
+.section.collapsed .chevron{transform:rotate(-90deg)}
+/* GRID ROW */
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}}
+.field-group{display:flex;flex-direction:column;gap:4px}
+.field-group.full{grid-column:1/-1}
+label{font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px}
+input[type=text],input[type=number],input[type=email],input[type=tel],textarea,select{
+  width:100%;padding:8px 10px;border:1px solid var(--border);
+  border-radius:var(--radius);font-size:14px;font-family:var(--font);
+  background:var(--surface);color:var(--text);
+  transition:border-color .15s,box-shadow .15s;
+}
+input:focus,textarea:focus,select:focus{
+  outline:none;border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(59,91,219,.12);
+}
+textarea{resize:vertical;min-height:80px}
+textarea.tall{min-height:160px}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+input[type=radio]{accent-color:var(--accent);cursor:pointer}
+/* CHECKBOX ROW */
+.check-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:14px}
+.radio-group{display:flex;flex-direction:column;gap:8px}
+.radio-row{display:flex;align-items:flex-start;gap:8px;font-size:14px}
+.radio-row .desc{font-size:12px;color:var(--text-muted);margin-top:2px}
+/* REPEATING LIST */
+.rep-list{display:flex;flex-direction:column;gap:10px}
+.rep-item{
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;background:var(--surface2);
+  position:relative;
+}
+.rep-item-header{
+  display:flex;align-items:center;gap:6px;margin-bottom:10px;
+}
+.rep-item-num{
+  font-size:11px;font-weight:700;color:var(--text-muted);
+  background:#e5e7eb;border-radius:4px;padding:1px 6px;
+}
+.rep-controls{display:flex;gap:4px;margin-left:auto}
+.btn-sm{
+  padding:3px 8px;font-size:12px;border-radius:4px;
+  border:1px solid var(--border);background:var(--surface);
+  cursor:pointer;font-family:var(--font);color:var(--text);
+}
+.btn-sm:hover{background:var(--surface2)}
+.btn-sm.danger{color:#dc2626;border-color:#fca5a5}
+.btn-sm.danger:hover{background:#fef2f2}
+.add-btn{
+  margin-top:10px;padding:7px 16px;
+  border:1.5px dashed var(--border);border-radius:var(--radius);
+  background:transparent;color:var(--text-muted);
+  cursor:pointer;font-size:13px;font-family:var(--font);
+  width:100%;transition:all .15s;
+}
+.add-btn:hover{background:var(--accent-light);color:var(--accent);border-color:var(--accent)}
+/* IMAGE PREVIEW */
+.img-preview{
+  max-width:180px;max-height:180px;border-radius:8px;
+  border:1px solid var(--border);margin-top:8px;display:none;
+}
+.img-preview.visible{display:block}
+/* SUB-SECTION for publications */
+.subsection{margin-bottom:16px}
+.subsection-header{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:6px;cursor:pointer;
+  background:var(--accent-light);border:1px solid #c5cff5;
+  margin-bottom:8px;
+}
+.subsection-header:hover{background:#dde3fa}
+.subsection-title{font-weight:700;font-size:13px;color:var(--accent)}
+.subsection-body.collapsed{display:none}
+/* SEPARATOR */
+hr.light{border:none;border-top:1px solid var(--border);margin:16px 0}
+/* PHASE TAG */
+.tag{
+  display:inline-block;padding:1px 7px;border-radius:20px;
+  font-size:11px;font-weight:600;margin-left:6px;
+}
+.tag-journal{background:#dbeafe;color:#1e40af}
+.tag-conference{background:#dcfce7;color:#166534}
+.tag-review{background:#fef9c3;color:#854d0e}
+.tag-book{background:#fae8ff;color:#6b21a8}
+.tag-patent{background:#ffedd5;color:#9a3412}
+</style>
+</head>
+<body>
+<script type="application/json" id="seed-data">{"profile":{"name":{"zh":"李文琦","en":"Wenqi Li"},"title":{"zh":"博雅博士后 · 助理研究员","en":"Boya Postdoctoral Fellow · Assistant Research Fellow"},"affiliation":{"zh":"北京大学信息管理系 · 数字人文研究中心","en":"Department of Information Management & Digital Humanities Research Center, Peking University"},"email":"wenqili@pku.edu.cn","phone":"+86 18610656507","phonePublic":false,"office":"","social":{"googleScholar":"https://scholar.google.com/","orcid":"https://orcid.org/","github":"https://github.com/","linkedin":"https://www.linkedin.com/","twitter":"","researchGate":"","homepage":""},"researchAreas":{"zh":["数字人文","数字文化遗产","人机交互","数据行为","数据管护"],"en":["Digital Humanities","Digital Cultural Heritage","Human-Computer Interaction","Data Behavior","Data Curation"]},"bio":{"zh":"李文琦，北京大学信息管理系博雅博士后。她于北京大学信息管理系获情报学博士学位，并在华盛顿大学人本设计与工程系获理学硕士学位。研究方向涵盖数字人文、人机交互与数据行为，关注人文学者的数据实践与数据管护，以及如何借助 AI 服务于文化遗产的保护与公众参与。研究成果发表于 JASIST、ACM CHI、JCDL 等国内外重要期刊与会议。在进入学术界之前，她在微软（美国）与阿里巴巴累计四年用户体验设计经验。","en":"Li Wenqi is a Boya Postdoctoral Fellow in the Department of Information Management and the Digital Humanities Research Center at Peking University. She holds a PhD in Information Science from Peking University and an M.S. in Human-Centered Design & Engineering from the University of Washington. Her research spans digital humanities, human-computer interaction, and data behavior. She has examined humanities scholars' data practices and data curation approaches that support the shift toward data-driven research in the humanities. More recently, her work explores how AI can be applied to the preservation and public engagement of cultural heritage. Her research has been published in venues including JASIST, ACM CHI, and JCDL, and she has contributed to digital curation projects focused on ancient Chinese texts. Prior to entering academia, she gained four years of industry experience as a user experience designer at Microsoft and Alibaba Cloud."}},"publications":[{"category":"journal","year":2026,"authors":"Wenqi Li, Zeyang Luo, Pengyi Zhang*","title":{"zh":"Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript","en":"Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript"},"venue":{"zh":"Information Research","en":"Information Research"},"note":{"zh":"2026, 31(iConf): 392-409. [SSCI]","en":"2026, 31(iConf): 392-409. [SSCI]"},"link":""},{"category":"journal","year":2025,"authors":"Tianji Jiang, Wenqi Li, Jiqun Liu*","title":{"zh":"The Landscape of Data Reuse in Interactive Information Retrieval: Motivations, Sources, and Evaluation of Reusability","en":"The Landscape of Data Reuse in Interactive Information Retrieval: Motivations, Sources, and Evaluation of Reusability"},"venue":{"zh":"Journal of the Association for Information Science and Technology","en":"Journal of the Association for Information Science and Technology"},"note":{"zh":"2025, 76(9): 1258-1276. [Q1, FMS A]","en":"2025, 76(9): 1258-1276. [Q1, FMS A]"},"link":""},{"category":"journal","year":2025,"authors":"李文琦,罗泽阳,张鹏翼*","title":{"zh":"古文献VR体验中的用户信息需求类型与信息获取效果","en":"古文献VR体验中的用户信息需求类型与信息获取效果"},"venue":{"zh":"图书馆论坛","en":"图书馆论坛"},"note":{"zh":"2025, 45(2): 35-41. [CSSCI]","en":"2025, 45(2): 35-41. [CSSCI]"},"link":""},{"category":"journal","year":2024,"authors":"Wenqi Li, Jun Wang*, Fengxiang Wang","title":{"zh":"Curating the Chinese ancient book catalogs: Leveraging the dual roles of humanities scholars as experts and users in collaborative practice","en":"Curating the Chinese ancient book catalogs: Leveraging the dual roles of humanities scholars as experts and users in collaborative practice"},"venue":{"zh":"Journal of the Association for Information Science and Technology","en":"Journal of the Association for Information Science and Technology"},"note":{"zh":"2024, 75(12): 1331-1349. [Q1, FMS A]","en":"2024, 75(12): 1331-1349. [Q1, FMS A]"},"link":""},{"category":"journal","year":2024,"authors":"Wenqi Li, Zhaoji Wang*, Hanxu Yu, Qianting Lai, Jun Wang*","title":{"zh":"Book cluster: a new approach to explore the evolution of knowledge organization in ancient China","en":"Book cluster: a new approach to explore the evolution of knowledge organization in ancient China"},"venue":{"zh":"Digital Scholarship in the Humanities","en":"Digital Scholarship in the Humanities"},"note":{"zh":"2024, 39(4): 1064-1074. [SSCI]","en":"2024, 39(4): 1064-1074. [SSCI]"},"link":""},{"category":"journal","year":2024,"authors":"Wenqi Li, Pengyi Zhang*, Jun Wang","title":{"zh":"Analysing humanities scholars' data seeking behaviour patterns using Ellis' model","en":"Analysing humanities scholars' data seeking behaviour patterns using Ellis' model"},"venue":{"zh":"Information Research","en":"Information Research"},"note":{"zh":"2024, 29(2): 401-418. [SSCI]","en":"2024, 29(2): 401-418. [SSCI]"},"link":""},{"category":"journal","year":2023,"authors":"李文琦,王凤翔*,孙显斌,黄芷欣,李芃蓓","title":{"zh":"历代史志目录的数据集成与可视化","en":"历代史志目录的数据集成与可视化"},"venue":{"zh":"中国图书馆学报","en":"中国图书馆学报"},"note":{"zh":"2023, 49(01): 82-98. [FMS T1，高PCSI论文]","en":"2023, 49(01): 82-98. [FMS T1，高PCSI论文]"},"link":""},{"category":"journal","year":2022,"authors":"李文琦","title":{"zh":"数字人文中的交互式可视化应用研究综述","en":"数字人文中的交互式可视化应用研究综述"},"venue":{"zh":"图书情报知识","en":"图书情报知识"},"note":{"zh":"2022, 39(05): 42-55. [FMS T2]","en":"2022, 39(05): 42-55. [FMS T2]"},"link":""},{"category":"journal","year":2022,"authors":"李文琦,张鹏翼*","title":{"zh":"数据行为的概念界定与模型构建","en":"数据行为的概念界定与模型构建"},"venue":{"zh":"图书情报工作","en":"图书情报工作"},"note":{"zh":"2022, 66(23): 29-40. [FMS T2, 人大复印报刊资料全文转载]","en":"2022, 66(23): 29-40. [FMS T2, 人大复印报刊资料全文转载]"},"link":""},{"category":"conference","year":2026,"authors":"Wenqi Li, Jinghan Zhang, Junyang Ma, Penyi Zhang","title":{"zh":"From Platform Data to Personal Insight: How Users Make Sense of and Reflect on Personalized Social Media Annual Recaps","en":"From Platform Data to Personal Insight: How Users Make Sense of and Reflect on Personalized Social Media Annual Recaps"},"venue":{"zh":"CHI 2026","en":"CHI 2026"},"note":{"zh":"CHI 2026: 1-20.","en":"CHI 2026: 1-20."},"link":""},{"category":"conference","year":2026,"authors":"Tianji Jiang, Wenqi Li, Jiqun Liu","title":{"zh":"Improving Data Reusability in Interactive IR: Insights from the Community","en":"Improving Data Reusability in Interactive IR: Insights from the Community"},"venue":{"zh":"CHIIR 2026","en":"CHIIR 2026"},"note":{"zh":"CHIIR 2026: 524-528.","en":"CHIIR 2026: 524-528."},"link":""},{"category":"conference","year":2025,"authors":"Wenqi Li, Jui-Ching Kuo, Manyu Sheng, Pengyi Zhang, Qunfang Wu","title":{"zh":"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content","en":"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content"},"venue":{"zh":"CHI 2025","en":"CHI 2025"},"note":{"zh":"CHI 2025: 1-17. [CCF A]","en":"CHI 2025: 1-17. [CCF A]"},"link":""},{"category":"conference","year":2025,"authors":"Chenyu Zhang, Wenqi Li*, Zeyang Luo, Pengyi Zhang","title":{"zh":"Engaging with AI in Crowdsourced Digitization of Ancient Texts: User Perception and Interaction","en":"Engaging with AI in Crowdsourced Digitization of Ancient Texts: User Perception and Interaction"},"venue":{"zh":"ASIS&T 2025","en":"ASIS&T 2025"},"note":{"zh":"ASIS&T 2025: 1167-1172. [EI, Best Conference Paper]","en":"ASIS&T 2025: 1167-1172. [EI, Best Conference Paper]"},"link":""},{"category":"conference","year":2025,"authors":"Wenqi Li, Zhenyi Tang, Pengyi Zhang*, Jun Wang","title":{"zh":"Collaborative Data Behaviors in Digital Humanities Research Teams","en":"Collaborative Data Behaviors in Digital Humanities Research Teams"},"venue":{"zh":"JCDL 2025","en":"JCDL 2025"},"note":{"zh":"JCDL 2025: 1-5. [EI]","en":"JCDL 2025: 1-5. [EI]"},"link":""},{"category":"conference","year":2025,"authors":"Zisheng Liu, Wenqi Li*, Haolei Liu, Pengyi Zhang","title":{"zh":"\"I feel recognized and developed a sense of belonging\": Sustaining Volunteer Participation in Ancient Text Collation","en":"\"I feel recognized and developed a sense of belonging\": Sustaining Volunteer Participation in Ancient Text Collation"},"venue":{"zh":"CSCW Companion 2025","en":"CSCW Companion 2025"},"note":{"zh":"CSCW Companion 2025: 367-372. [CCF A]","en":"CSCW Companion 2025: 367-372. [CCF A]"},"link":""},{"category":"conference","year":2023,"authors":"Wenqi Li, Tzu-yi Ho, Jun Wang*","title":{"zh":"Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs","en":"Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs"},"venue":{"zh":"iConference 2023","en":"iConference 2023"},"note":{"zh":"iConference 2023: 326-340. [EI]","en":"iConference 2023: 326-340. [EI]"},"link":""},{"category":"conference","year":2023,"authors":"Wenqi Li, Pengyi Zhang*, Jun Wang","title":{"zh":"Humanities Scholars' Understanding of Data and the Implications for Humanities Data Curation","en":"Humanities Scholars' Understanding of Data and the Implications for Humanities Data Curation"},"venue":{"zh":"ASIS&T 2023","en":"ASIS&T 2023"},"note":{"zh":"ASIS&T 2023: 1034-1036.","en":"ASIS&T 2023: 1034-1036."},"link":""},{"category":"conference","year":2023,"authors":"Sanwoo Lee, Wenqi Li*, Pengyi Zhang, Jun Wang","title":{"zh":"Characterizing Data Practices in Research Papers Across Four Disciplines","en":"Characterizing Data Practices in Research Papers Across Four Disciplines"},"venue":{"zh":"iConference 2023","en":"iConference 2023"},"note":{"zh":"iConference 2023: 359-368. [EI]","en":"iConference 2023: 359-368. [EI]"},"link":""},{"category":"conference","year":2021,"authors":"Wenqi Li, Fengxiang Wang, Jun Wang*","title":{"zh":"Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization","en":"Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization"},"venue":{"zh":"JCDL 2021","en":"JCDL 2021"},"note":{"zh":"JCDL 2021: 246-249. [EI]","en":"JCDL 2021: 246-249. [EI]"},"link":""},{"category":"conference","year":2021,"authors":"Wenqi Li, Chenyu Li*, Yuwei Yang","title":{"zh":"Baby Steps for Easier Accessibility: Our practice of making Alibaba Cloud Console more inclusive by taking baby steps","en":"Baby Steps for Easier Accessibility: Our practice of making Alibaba Cloud Console more inclusive by taking baby steps"},"venue":{"zh":"CHI EA 2021","en":"CHI EA 2021"},"note":{"zh":"CHI EA 2021: 1-5. [CCF A]","en":"CHI EA 2021: 1-5. [CCF A]"},"link":""},{"category":"conference","year":2019,"authors":"Wenqi Li*, Chenyu Li, Yuwei Yang","title":{"zh":"How Consistent Is Your GUI Design?","en":"How Consistent Is Your GUI Design?"},"venue":{"zh":"CSCW Companion 2019","en":"CSCW Companion 2019"},"note":{"zh":"CSCW Companion 2019: 278-282. [CCF A]","en":"CSCW Companion 2019: 278-282. [CCF A]"},"link":""},{"category":"conference","year":2016,"authors":"Daniela K Rosner*, Saba Kawas, Wenqi Li, Nicole Tilly, Yi-Chen Sung","title":{"zh":"Out of time, out of place: Reflections on design workshops as a research method","en":"Out of time, out of place: Reflections on design workshops as a research method"},"venue":{"zh":"CSCW 2016","en":"CSCW 2016"},"note":{"zh":"CSCW 2016: 1131-1141. [CCF A]","en":"CSCW 2016: 1131-1141. [CCF A]"},"link":""},{"category":"under_review","year":2025,"authors":"Wenqi Li, Pengyi Zhang, Jun Wang, Jiuzhen Zhang*","title":{"zh":"Data-driven or Structure-driven: Towards A Process Model of Data Behavior in Humanities Research","en":"Data-driven or Structure-driven: Towards A Process Model of Data Behavior in Humanities Research"},"venue":{"zh":"Journal of the Association for Information Science and Technology","en":"Journal of the Association for Information Science and Technology"},"note":{"zh":"[Q1, FMS A, Major Revision]","en":"[Q1, FMS A, Major Revision]"},"link":""},{"category":"under_review","year":2025,"authors":"李文琦,张鹏翼*,王军","title":{"zh":"数据管护模型的系统性综述与理论框架构建","en":"数据管护模型的系统性综述与理论框架构建"},"venue":{"zh":"图书情报知识","en":"图书情报知识"},"note":{"zh":"[FMS T2, 录用前格式修订]","en":"[FMS T2, 录用前格式修订]"},"link":""},{"category":"under_review","year":2025,"authors":"杨佳兴,吴亚南,李文琦*,张鹏翼,王军","title":{"zh":"AIGC赋能图书馆典藏活化的方法与路径研究","en":"AIGC赋能图书馆典藏活化的方法与路径研究"},"venue":{"zh":"图书馆论坛","en":"图书馆论坛"},"note":{"zh":"","en":""},"link":""},{"category":"book","year":2025,"authors":"Pengyi Zhang, Wenqi Li, Kathleen Gregory","title":{"zh":"Data Behaviour: How People Interact with Data and Datasets","en":"Data Behaviour: How People Interact with Data and Datasets"},"venue":{"zh":"Cambridge University Press","en":"Cambridge University Press"},"note":{"zh":"[在编]","en":"[在编]"},"link":""},{"category":"book","year":2025,"authors":"Wenqi Li, Chenyu Li, Yuwei Yang","title":{"zh":"Access by Design: Small Steps Toward Big Accessibility Wins","en":"Access by Design: Small Steps Toward Big Accessibility Wins"},"venue":{"zh":"UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer","en":"UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer"},"note":{"zh":"[待出版]","en":"[待出版]"},"link":""},{"category":"patent","year":2026,"authors":"张鹏翼,李文琦,唐震怡等","title":{"zh":"一种AI智能体系统及协同知识建构方法（202511737406.2）","en":"一种AI智能体系统及协同知识建构方法（202511737406.2）"},"venue":{"zh":"已授权","en":"已授权"},"note":{"zh":"授权日期：2026-04-24","en":"授权日期：2026-04-24"},"link":""}],"news":[{"date":"2026-04","text":{"zh":"专利「一种AI智能体系统及协同知识建构方法」（202511737406.2）获授权。","en":"Patent \"An AI Agent System and Collaborative Knowledge Construction Method\" (202511737406.2) has been granted."},"link":""},{"date":"2026-01","text":{"zh":"论文《Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript》发表于 Information Research, 31(iConf): 392-409。","en":"Paper \"Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript\" published in Information Research, 31(iConf): 392-409."},"link":""},{"date":"2025-10","text":{"zh":"论文《Engaging with AI in Crowdsourced Digitization of Ancient Texts》荣获 ASIS&T 2025 Best Conference Paper。","en":"Paper \"Engaging with AI in Crowdsourced Digitization of Ancient Texts\" received the Best Conference Paper award at ASIS&T 2025."},"link":""},{"date":"2025-04","text":{"zh":"论文《Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content》发表于 CHI 2025，已在横滨作口头报告。","en":"Paper \"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content\" published at CHI 2025; presented in Yokohama, Japan."},"link":""},{"date":"2024-09","text":{"zh":"加入北京大学信息管理系，担任博雅博士后 · 助理研究员。","en":"Joined the Department of Information Management at Peking University as a Boya Postdoctoral Fellow and Assistant Researcher."},"link":""},{"date":"2024-06","text":{"zh":"荣获2024年北京市优秀毕业生及北京大学优秀毕业生称号。","en":"Received the 2024 Beijing Outstanding Graduate and Peking University Outstanding Graduate awards."},"link":""},{"date":"2023-10","text":{"zh":"荣获2023年国家奖学金及北京大学三好学生标兵称号。","en":"Received the 2023 National Scholarship and the Peking University Outstanding Student Award."},"link":""},{"date":"2023-03","text":{"zh":"论文《历代史志目录的数据集成与可视化》发表于《中国图书馆学报》2023年第1期（FMS T1，高PCSI论文）。","en":"Paper \"历代史志目录的数据集成与可视化\" published in 中国图书馆学报, 2023(01): 82-98 [FMS T1, Highly-cited]."},"link":""}],"projects":[{"kind":"research","title":{"zh":"云冈研究院开放课题（重点）“云冈石窟数字供养人智能生成系统构建”","en":"云冈研究院开放课题（重点）“云冈石窟数字供养人智能生成系统构建”"},"period":"2026-2027","role":{"zh":"项目负责人","en":"PI"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"中国图书馆学会科研项目“AIGC赋能图书馆典藏活化的方法与应用”","en":"中国图书馆学会科研项目“AIGC赋能图书馆典藏活化的方法与应用”"},"period":"2026-2028","role":{"zh":"项目负责人","en":"PI"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"博士后国（境）外学术交流项目","en":"博士后国（境）外学术交流项目"},"period":"2025","role":{"zh":"项目负责人","en":"PI"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"国家自然科学基金面上项目“面向人智知识共创的AI智能体动态角色建模与协同机制研究”","en":"国家自然科学基金面上项目“面向人智知识共创的AI智能体动态角色建模与协同机制研究”"},"period":"2026-2029","role":{"zh":"第二参与人","en":"Co-Investigator"},"funder":{"zh":"国家自然科学基金","en":"National Natural Science Foundation of China"},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"中央部委委托项目“面向民族民间文艺资源的智能检索数据库设计和中小学美育智能体研发”","en":"中央部委委托项目“面向民族民间文艺资源的智能检索数据库设计和中小学美育智能体研发”"},"period":"2025-2026","role":{"zh":"课题秘书、第二参与人","en":"Project Secretary, Co-Investigator"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"首都高端智库研究课题（省部级重大课题）“北京文商体旅融合的体制机制创新研究”","en":"首都高端智库研究课题（省部级重大课题）“北京文商体旅融合的体制机制创新研究”"},"period":"2025-2026","role":{"zh":"课题秘书、第二参与人","en":"Project Secretary, Co-Investigator"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"国家自然科学基金重点国际合作项目“中国儒家学术史知识图谱构建研究”","en":"国家自然科学基金重点国际合作项目“中国儒家学术史知识图谱构建研究”"},"period":"2020-2025","role":{"zh":"核心成员","en":"Key Member"},"funder":{"zh":"国家自然科学基金","en":"National Natural Science Foundation of China"},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"国家自然科学基金面上项目“在线知识社群中信息行为对群体认知形成的影响研究”","en":"国家自然科学基金面上项目“在线知识社群中信息行为对群体认知形成的影响研究”"},"period":"2022-2025","role":{"zh":"核心成员","en":"Key Member"},"funder":{"zh":"国家自然科学基金","en":"National Natural Science Foundation of China"},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"中国图书馆学会科研项目“数字学术的概念空间及研究体系构建”","en":"中国图书馆学会科研项目“数字学术的概念空间及研究体系构建”"},"period":"2022-2024","role":{"zh":"第二参与人","en":"Co-Investigator"},"funder":{"zh":"","en":""},"note":{"zh":"鉴定等级：优秀","en":"Evaluation: Excellent"}},{"kind":"research","title":{"zh":"国家古籍数字化工程专项经费资助项目“历代典籍目录数据集成与分析系统”","en":"国家古籍数字化工程专项经费资助项目“历代典籍目录数据集成与分析系统”"},"period":"2021-2022","role":{"zh":"课题秘书、第二参与人","en":"Project Secretary, Co-Investigator"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"research","title":{"zh":"中宣部委托课题“古籍数字化关键技术创新与应用研究”","en":"中宣部委托课题“古籍数字化关键技术创新与应用研究”"},"period":"2020","role":{"zh":"参与","en":"Participant"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}},{"kind":"teaching","title":{"zh":"教育部产学合作协同育人项目“AI+信息资源管理专业课程建设”","en":"教育部产学合作协同育人项目“AI+信息资源管理专业课程建设”"},"period":"2025-2026","role":{"zh":"第二参与人","en":"Co-Investigator"},"funder":{"zh":"教育部","en":"Ministry of Education"},"note":{"zh":"","en":""}},{"kind":"teaching","title":{"zh":"教育部产学合作协同育人项目“AIGC设计新范式与实践”","en":"教育部产学合作协同育人项目“AIGC设计新范式与实践”"},"period":"2025-2026","role":{"zh":"第二参与人","en":"Co-Investigator"},"funder":{"zh":"教育部","en":"Ministry of Education"},"note":{"zh":"","en":""}},{"kind":"teaching","title":{"zh":"北京大学人工智能助推课程建设项目","en":"北京大学人工智能助推课程建设项目"},"period":"2022-2023","role":{"zh":"第二参与人","en":"Co-Investigator"},"funder":{"zh":"","en":""},"note":{"zh":"","en":""}}],"talks":[{"date":"2025-12-30","kind":"talk","title":{"zh":"AI赋能文化遗产活化的方法路径与教育场景初探","en":"AI赋能文化遗产活化的方法路径与教育场景初探"},"venue":{"zh":"AI赋能出版业高质量发展暨出版产学研协同交流会","en":"AI赋能出版业高质量发展暨出版产学研协同交流会"},"location":{"zh":"中国 北京","en":"Beijing, China"}},{"date":"2025-10-21","kind":"talk","title":{"zh":"Bringing the Past Alive: Digital Classics, Intelligent Dialogue, and Creative Generation","en":"Bringing the Past Alive: Digital Classics, Intelligent Dialogue, and Creative Generation"},"venue":{"zh":"KU-KADH International Conference on Digital Humanities","en":"KU-KADH International Conference on Digital Humanities"},"location":{"zh":"首尔，韩国","en":"Seoul, Korea"}},{"date":"2025-04-29","kind":"talk","title":{"zh":"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content","en":"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content"},"venue":{"zh":"CHI 2025","en":"CHI 2025"},"location":{"zh":"横滨，日本","en":"Yokohama, Japan"}},{"date":"2024-12-17","kind":"talk","title":{"zh":"Collaborative Data Behaviors in Digital Humanities Research Teams","en":"Collaborative Data Behaviors in Digital Humanities Research Teams"},"venue":{"zh":"JCDL 2024","en":"JCDL 2024"},"location":{"zh":"香港，中国","en":"Hong Kong, China"}},{"date":"2024-08-28","kind":"talk","title":{"zh":"Analysing Humanities Scholars' Data Seeking Behaviour Patterns Using Ellis' Model","en":"Analysing Humanities Scholars' Data Seeking Behaviour Patterns Using Ellis' Model"},"venue":{"zh":"Information Seeking In Context Conference","en":"Information Seeking In Context Conference"},"location":{"zh":"奥尔堡大学，丹麦","en":"Aalborg University, Denmark"}},{"date":"2023-12-24","kind":"talk","title":{"zh":"古籍VR体验中的用户信息需求与信息获取研究","en":"古籍VR体验中的用户信息需求与信息获取研究"},"venue":{"zh":"全国信息行为年会","en":"全国信息行为年会"},"location":{"zh":"中国 北京","en":"Beijing, China"}},{"date":"2023-10-30","kind":"talk","title":{"zh":"Conceptualizing Data Behavior: Bridging Data-Centric and User-Centric Approaches","en":"Conceptualizing Data Behavior: Bridging Data-Centric and User-Centric Approaches"},"venue":{"zh":"ASIS&T 2023 (Panel)","en":"ASIS&T 2023 (Panel)"},"location":{"zh":"伦敦，英国","en":"London, UK"}},{"date":"2023-03-18","kind":"talk","title":{"zh":"历代典籍目录的集成与可视化","en":"历代典籍目录的集成与可视化"},"venue":{"zh":"首届数字人文全球华人博士生论坛","en":"首届数字人文全球华人博士生论坛"},"location":{"zh":"","en":""}},{"date":"2023-03-15","kind":"talk","title":{"zh":"Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs","en":"Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs"},"venue":{"zh":"iConference 2023","en":"iConference 2023"},"location":{"zh":"","en":""}},{"date":"2022-12-10","kind":"talk","title":{"zh":"中华典籍数字化产品的设计","en":"中华典籍数字化产品的设计"},"venue":{"zh":"清华大学探索数字人文新学域主题论坛","en":"清华大学探索数字人文新学域主题论坛"},"location":{"zh":"","en":""}},{"date":"2022-07-31","kind":"talk","title":{"zh":"数字人文领域的信息可视化设计与应用","en":"数字人文领域的信息可视化设计与应用"},"venue":{"zh":"全国情报学博士生论坛","en":"全国情报学博士生论坛"},"location":{"zh":"","en":""}},{"date":"2021-09-29","kind":"talk","title":{"zh":"Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization","en":"Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization"},"venue":{"zh":"JCDL 2021","en":"JCDL 2021"},"location":{"zh":"线上","en":"Online"}},{"date":"2026","kind":"organized","title":{"zh":"「千年敦煌·智绘新生」全球创意大赛（策划成员）","en":"「千年敦煌·智绘新生」全球创意大赛（策划成员）"},"venue":{"zh":"「千年敦煌·智绘新生」全球创意大赛","en":"「千年敦煌·智绘新生」全球创意大赛"},"location":{"zh":"","en":""}},{"date":"2026","kind":"organized","title":{"zh":"「我用AI校古籍」法藏敦煌大众智能整理计划（策划成员）","en":"「我用AI校古籍」法藏敦煌大众智能整理计划（策划成员）"},"venue":{"zh":"「我用AI校古籍」法藏敦煌大众智能整理计划","en":"「我用AI校古籍」法藏敦煌大众智能整理计划"},"location":{"zh":"","en":""}},{"date":"2025","kind":"organized","title":{"zh":"第四届东亚古籍数字人文国际论坛“典藏新生·AI创意”分论坛（执行策划）","en":"第四届东亚古籍数字人文国际论坛“典藏新生·AI创意”分论坛（执行策划）"},"venue":{"zh":"第四届东亚古籍数字人文国际论坛","en":"第四届东亚古籍数字人文国际论坛"},"location":{"zh":"","en":""}},{"date":"2025","kind":"organized","title":{"zh":"「我用AI校古籍」古籍大众智能整理计划（策划成员）","en":"「我用AI校古籍」古籍大众智能整理计划（策划成员）"},"venue":{"zh":"「我用AI校古籍」古籍大众智能整理计划","en":"「我用AI校古籍」古籍大众智能整理计划"},"location":{"zh":"","en":""}},{"date":"2024","kind":"organized","title":{"zh":"「我是校书官」古籍大众智能整理计划（策划成员）","en":"「我是校书官」古籍大众智能整理计划（策划成员）"},"venue":{"zh":"「我是校书官」古籍大众智能整理计划","en":"「我是校书官」古籍大众智能整理计划"},"location":{"zh":"","en":""}},{"date":"2023","kind":"organized","title":{"zh":"北京大学-哈佛大学-普林斯顿大学“数字人文国际联合暑期工作坊”（筹备成员）","en":"北京大学-哈佛大学-普林斯顿大学“数字人文国际联合暑期工作坊”（筹备成员）"},"venue":{"zh":"北京大学-哈佛大学-普林斯顿大学数字人文国际联合暑期工作坊","en":"北京大学-哈佛大学-普林斯顿大学数字人文国际联合暑期工作坊"},"location":{"zh":"","en":""}},{"date":"2022","kind":"organized","title":{"zh":"北京大学首届数字人文作品展（策展助理）","en":"北京大学首届数字人文作品展（策展助理）"},"venue":{"zh":"北京大学首届数字人文作品展","en":"北京大学首届数字人文作品展"},"location":{"zh":"","en":""}}],"awards":[{"year":"2025","title":{"zh":"ASIS&T Best Conference Paper","en":"ASIS&T Best Conference Paper"}},{"year":"2025","title":{"zh":"大学生AI x国学创新实践大赛铜奖（指导教师）","en":"大学生AI x国学创新实践大赛铜奖（指导教师）"}},{"year":"2024","title":{"zh":"北京市优秀毕业生","en":"Beijing Outstanding Graduate"}},{"year":"2024","title":{"zh":"北京大学优秀毕业生","en":"Peking University Outstanding Graduate"}},{"year":"2023","title":{"zh":"国家奖学金","en":"National Scholarship"}},{"year":"2023","title":{"zh":"北京大学三好学生标兵","en":"Peking University Outstanding Student"}},{"year":"2022","title":{"zh":"北京大学学术创新奖","en":"Peking University Academic Innovation Award"}},{"year":"2021","title":{"zh":"北京大学杨芙清—王阳元院士奖学金","en":"Peking University Yang Fuqing – Wang Yangyuan Academician Scholarship"}},{"year":"2021","title":{"zh":"北京大学优秀科研奖","en":"Peking University Outstanding Research Award"}},{"year":"2021","title":{"zh":"SIGIR Student Travel Grant","en":"SIGIR Student Travel Grant"}}],"teaching":[{"role":{"zh":"联合授课","en":"Co-Instructor"},"course":{"zh":"北京大学通识核心课《人机交互与用户体验》","en":"Peking University Core Liberal Arts Course: Human-Computer Interaction and User Experience"},"period":"2025"},{"role":{"zh":"客座授课","en":"Guest Lecturer"},"course":{"zh":"研究生选修课《读者行为研究》","en":"Graduate Elective: Reader Behavior Studies"},"period":"2025"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"北京大学“数智人文”青年学者实训营","en":"Peking University “Digital Humanities” Young Scholar Training Camp"},"period":"2024"},{"role":{"zh":"客座授课","en":"Guest Lecturer"},"course":{"zh":"本科生专业必修《社科信息资源检索与利用》","en":"Undergraduate Required Course: Social Science Information Resources Retrieval and Use"},"period":"2024"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"北京大学、哈佛大学、普林斯顿大学《数字人文国际联合暑期工作坊》","en":"PKU-Harvard-Princeton International Joint Summer Workshop on Digital Humanities"},"period":"2023"},{"role":{"zh":"客座授课","en":"Guest Lecturer"},"course":{"zh":"本科生专业必修《社科信息资源检索与利用》","en":"Undergraduate Required Course: Social Science Information Resources Retrieval and Use"},"period":"2023"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"本科生选修课《人机交互与用户体验》","en":"Undergraduate Elective: Human-Computer Interaction and User Experience"},"period":"2023"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"北京大学《数字人文暑期工作坊》","en":"Peking University Digital Humanities Summer Workshop"},"period":"2022"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"本科生选修课《人机交互与用户体验》","en":"Undergraduate Elective: Human-Computer Interaction and User Experience"},"period":"2022"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"研究生必修课《情报学理论研究》","en":"Graduate Required Course: Theoretical Research in Information Science"},"period":"2022"},{"role":{"zh":"助教","en":"TA"},"course":{"zh":"本科生选修课《人机交互与用户体验》","en":"Undergraduate Elective: Human-Computer Interaction and User Experience"},"period":"2021"}],"experience":[{"org":{"zh":"北京大学信息管理系","en":"Department of Information Management, Peking University"},"title":{"zh":"博雅博士后 · 助理研究员","en":"Boya Postdoctoral Fellow · Assistant Researcher"},"period":"2024.09–至今"},{"org":{"zh":"阿里巴巴","en":"Alibaba"},"title":{"zh":"高级用户体验设计师","en":"Senior UX Designer"},"period":"2018.04–2020.09"},{"org":{"zh":"微软（美国）","en":"Microsoft (USA)"},"title":{"zh":"产品设计师","en":"Product Designer"},"period":"2016.05–2018.03"}],"education":[{"school":{"zh":"北京大学信息管理系","en":"Department of Information Management, Peking University"},"degree":{"zh":"情报学专业，管理学博士","en":"Ph.D. in Information Science (Management)"},"period":"2020–2024"},{"school":{"zh":"华盛顿大学人本设计与工程系","en":"Department of Human Centered Design & Engineering, University of Washington"},"degree":{"zh":"理学硕士","en":"Master of Science"},"period":"2014–2016"},{"school":{"zh":"北京大学信息管理系","en":"Department of Information Management, Peking University"},"degree":{"zh":"信息管理与信息系统专业，管理学学士（含香港城市大学资讯系统学系交换）","en":"B.Mgmt. in Information Management and Information Systems (incl. exchange at Dept. of Information Systems, City University of Hong Kong)"},"period":"2010–2014"}],"preferences":{"blog":"","gallery":"","newsPage":"","publicPhone":false,"openPositions":"","rss":""},"theme":"undecided","images":{"avatar":"","hero":"","extra":[]},"cvPdf":"","freeform":""}</script>
+
+<div id="topbar">
+  <div id="topbar-row1">
+    <span id="topbar-title">李文琦 个人网站内容收集器 / Content Collector</span>
+    <button class="btn btn-primary" onclick="saveDraft()">💾 保存草稿 Save Draft</button>
+    <button class="btn" onclick="restoreDraft()">♻️ 恢复草稿 Restore</button>
+    <button class="btn btn-primary" onclick="exportJSON()">⬇️ 导出 JSON Export</button>
+    <button class="btn btn-danger" onclick="resetAll()">🔄 重置 Reset</button>
+    <div id="progress-bar">
+      <div id="progress-track"><div id="progress-fill" style="width:0%"></div></div>
+      <span id="progress-text">0%</span>
+    </div>
+  </div>
+  <div id="topbar-sub">填写完后点击导出 JSON，把下载到的文件发回给 Zixuan &nbsp;/&nbsp; Send the exported JSON back to Zixuan</div>
+</div>
+
+<div id="toast"></div>
+<div id="main"></div>
+
+<script>
+// ─── SEED DATA ───────────────────────────────────────────────────────────────
+const SEED = JSON.parse(document.getElementById('seed-data').textContent);
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let state = {};
+let saveTimer = null;
+
+function deepClone(o){return JSON.parse(JSON.stringify(o))}
+
+function initState(){
+  state = {
+    profile: deepClone(SEED.profile),
+    news: deepClone(SEED.news),
+    publications: deepClone(SEED.publications),
+    projects: deepClone(SEED.projects),
+    talks: deepClone(SEED.talks),
+    awards: deepClone(SEED.awards),
+    teaching: deepClone(SEED.teaching),
+    experience: deepClone(SEED.experience),
+    education: deepClone(SEED.education),
+    preferences: {blog:"maybe",gallery:"maybe",newsPage:"maybe",publicPhone:false,openPositions:"maybe",rss:"maybe"},
+    theme: "undecided",
+    images: {avatar:"",hero:"",extra:[]},
+    cvPdf: "",
+    freeform: ""
+  };
+}
+
+// ─── DOM HELPERS ─────────────────────────────────────────────────────────────
+function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e}
+function inp(type,val,placeholder,extra){
+  const i=document.createElement('input');
+  i.type=type||'text';i.value=val||'';
+  if(placeholder)i.placeholder=placeholder;
+  if(extra)Object.assign(i,extra);
+  return i;
+}
+function ta(val,placeholder,cls){
+  const t=document.createElement('textarea');
+  t.value=val||'';if(placeholder)t.placeholder=placeholder;
+  if(cls)t.className=cls;return t;
+}
+function lbl(text){const l=document.createElement('label');l.textContent=text;return l}
+
+function fieldGroup(labelText,inputEl,full){
+  const g=el('div','field-group'+(full?' full':''));
+  if(labelText)g.appendChild(lbl(labelText));
+  if(inputEl)g.appendChild(inputEl);
+  return g;
+}
+function fieldRow(...groups){const r=el('div','field-row');groups.forEach(g=>r.appendChild(g));return r}
+
+// ─── SECTION BUILDER ─────────────────────────────────────────────────────────
+function makeSection(id,title,bodyFn,startOpen=true){
+  const sec=el('div','section'+(startOpen?'':' collapsed'));
+  sec.id='sec-'+id;
+  const hdr=el('div','section-header');
+  hdr.innerHTML=`<span class="section-title">${title}</span><em class="chevron">▾</em>`;
+  hdr.addEventListener('click',()=>sec.classList.toggle('collapsed'));
+  const body=el('div','section-body');
+  bodyFn(body);
+  sec.appendChild(hdr);sec.appendChild(body);
+  return sec;
+}
+
+// ─── REPEATING LIST BUILDER ──────────────────────────────────────────────────
+function makeRepList(container, items, rowBuilderFn, addLabel){
+  const list=el('div','rep-list');
+  container.appendChild(list);
+
+  function renderAll(){
+    list.innerHTML='';
+    items.forEach((_,i)=>list.appendChild(makeRepItem(i)));
+    updateProgress();
+  }
+
+  function makeRepItem(i){
+    const item=el('div','rep-item');
+    const hdr=el('div','rep-item-header');
+    hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+    const ctrl=el('div','rep-controls');
+    const up=el('button','btn-sm','↑');up.title='上移';
+    const dn=el('button','btn-sm','↓');dn.title='下移';
+    const rm=el('button','btn-sm danger','✕');rm.title='删除';
+    up.onclick=()=>{if(i>0){const t=items[i];items[i]=items[i-1];items[i-1]=t;renderAll();}};
+    dn.onclick=()=>{if(i<items.length-1){const t=items[i];items[i]=items[i+1];items[i+1]=t;renderAll();}};
+    rm.onclick=()=>{if(confirm('确认删除这一条？')){items.splice(i,1);renderAll();}};
+    ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);
+    hdr.appendChild(ctrl);item.appendChild(hdr);
+    rowBuilderFn(item,items[i],i);
+    return item;
+  }
+
+  const addBtn=el('button','add-btn',`+ 添加 ${addLabel}`);
+  addBtn.onclick=()=>{items.push(addLabel==='新条目'?{}:buildEmptyRow(addLabel));renderAll();};
+  container.appendChild(addBtn);
+
+  renderAll();
+  return {refresh:renderAll};
+}
+
+function buildEmptyRow(type){
+  const bi={zh:'',en:''};
+  if(type==='News')return{date:'',text:{zh:'',en:''},link:''};
+  if(type==='Publication')return{category:'journal',year:new Date().getFullYear(),authors:'',title:{zh:'',en:''},venue:{zh:'',en:''},note:{zh:'',en:''},link:''};
+  if(type==='Project')return{kind:'research',title:{zh:'',en:''},period:'',role:{zh:'',en:''},funder:{zh:'',en:''},note:{zh:'',en:''}};
+  if(type==='Talk')return{date:'',kind:'talk',title:{zh:'',en:''},venue:{zh:'',en:''},location:{zh:'',en:''}};
+  if(type==='Award')return{year:'',title:{zh:'',en:''}};
+  if(type==='Teaching')return{role:{zh:'',en:''},course:{zh:'',en:''},period:''};
+  if(type==='Experience')return{org:{zh:'',en:''},title:{zh:'',en:''},period:''};
+  if(type==='Education')return{school:{zh:'',en:''},degree:{zh:'',en:''},period:''};
+  if(type==='Research Area')return{zh:'',en:''};
+  return{};
+}
+
+// ─── BIND HELPERS ────────────────────────────────────────────────────────────
+function bindText(inputEl, obj, key, schedSave){
+  inputEl.value=obj[key]||'';
+  inputEl.addEventListener('input',()=>{obj[key]=inputEl.value;schedSave();});
+}
+function bindCheck(inputEl, obj, key, schedSave){
+  inputEl.checked=!!obj[key];
+  inputEl.addEventListener('change',()=>{obj[key]=inputEl.checked;schedSave();});
+}
+
+// ─── SCHEDULE SAVE ───────────────────────────────────────────────────────────
+function scheduleSave(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{localStorage.setItem('lwq-content-draft',JSON.stringify(state));},400);
+}
+
+// ─── SECTION: BASIC INFO ─────────────────────────────────────────────────────
+function buildBasicInfo(body){
+  const p=state.profile;
+  // Name
+  const nameZh=inp('text',p.name.zh,'李文琦');
+  const nameEn=inp('text',p.name.en,'Wenqi Li');
+  bindText(nameZh,p.name,'zh',scheduleSave);bindText(nameEn,p.name,'en',scheduleSave);
+  body.appendChild(fieldRow(fieldGroup('中文名 Name (ZH)',nameZh),fieldGroup('英文名 Name (EN)',nameEn)));
+  // Title
+  const titleZh=inp('text',p.title.zh);const titleEn=inp('text',p.title.en);
+  bindText(titleZh,p.title,'zh',scheduleSave);bindText(titleEn,p.title,'en',scheduleSave);
+  body.appendChild(fieldRow(fieldGroup('中文职称 Title (ZH)',titleZh),fieldGroup('英文职称 Title (EN)',titleEn)));
+  // Affiliation
+  const affZh=inp('text',p.affiliation.zh);const affEn=inp('text',p.affiliation.en);
+  bindText(affZh,p.affiliation,'zh',scheduleSave);bindText(affEn,p.affiliation,'en',scheduleSave);
+  body.appendChild(fieldRow(fieldGroup('中文单位 Affiliation (ZH)',affZh),fieldGroup('英文单位 Affiliation (EN)',affEn)));
+  // Email
+  const emailEl=inp('email',p.email,'wenqili@pku.edu.cn');
+  bindText(emailEl,p,'email',scheduleSave);
+  // Phone + public
+  const phoneEl=inp('tel',p.phone,'+86...');
+  bindText(phoneEl,p,'phone',scheduleSave);
+  const phoneChk=inp('checkbox');
+  bindCheck(phoneChk,p,'phonePublic',scheduleSave);
+  const phoneGroup=el('div','field-group');
+  phoneGroup.appendChild(lbl('电话 Phone'));phoneGroup.appendChild(phoneEl);
+  const chkRow=el('div','check-row');chkRow.style.marginTop='6px';
+  chkRow.appendChild(phoneChk);chkRow.appendChild(document.createTextNode('是否公开手机号 Public phone'));
+  phoneGroup.appendChild(chkRow);
+  body.appendChild(fieldRow(fieldGroup('邮箱 Email',emailEl),phoneGroup));
+  // Office
+  const officeEl=inp('text',p.office||'','办公室地址');
+  bindText(officeEl,p,'office',scheduleSave);
+  body.appendChild(fieldRow(fieldGroup('办公地址 Office Address',officeEl,true)));
+}
+
+// ─── SECTION: PHOTOS ─────────────────────────────────────────────────────────
+function buildPhotos(body){
+  function fileSection(label,key,multi){
+    const g=el('div','field-group full');g.style.marginBottom='16px';
+    g.appendChild(lbl(label));
+    const inp2=document.createElement('input');inp2.type='file';inp2.accept='image/*';
+    if(multi)inp2.multiple=true;
+    g.appendChild(inp2);
+    if(!multi){
+      const prev=el('img','img-preview');prev.alt='preview';
+      if(state.images[key]){{prev.src=state.images[key];prev.classList.add('visible');}}
+      g.appendChild(prev);
+      inp2.addEventListener('change',()=>{
+        const file=inp2.files[0];if(!file)return;
+        const reader=new FileReader();
+        reader.onload=e=>{state.images[key]=e.target.result;prev.src=e.target.result;prev.classList.add('visible');scheduleSave();};
+        reader.readAsDataURL(file);
+      });
+    } else {
+      inp2.addEventListener('change',()=>{
+        state.images.extra=[];
+        Array.from(inp2.files).forEach(file=>{
+          const r=new FileReader();r.onload=e=>{state.images.extra.push(e.target.result);scheduleSave();};r.readAsDataURL(file);
+        });
+      });
+    }
+    body.appendChild(g);
+  }
+  fileSection('头像 Avatar (preview after upload)','avatar',false);
+  fileSection('Hero 横幅 Hero Banner','hero',false);
+  fileSection('备用照片 Extra Photos (multi)','extra',true);
+}
+
+// ─── SECTION: SOCIAL IDs ─────────────────────────────────────────────────────
+function buildSocial(body){
+  const s=state.profile.social;
+  const fields=[
+    ['Google Scholar URL','googleScholar'],
+    ['ORCID URL','orcid'],
+    ['GitHub URL','github'],
+    ['LinkedIn URL','linkedin'],
+    ['X/Twitter URL','twitter'],
+    ['ResearchGate URL','researchGate'],
+    ['个人主页 Personal Homepage','homepage']
+  ];
+  for(let i=0;i<fields.length;i+=2){
+    const pair=fields.slice(i,i+2);
+    const groups=pair.map(([label,key])=>{
+      const el2=inp('text',s[key]||'','https://...');
+      bindText(el2,s,key,scheduleSave);
+      return fieldGroup(label,el2);
+    });
+    if(groups.length===1)groups[0].classList.add('full');
+    body.appendChild(fieldRow(...groups));
+  }
+}
+
+// ─── SECTION: BIO ────────────────────────────────────────────────────────────
+function buildBio(body){
+  const b=state.profile.bio;
+  const zhTa=ta(b.zh,'中文简介...','tall');
+  const enTa=ta(b.en,'English bio...','tall');
+  bindText(zhTa,b,'zh',scheduleSave);bindText(enTa,b,'en',scheduleSave);
+  body.appendChild(fieldRow(fieldGroup('中文简介 Bio (ZH)',zhTa),fieldGroup('英文简介 Bio (EN)',enTa)));
+}
+
+// ─── SECTION: RESEARCH AREAS ─────────────────────────────────────────────────
+function buildResearchAreas(body){
+  const areas=state.profile.researchAreas;
+  // Convert to array of pairs
+  let pairs=areas.zh.map((zh,i)=>({zh,en:areas.en[i]||''}));
+
+  const list=el('div','rep-list');body.appendChild(list);
+
+  function render(){
+    list.innerHTML='';
+    pairs.forEach((pair,i)=>{
+      const item=el('div','rep-item');
+      const hdr=el('div','rep-item-header');
+      hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+      const ctrl=el('div','rep-controls');
+      const up=el('button','btn-sm','↑');const dn=el('button','btn-sm','↓');const rm=el('button','btn-sm danger','✕');
+      up.onclick=()=>{if(i>0){const t=pairs[i];pairs[i]=pairs[i-1];pairs[i-1]=t;sync();render();}};
+      dn.onclick=()=>{if(i<pairs.length-1){const t=pairs[i];pairs[i]=pairs[i+1];pairs[i+1]=t;sync();render();}};
+      rm.onclick=()=>{if(confirm('删除？')){pairs.splice(i,1);sync();render();}};
+      ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);
+      hdr.appendChild(ctrl);item.appendChild(hdr);
+      const zhI=inp('text',pair.zh,'中文方向');
+      const enI=inp('text',pair.en,'English area');
+      zhI.addEventListener('input',()=>{pair.zh=zhI.value;sync();scheduleSave();});
+      enI.addEventListener('input',()=>{pair.en=enI.value;sync();scheduleSave();});
+      item.appendChild(fieldRow(fieldGroup('ZH',zhI),fieldGroup('EN',enI)));
+      list.appendChild(item);
+    });
+  }
+
+  function sync(){
+    areas.zh=pairs.map(p=>p.zh);
+    areas.en=pairs.map(p=>p.en);
+    updateProgress();
+  }
+
+  const addBtn=el('button','add-btn','+ 添加研究方向');
+  addBtn.onclick=()=>{pairs.push({zh:'',en:''});sync();render();};
+  body.appendChild(addBtn);
+  render();
+}
+
+// ─── NEWS ROW BUILDER ────────────────────────────────────────────────────────
+function buildNewsRow(item,n){
+  const dateEl=inp('text',n.date,'YYYY-MM');
+  bindText(dateEl,n,'date',scheduleSave);
+  const linkEl=inp('text',n.link||'','https://... (可选 optional)');
+  bindText(linkEl,n,'link',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('日期 Date (YYYY-MM)',dateEl),fieldGroup('链接 Link (optional)',linkEl)));
+  const zhTa2=ta(n.text.zh,'中文动态...');
+  const enTa2=ta(n.text.en,'English news...');
+  bindText(zhTa2,n.text,'zh',scheduleSave);bindText(enTa2,n.text,'en',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('中文 ZH',zhTa2),fieldGroup('英文 EN',enTa2)));
+}
+
+// ─── PUBLICATION ROW BUILDER ─────────────────────────────────────────────────
+function buildPubRow(item,p){
+  const catEl=document.createElement('select');
+  ['journal','conference','under_review','book','patent'].forEach(v=>{
+    const o=document.createElement('option');o.value=v;o.textContent=v;catEl.appendChild(o);
+  });
+  catEl.value=p.category||'journal';
+  catEl.addEventListener('change',()=>{p.category=catEl.value;scheduleSave();});
+  const yearEl=inp('number',p.year||'','2025');
+  bindText(yearEl,p,'year',scheduleSave);
+  const authEl=inp('text',p.authors||'','Authors...');
+  bindText(authEl,p,'authors',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('Category',catEl),fieldGroup('Year',yearEl)));
+  item.appendChild(fieldRow(fieldGroup('Authors 作者',authEl,true)));
+  const tZh=ta(p.title.zh,'中文题目');const tEn=ta(p.title.en,'English title');
+  bindText(tZh,p.title,'zh',scheduleSave);bindText(tEn,p.title,'en',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('题目 ZH',tZh),fieldGroup('题目 EN',tEn)));
+  const vZh=inp('text',p.venue.zh,'期刊/会议 ZH');const vEn=inp('text',p.venue.en,'Venue EN');
+  bindText(vZh,p.venue,'zh',scheduleSave);bindText(vEn,p.venue,'en',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('来源 Venue ZH',vZh),fieldGroup('来源 Venue EN',vEn)));
+  const nZh=inp('text',(p.note&&p.note.zh)||'','注释 ZH');const nEn=inp('text',(p.note&&p.note.en)||'','Note EN');
+  if(!p.note)p.note={zh:'',en:''};
+  bindText(nZh,p.note,'zh',scheduleSave);bindText(nEn,p.note,'en',scheduleSave);
+  const lnk=inp('text',p.link||'','DOI / URL (可选)');
+  bindText(lnk,p,'link',scheduleSave);
+  item.appendChild(fieldRow(fieldGroup('注释 Note ZH',nZh),fieldGroup('注释 Note EN',nEn)));
+  item.appendChild(fieldRow(fieldGroup('链接 Link',lnk,true)));
+}
+
+// ─── PUBLICATIONS SECTION ────────────────────────────────────────────────────
+function buildPublications(body){
+  const cats=[
+    {id:'journal',label:'期刊论文 Journal Articles',cls:'tag-journal'},
+    {id:'conference',label:'会议论文 Conference Papers',cls:'tag-conference'},
+    {id:'under_review',label:'在审论文 Under Review',cls:'tag-review'},
+    {id:'book',label:'专著/章节 Books & Chapters',cls:'tag-book'},
+    {id:'patent',label:'专利 Patents',cls:'tag-patent'}
+  ];
+  cats.forEach(({id,label,cls})=>{
+    const sub=el('div','subsection');
+    const subHdr=el('div','subsection-header');
+    subHdr.innerHTML=`<span class="subsection-title">${label}</span><span class="tag ${cls}">${state.publications.filter(p=>p.category===id).length}</span><em class="chevron" style="margin-left:auto;font-style:normal;font-size:12px">▾</em>`;
+    const subBody=el('div','subsection-body');
+    subHdr.addEventListener('click',()=>subBody.classList.toggle('collapsed'));
+
+    const items=state.publications.filter(p=>p.category===id);
+    // Since publications is a flat array filtered by category, we manage a per-category view
+    // but edits directly mutate the shared state.publications entries
+    const list=el('div','rep-list');subBody.appendChild(list);
+
+    function renderCat(){
+      list.innerHTML='';
+      const catItems=state.publications.filter(p=>p.category===id);
+      catItems.forEach((pub,ci)=>{
+        const globalIdx=state.publications.indexOf(pub);
+        const item2=el('div','rep-item');
+        const hdr2=el('div','rep-item-header');
+        hdr2.appendChild(el('span','rep-item-num',`#${ci+1}`));
+        const ctrl2=el('div','rep-controls');
+        const rm2=el('button','btn-sm danger','✕');rm2.title='删除';
+        rm2.onclick=()=>{if(confirm('删除此条？')){state.publications.splice(globalIdx,1);renderCat();}};
+        // up/down within category
+        const up2=el('button','btn-sm','↑');
+        up2.onclick=()=>{
+          const ci2=state.publications.indexOf(pub);
+          // find prev same-category
+          let prev=-1;
+          for(let k=ci2-1;k>=0;k--){if(state.publications[k].category===id){prev=k;break;}}
+          if(prev>=0){const t=state.publications[ci2];state.publications[ci2]=state.publications[prev];state.publications[prev]=t;renderCat();}
+        };
+        const dn2=el('button','btn-sm','↓');
+        dn2.onclick=()=>{
+          const ci2=state.publications.indexOf(pub);
+          let nxt=-1;
+          for(let k=ci2+1;k<state.publications.length;k++){if(state.publications[k].category===id){nxt=k;break;}}
+          if(nxt>=0){const t=state.publications[ci2];state.publications[ci2]=state.publications[nxt];state.publications[nxt]=t;renderCat();}
+        };
+        ctrl2.appendChild(up2);ctrl2.appendChild(dn2);ctrl2.appendChild(rm2);
+        hdr2.appendChild(ctrl2);item2.appendChild(hdr2);
+        buildPubRow(item2,pub);
+        list.appendChild(item2);
+      });
+      // Update count badge
+      const badge=subHdr.querySelector('.tag');
+      if(badge)badge.textContent=state.publications.filter(p=>p.category===id).length;
+      updateProgress();
+    }
+
+    const addBtn2=el('button','add-btn',`+ 添加${label}`);
+    addBtn2.onclick=()=>{
+      const newPub={category:id,year:new Date().getFullYear(),authors:'',title:{zh:'',en:''},venue:{zh:'',en:''},note:{zh:'',en:''},link:''};
+      state.publications.push(newPub);renderCat();
+    };
+    subBody.appendChild(addBtn2);
+    sub.appendChild(subHdr);sub.appendChild(subBody);
+    body.appendChild(sub);
+    renderCat();
+  });
+}
+
+// ─── PROJECTS SECTION ────────────────────────────────────────────────────────
+function buildProjects(body){
+  ['research','teaching'].forEach(kind=>{
+    const label=kind==='research'?'科研项目 Research Projects':'教学项目 Teaching Projects';
+    const sub=el('div','subsection');
+    const subHdr=el('div','subsection-header');
+    subHdr.innerHTML=`<span class="subsection-title">${label}</span><em class="chevron" style="margin-left:auto;font-style:normal;font-size:12px">▾</em>`;
+    const subBody=el('div','subsection-body');
+    subHdr.addEventListener('click',()=>subBody.classList.toggle('collapsed'));
+
+    const items=state.projects.filter(p=>p.kind===kind);
+    const list=el('div','rep-list');subBody.appendChild(list);
+
+    function renderKind(){
+      list.innerHTML='';
+      state.projects.filter(p=>p.kind===kind).forEach((proj,ci)=>{
+        const gi=state.projects.indexOf(proj);
+        const item2=el('div','rep-item');
+        const hdr2=el('div','rep-item-header');
+        hdr2.appendChild(el('span','rep-item-num',`#${ci+1}`));
+        const ctrl2=el('div','rep-controls');
+        const up2=el('button','btn-sm','↑');
+        up2.onclick=()=>{const k=state.projects.indexOf(proj);let prev=-1;for(let i=k-1;i>=0;i--){if(state.projects[i].kind===kind){prev=i;break;}}if(prev>=0){const t=state.projects[k];state.projects[k]=state.projects[prev];state.projects[prev]=t;renderKind();}};
+        const dn2=el('button','btn-sm','↓');
+        dn2.onclick=()=>{const k=state.projects.indexOf(proj);let nxt=-1;for(let i=k+1;i<state.projects.length;i++){if(state.projects[i].kind===kind){nxt=i;break;}}if(nxt>=0){const t=state.projects[k];state.projects[k]=state.projects[nxt];state.projects[nxt]=t;renderKind();}};
+        const rm2=el('button','btn-sm danger','✕');rm2.onclick=()=>{if(confirm('删除？')){state.projects.splice(gi,1);renderKind();}};
+        ctrl2.appendChild(up2);ctrl2.appendChild(dn2);ctrl2.appendChild(rm2);
+        hdr2.appendChild(ctrl2);item2.appendChild(hdr2);
+        // Row fields
+        const tZh=ta(proj.title.zh,'项目名称 ZH');const tEn=ta(proj.title.en,'Project title EN');
+        bindText(tZh,proj.title,'zh',scheduleSave);bindText(tEn,proj.title,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('项目名称 ZH',tZh),fieldGroup('Title EN',tEn)));
+        const periodEl=inp('text',proj.period||'','2024-2026');
+        const roleZh=inp('text',(proj.role&&proj.role.zh)||'','角色 ZH');const roleEn=inp('text',(proj.role&&proj.role.en)||'','Role EN');
+        if(!proj.role)proj.role={zh:'',en:''};
+        bindText(periodEl,proj,'period',scheduleSave);
+        bindText(roleZh,proj.role,'zh',scheduleSave);bindText(roleEn,proj.role,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('周期 Period',periodEl),fieldGroup('')));
+        item2.appendChild(fieldRow(fieldGroup('角色 ZH',roleZh),fieldGroup('Role EN',roleEn)));
+        const fZh=inp('text',(proj.funder&&proj.funder.zh)||'','资助方 ZH');const fEn=inp('text',(proj.funder&&proj.funder.en)||'','Funder EN');
+        if(!proj.funder)proj.funder={zh:'',en:''};
+        bindText(fZh,proj.funder,'zh',scheduleSave);bindText(fEn,proj.funder,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('资助方 ZH',fZh),fieldGroup('Funder EN',fEn)));
+        const nZh=inp('text',(proj.note&&proj.note.zh)||'','备注 ZH');const nEn=inp('text',(proj.note&&proj.note.en)||'','Note EN');
+        if(!proj.note)proj.note={zh:'',en:''};
+        bindText(nZh,proj.note,'zh',scheduleSave);bindText(nEn,proj.note,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('备注 ZH',nZh),fieldGroup('Note EN',nEn)));
+        list.appendChild(item2);
+      });
+      updateProgress();
+    }
+
+    const addBtn2=el('button','add-btn',`+ 添加${label}`);
+    addBtn2.onclick=()=>{state.projects.push({kind,title:{zh:'',en:''},period:'',role:{zh:'',en:''},funder:{zh:'',en:''},note:{zh:'',en:''}});renderKind();};
+    subBody.appendChild(addBtn2);
+    sub.appendChild(subHdr);sub.appendChild(subBody);
+    body.appendChild(sub);
+    renderKind();
+  });
+}
+
+// ─── TALKS SECTION ───────────────────────────────────────────────────────────
+function buildTalks(body){
+  ['talk','organized'].forEach(kind=>{
+    const label=kind==='talk'?'学术报告 Talks':'活动组织 Organized Events';
+    const sub=el('div','subsection');
+    const subHdr=el('div','subsection-header');
+    subHdr.innerHTML=`<span class="subsection-title">${label}</span><em class="chevron" style="margin-left:auto;font-style:normal;font-size:12px">▾</em>`;
+    const subBody=el('div','subsection-body');
+    subHdr.addEventListener('click',()=>subBody.classList.toggle('collapsed'));
+    const list=el('div','rep-list');subBody.appendChild(list);
+
+    function renderKind(){
+      list.innerHTML='';
+      state.talks.filter(t=>t.kind===kind).forEach((talk,ci)=>{
+        const gi=state.talks.indexOf(talk);
+        const item2=el('div','rep-item');
+        const hdr2=el('div','rep-item-header');
+        hdr2.appendChild(el('span','rep-item-num',`#${ci+1}`));
+        const ctrl2=el('div','rep-controls');
+        const up2=el('button','btn-sm','↑');
+        up2.onclick=()=>{const k=state.talks.indexOf(talk);let prev=-1;for(let i=k-1;i>=0;i--){if(state.talks[i].kind===kind){prev=i;break;}}if(prev>=0){const t=state.talks[k];state.talks[k]=state.talks[prev];state.talks[prev]=t;renderKind();}};
+        const dn2=el('button','btn-sm','↓');
+        dn2.onclick=()=>{const k=state.talks.indexOf(talk);let nxt=-1;for(let i=k+1;i<state.talks.length;i++){if(state.talks[i].kind===kind){nxt=i;break;}}if(nxt>=0){const t=state.talks[k];state.talks[k]=state.talks[nxt];state.talks[nxt]=t;renderKind();}};
+        const rm2=el('button','btn-sm danger','✕');rm2.onclick=()=>{if(confirm('删除？')){state.talks.splice(gi,1);renderKind();}};
+        ctrl2.appendChild(up2);ctrl2.appendChild(dn2);ctrl2.appendChild(rm2);
+        hdr2.appendChild(ctrl2);item2.appendChild(hdr2);
+        const dateEl=inp('text',talk.date||'','YYYY-MM-DD or YYYY');
+        if(!talk.title)talk.title={zh:'',en:''};
+        if(!talk.venue)talk.venue={zh:'',en:''};
+        if(!talk.location)talk.location={zh:'',en:''};
+        bindText(dateEl,talk,'date',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('日期 Date',dateEl),fieldGroup('')));
+        const tZh=ta(talk.title.zh,'题目 ZH');const tEn=ta(talk.title.en,'Title EN');
+        bindText(tZh,talk.title,'zh',scheduleSave);bindText(tEn,talk.title,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('题目 ZH',tZh),fieldGroup('Title EN',tEn)));
+        const vZh=inp('text',talk.venue.zh,'会议/活动 ZH');const vEn=inp('text',talk.venue.en,'Venue EN');
+        bindText(vZh,talk.venue,'zh',scheduleSave);bindText(vEn,talk.venue,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('会议 ZH',vZh),fieldGroup('Venue EN',vEn)));
+        const lZh=inp('text',talk.location.zh,'地点 ZH');const lEn=inp('text',talk.location.en,'Location EN');
+        bindText(lZh,talk.location,'zh',scheduleSave);bindText(lEn,talk.location,'en',scheduleSave);
+        item2.appendChild(fieldRow(fieldGroup('地点 ZH',lZh),fieldGroup('Location EN',lEn)));
+        list.appendChild(item2);
+      });
+      updateProgress();
+    }
+
+    const addBtn2=el('button','add-btn',`+ 添加`);
+    addBtn2.onclick=()=>{state.talks.push({date:'',kind,title:{zh:'',en:''},venue:{zh:'',en:''},location:{zh:'',en:''}});renderKind();};
+    subBody.appendChild(addBtn2);
+    sub.appendChild(subHdr);sub.appendChild(subBody);
+    body.appendChild(sub);
+    renderKind();
+  });
+}
+
+// ─── SIMPLE REPEATING SECTION FACTORY ────────────────────────────────────────
+function buildAwards(body){
+  const list=el('div','rep-list');body.appendChild(list);
+  function render(){
+    list.innerHTML='';
+    state.awards.forEach((aw,i)=>{
+      const item=el('div','rep-item');
+      const hdr=el('div','rep-item-header');
+      hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+      const ctrl=el('div','rep-controls');
+      const up=el('button','btn-sm','↑');up.onclick=()=>{if(i>0){const t=state.awards[i];state.awards[i]=state.awards[i-1];state.awards[i-1]=t;render();}};
+      const dn=el('button','btn-sm','↓');dn.onclick=()=>{if(i<state.awards.length-1){const t=state.awards[i];state.awards[i]=state.awards[i+1];state.awards[i+1]=t;render();}};
+      const rm=el('button','btn-sm danger','✕');rm.onclick=()=>{if(confirm('删除？')){state.awards.splice(i,1);render();}};
+      ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);hdr.appendChild(ctrl);item.appendChild(hdr);
+      const yearEl=inp('text',aw.year||'','2025');
+      bindText(yearEl,aw,'year',scheduleSave);
+      if(!aw.title)aw.title={zh:'',en:''};
+      const tZh=inp('text',aw.title.zh,'奖项名称 ZH');const tEn=inp('text',aw.title.en,'Award EN');
+      bindText(tZh,aw.title,'zh',scheduleSave);bindText(tEn,aw.title,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('年份 Year',yearEl),fieldGroup('')));
+      item.appendChild(fieldRow(fieldGroup('奖项名称 ZH',tZh),fieldGroup('Award EN',tEn)));
+      list.appendChild(item);
+    });
+    updateProgress();
+  }
+  const addBtn=el('button','add-btn','+ 添加奖项');
+  addBtn.onclick=()=>{state.awards.push({year:'',title:{zh:'',en:''}});render();};
+  body.appendChild(addBtn);render();
+}
+
+function buildTeaching(body){
+  const list=el('div','rep-list');body.appendChild(list);
+  function render(){
+    list.innerHTML='';
+    state.teaching.forEach((t,i)=>{
+      const item=el('div','rep-item');
+      const hdr=el('div','rep-item-header');
+      hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+      const ctrl=el('div','rep-controls');
+      const up=el('button','btn-sm','↑');up.onclick=()=>{if(i>0){const x=state.teaching[i];state.teaching[i]=state.teaching[i-1];state.teaching[i-1]=x;render();}};
+      const dn=el('button','btn-sm','↓');dn.onclick=()=>{if(i<state.teaching.length-1){const x=state.teaching[i];state.teaching[i]=state.teaching[i+1];state.teaching[i+1]=x;render();}};
+      const rm=el('button','btn-sm danger','✕');rm.onclick=()=>{if(confirm('删除？')){state.teaching.splice(i,1);render();}};
+      ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);hdr.appendChild(ctrl);item.appendChild(hdr);
+      if(!t.role)t.role={zh:'',en:''};if(!t.course)t.course={zh:'',en:''};
+      const rZh=inp('text',t.role.zh,'角色 ZH');const rEn=inp('text',t.role.en,'Role EN');
+      bindText(rZh,t.role,'zh',scheduleSave);bindText(rEn,t.role,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('角色 ZH',rZh),fieldGroup('Role EN',rEn)));
+      const cZh=ta(t.course.zh,'课程名称 ZH');const cEn=ta(t.course.en,'Course EN');
+      bindText(cZh,t.course,'zh',scheduleSave);bindText(cEn,t.course,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('课程 ZH',cZh),fieldGroup('Course EN',cEn)));
+      const pEl=inp('text',t.period||'','2025');
+      bindText(pEl,t,'period',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('学期/年 Period',pEl),fieldGroup('')));
+      list.appendChild(item);
+    });
+    updateProgress();
+  }
+  const addBtn=el('button','add-btn','+ 添加教学记录');
+  addBtn.onclick=()=>{state.teaching.push({role:{zh:'',en:''},course:{zh:'',en:''},period:''});render();};
+  body.appendChild(addBtn);render();
+}
+
+function buildExperience(body){
+  const list=el('div','rep-list');body.appendChild(list);
+  function render(){
+    list.innerHTML='';
+    state.experience.forEach((exp,i)=>{
+      const item=el('div','rep-item');
+      const hdr=el('div','rep-item-header');
+      hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+      const ctrl=el('div','rep-controls');
+      const up=el('button','btn-sm','↑');up.onclick=()=>{if(i>0){const x=state.experience[i];state.experience[i]=state.experience[i-1];state.experience[i-1]=x;render();}};
+      const dn=el('button','btn-sm','↓');dn.onclick=()=>{if(i<state.experience.length-1){const x=state.experience[i];state.experience[i]=state.experience[i+1];state.experience[i+1]=x;render();}};
+      const rm=el('button','btn-sm danger','✕');rm.onclick=()=>{if(confirm('删除？')){state.experience.splice(i,1);render();}};
+      ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);hdr.appendChild(ctrl);item.appendChild(hdr);
+      if(!exp.org)exp.org={zh:'',en:''};if(!exp.title)exp.title={zh:'',en:''};
+      const oZh=inp('text',exp.org.zh,'单位 ZH');const oEn=inp('text',exp.org.en,'Org EN');
+      bindText(oZh,exp.org,'zh',scheduleSave);bindText(oEn,exp.org,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('单位 ZH',oZh),fieldGroup('Org EN',oEn)));
+      const tZh2=inp('text',exp.title.zh,'职位 ZH');const tEn2=inp('text',exp.title.en,'Title EN');
+      bindText(tZh2,exp.title,'zh',scheduleSave);bindText(tEn2,exp.title,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('职位 ZH',tZh2),fieldGroup('Title EN',tEn2)));
+      const pEl=inp('text',exp.period||'','2020.01–2024.06');
+      bindText(pEl,exp,'period',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('时间 Period',pEl),fieldGroup('')));
+      list.appendChild(item);
+    });
+    updateProgress();
+  }
+  const addBtn=el('button','add-btn','+ 添加工作经历');
+  addBtn.onclick=()=>{state.experience.push({org:{zh:'',en:''},title:{zh:'',en:''},period:''});render();};
+  body.appendChild(addBtn);render();
+}
+
+function buildEducation(body){
+  const list=el('div','rep-list');body.appendChild(list);
+  function render(){
+    list.innerHTML='';
+    state.education.forEach((edu,i)=>{
+      const item=el('div','rep-item');
+      const hdr=el('div','rep-item-header');
+      hdr.appendChild(el('span','rep-item-num',`#${i+1}`));
+      const ctrl=el('div','rep-controls');
+      const up=el('button','btn-sm','↑');up.onclick=()=>{if(i>0){const x=state.education[i];state.education[i]=state.education[i-1];state.education[i-1]=x;render();}};
+      const dn=el('button','btn-sm','↓');dn.onclick=()=>{if(i<state.education.length-1){const x=state.education[i];state.education[i]=state.education[i+1];state.education[i+1]=x;render();}};
+      const rm=el('button','btn-sm danger','✕');rm.onclick=()=>{if(confirm('删除？')){state.education.splice(i,1);render();}};
+      ctrl.appendChild(up);ctrl.appendChild(dn);ctrl.appendChild(rm);hdr.appendChild(ctrl);item.appendChild(hdr);
+      if(!edu.school)edu.school={zh:'',en:''};if(!edu.degree)edu.degree={zh:'',en:''};
+      const sZh=inp('text',edu.school.zh,'学校 ZH');const sEn=inp('text',edu.school.en,'School EN');
+      bindText(sZh,edu.school,'zh',scheduleSave);bindText(sEn,edu.school,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('学校 ZH',sZh),fieldGroup('School EN',sEn)));
+      const dZh=inp('text',edu.degree.zh,'学位 ZH');const dEn=inp('text',edu.degree.en,'Degree EN');
+      bindText(dZh,edu.degree,'zh',scheduleSave);bindText(dEn,edu.degree,'en',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('学位 ZH',dZh),fieldGroup('Degree EN',dEn)));
+      const pEl=inp('text',edu.period||'','2010–2014');
+      bindText(pEl,edu,'period',scheduleSave);
+      item.appendChild(fieldRow(fieldGroup('时间 Period',pEl),fieldGroup('')));
+      list.appendChild(item);
+    });
+    updateProgress();
+  }
+  const addBtn=el('button','add-btn','+ 添加教育背景');
+  addBtn.onclick=()=>{state.education.push({school:{zh:'',en:''},degree:{zh:'',en:''},period:''});render();};
+  body.appendChild(addBtn);render();
+}
+
+// ─── SECTION: PREFERENCES ────────────────────────────────────────────────────
+function buildPreferences(body){
+  const pref=state.preferences;
+
+  function radioGroup(labelText, key, opts){
+    const wrapper=el('div');wrapper.style.marginBottom='16px';
+    wrapper.appendChild(el('div','',`<strong style="font-size:13px">${labelText}</strong>`));
+    const rg=el('div','radio-group');rg.style.marginTop='6px';
+    opts.forEach(([val,label])=>{
+      const row=el('div','radio-row');
+      const r=inp('radio');r.name=`pref-${key}`;r.value=val;r.checked=(pref[key]===val);
+      r.addEventListener('change',()=>{if(r.checked){pref[key]=val;scheduleSave();}});
+      row.appendChild(r);row.appendChild(document.createTextNode(' '+label));
+      rg.appendChild(row);
+    });
+    wrapper.appendChild(rg);body.appendChild(wrapper);
+  }
+
+  function checkRow2(labelText, key){
+    const row=el('div','check-row');row.style.marginBottom='12px';
+    const chk=inp('checkbox');chk.checked=!!pref[key];
+    chk.addEventListener('change',()=>{pref[key]=chk.checked;scheduleSave();});
+    row.appendChild(chk);row.appendChild(el('span','',` <strong>${labelText}</strong>`));
+    body.appendChild(row);
+  }
+
+  radioGroup('是否需要 Blog 板块?','blog',[['yes','是 Yes'],['no','否 No'],['maybe','不确定 Maybe']]);
+  radioGroup('是否需要 Photo Gallery 相册?','gallery',[['yes','是 Yes'],['no','否 No'],['maybe','不确定 Maybe']]);
+  radioGroup('是否需要单独 News 页? (动态条数较多时)','newsPage',[['yes','是 Yes'],['no','否 No'],['maybe','不确定 Maybe']]);
+  radioGroup('给学生招收类信息预留版块? (Open positions)','openPositions',[['yes','是 Yes'],['no','否 No'],['maybe','不确定 Maybe']]);
+  radioGroup('是否要 RSS feed?','rss',[['yes','是 Yes'],['no','否 No'],['maybe','不确定 Maybe']]);
+  checkRow2('是否公开手机号? Public Phone',  'publicPhone');
+}
+
+// ─── SECTION: THEME ──────────────────────────────────────────────────────────
+function buildTheme(body){
+  const themes=[
+    ['editorial','A · Editorial — 期刊风，左侧栏，serif 字体，学术感强'],
+    ['modern','B · Modern Minimal — 极简，大留白，sans-serif，清爽'],
+    ['classical','C · Classical Premium — 古典高级感，奶白底，暖色调'],
+    ['undecided','都看一下再决定 — Undecided, show me options']
+  ];
+  const rg=el('div','radio-group');
+  themes.forEach(([val,label])=>{
+    const row=el('div','radio-row');
+    const r=inp('radio');r.name='theme';r.value=val;r.checked=(state.theme===val);
+    r.addEventListener('change',()=>{if(r.checked){state.theme=val;scheduleSave();}});
+    row.appendChild(r);row.appendChild(document.createTextNode(' '+label));
+    rg.appendChild(row);
+  });
+  body.appendChild(rg);
+}
+
+// ─── SECTION: CV PDF ─────────────────────────────────────────────────────────
+function buildCV(body){
+  const g=el('div','field-group full');
+  g.appendChild(lbl('CV PDF 文件 (将转为 base64 内嵌)'));
+  const fileInput=document.createElement('input');fileInput.type='file';fileInput.accept='.pdf';
+  const status=el('div');status.style.cssText='font-size:12px;color:var(--text-muted);margin-top:4px';
+  if(state.cvPdf)status.textContent='已上传 CV PDF (已存储)';
+  fileInput.addEventListener('change',()=>{
+    const file=fileInput.files[0];if(!file)return;
+    status.textContent='读取中...';
+    const r=new FileReader();
+    r.onload=e=>{state.cvPdf=e.target.result;status.textContent='已上传: '+file.name+' ('+Math.round(file.size/1024)+'KB)';scheduleSave();};
+    r.readAsDataURL(file);
+  });
+  g.appendChild(fileInput);g.appendChild(status);body.appendChild(g);
+}
+
+// ─── SECTION: FREEFORM ───────────────────────────────────────────────────────
+function buildFreeform(body){
+  const t=ta(state.freeform||'','随便写，想对 Zixuan 说的话、网站需求、补充说明等... Anything you want to tell Zixuan about the site.','tall');
+  t.style.minHeight='200px';
+  bindText(t,state,'freeform',scheduleSave);
+  body.appendChild(t);
+}
+
+// ─── PROGRESS ────────────────────────────────────────────────────────────────
+function updateProgress(){
+  const inputs=document.querySelectorAll('#main input[type=text],#main input[type=email],#main input[type=tel],#main input[type=number],#main textarea');
+  let total=0,filled=0;
+  inputs.forEach(i=>{total++;if(i.value.trim())filled++;});
+  const pct=total?Math.round(filled/total*100):0;
+  document.getElementById('progress-fill').style.width=pct+'%';
+  document.getElementById('progress-text').textContent=pct+'%';
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────────────────
+function toast(msg,duration=2500){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),duration);
+}
+
+// ─── DRAFT ───────────────────────────────────────────────────────────────────
+function saveDraft(){
+  localStorage.setItem('lwq-content-draft',JSON.stringify(state));
+  toast('草稿已保存 Draft saved ✓');
+}
+
+function restoreDraft(){
+  const raw=localStorage.getItem('lwq-content-draft');
+  if(!raw){toast('没有找到草稿 No draft found');return;}
+  if(!confirm('恢复草稿会覆盖当前编辑内容，确认吗？\nRestore draft? This will overwrite current form.'))return;
+  try{
+    const saved=JSON.parse(raw);
+    Object.assign(state,saved);
+    buildUI();
+    toast('草稿已恢复 Draft restored ✓');
+  }catch(e){toast('恢复失败 Restore failed: '+e.message);}
+}
+
+function resetAll(){
+  if(!confirm('重置会清除所有内容和草稿，确认吗？\nReset? This clears all data and draft.'))return;
+  localStorage.removeItem('lwq-content-draft');
+  location.reload();
+}
+
+// ─── EXPORT JSON ─────────────────────────────────────────────────────────────
+function exportJSON(){
+  const p=state.profile;
+  const out={
+    profile:{
+      name:p.name,
+      title:p.title,
+      affiliation:p.affiliation,
+      email:p.email,
+      phone:p.phone,
+      phonePublic:!!p.phonePublic,
+      office:p.office||'',
+      social:p.social,
+      researchAreas:p.researchAreas,
+      bio:p.bio
+    },
+    publications:state.publications.map(pub=>({
+      category:pub.category,
+      year:Number(pub.year)||new Date().getFullYear(),
+      authors:pub.authors||'',
+      title:pub.title||{zh:'',en:''},
+      venue:pub.venue||{zh:'',en:''},
+      note:pub.note||{zh:'',en:''},
+      link:pub.link||''
+    })),
+    news:state.news.map(n=>({
+      date:n.date||'',
+      text:n.text||{zh:'',en:''},
+      link:n.link||''
+    })),
+    projects:state.projects.map(pr=>({
+      kind:pr.kind,
+      title:pr.title||{zh:'',en:''},
+      period:pr.period||'',
+      role:pr.role||{zh:'',en:''},
+      funder:pr.funder||{zh:'',en:''},
+      note:pr.note||{zh:'',en:''}
+    })),
+    talks:state.talks.map(t=>({
+      date:t.date||'',
+      kind:t.kind,
+      title:t.title||{zh:'',en:''},
+      venue:t.venue||{zh:'',en:''},
+      location:t.location||{zh:'',en:''}
+    })),
+    awards:state.awards.map(a=>({
+      year:a.year||'',
+      title:a.title||{zh:'',en:''}
+    })),
+    teaching:state.teaching.map(t=>({
+      role:t.role||{zh:'',en:''},
+      course:t.course||{zh:'',en:''},
+      period:t.period||''
+    })),
+    experience:state.experience.map(e=>({
+      org:e.org||{zh:'',en:''},
+      title:e.title||{zh:'',en:''},
+      period:e.period||''
+    })),
+    education:state.education.map(e=>({
+      school:e.school||{zh:'',en:''},
+      degree:e.degree||{zh:'',en:''},
+      period:e.period||''
+    })),
+    preferences:state.preferences,
+    theme:state.theme||'undecided',
+    images:state.images||{avatar:'',hero:'',extra:[]},
+    cvPdf:state.cvPdf||'',
+    freeform:state.freeform||''
+  };
+
+  const now=new Date();
+  const ts=`${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}`;
+  const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=`lwq-content-${ts}.json`;a.click();
+  URL.revokeObjectURL(url);
+  toast('JSON 已导出 Exported ✓');
+}
+
+// ─── BUILD UI ────────────────────────────────────────────────────────────────
+function buildUI(){
+  const main=document.getElementById('main');
+  main.innerHTML='';
+
+  const sections=[
+    ['basic','基本信息 / Basic Info',buildBasicInfo,true],
+    ['photos','照片与图片 / Photos',buildPhotos,true],
+    ['social','社交 / 学术 ID / Social IDs',buildSocial,true],
+    ['bio','简介 / Bio',buildBio,true],
+    ['areas','研究方向 / Research Areas',buildResearchAreas,true],
+    ['news','News 动态 / News',body=>{makeRepList(body,state.news,buildNewsRow,'News');},true],
+    ['pubs','Publications / 学术成果',buildPublications,true],
+    ['projects','Projects / 项目',buildProjects,true],
+    ['talks','Talks / 学术报告与活动',buildTalks,true],
+    ['awards','Awards / 荣誉奖励',buildAwards,true],
+    ['teaching','Teaching / 教学经历',buildTeaching,true],
+    ['experience','Experience / 工作经历',buildExperience,true],
+    ['education','Education / 教育背景',buildEducation,true],
+    ['prefs','Section preferences / 站点结构问答',buildPreferences,true],
+    ['theme','Theme / 风格偏好',buildTheme,true],
+    ['cv','CV PDF',buildCV,true],
+    ['freeform','额外想说的 / Anything else',buildFreeform,true]
+  ];
+
+  sections.forEach(([id,title,fn,open])=>{
+    main.appendChild(makeSection(id,title,fn,open));
+  });
+
+  updateProgress();
+  // Attach global input listener for auto-save
+  main.addEventListener('input',()=>scheduleSave());
+  main.addEventListener('change',()=>scheduleSave());
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+(function(){
+  initState();
+  // Try to load draft silently on startup
+  const raw=localStorage.getItem('lwq-content-draft');
+  if(raw){
+    try{
+      const saved=JSON.parse(raw);
+      Object.assign(state,saved);
+    }catch(e){}
+  }
+  buildUI();
+})();
+</script>
+</body>
+</html>

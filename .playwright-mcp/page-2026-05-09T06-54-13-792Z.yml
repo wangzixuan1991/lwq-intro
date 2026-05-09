@@ -1,0 +1,1688 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: 李文琦 个人网站内容收集器 / Content Collector
+      - button "💾 保存草稿 Save Draft" [ref=e5] [cursor=pointer]
+      - button "♻️ 恢复草稿 Restore" [ref=e6] [cursor=pointer]
+      - button "⬇️ 导出 JSON Export" [ref=e7] [cursor=pointer]
+      - button "🔄 重置 Reset" [ref=e8] [cursor=pointer]
+      - generic [ref=e12]: 80%
+    - generic [ref=e13]: 填写完后点击导出 JSON，把下载到的文件发回给 Zixuan / Send the exported JSON back to Zixuan
+  - generic [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16] [cursor=pointer]:
+        - generic [ref=e17]: 基本信息 / Basic Info
+        - emphasis [ref=e18]: ▾
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: 中文名 Name (ZH)
+            - textbox "李文琦" [ref=e23]
+          - generic [ref=e24]:
+            - generic [ref=e25]: 英文名 Name (EN)
+            - textbox "Wenqi Li" [ref=e26]
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - generic [ref=e29]: 中文职称 Title (ZH)
+            - textbox [ref=e30]: 博雅博士后 · 助理研究员
+          - generic [ref=e31]:
+            - generic [ref=e32]: 英文职称 Title (EN)
+            - textbox [ref=e33]: Boya Postdoctoral Fellow · Assistant Research Fellow
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e36]: 中文单位 Affiliation (ZH)
+            - textbox [ref=e37]: 北京大学信息管理系 · 数字人文研究中心
+          - generic [ref=e38]:
+            - generic [ref=e39]: 英文单位 Affiliation (EN)
+            - textbox [ref=e40]: Department of Information Management & Digital Humanities Research Center, Peking University
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: 邮箱 Email
+            - textbox "wenqili@pku.edu.cn" [ref=e44]
+          - generic [ref=e45]:
+            - generic [ref=e46]: 电话 Phone
+            - textbox "+86..." [ref=e47]: +86 18610656507
+            - generic [ref=e48]:
+              - checkbox [ref=e49] [cursor=pointer]
+              - text: 是否公开手机号 Public phone
+        - generic [ref=e51]:
+          - generic [ref=e52]: 办公地址 Office Address
+          - textbox "办公室地址" [ref=e53]
+    - generic [ref=e54]:
+      - generic [ref=e55] [cursor=pointer]:
+        - generic [ref=e56]: 照片与图片 / Photos
+        - emphasis [ref=e57]: ▾
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]: 头像 Avatar (preview after upload)
+          - button "Choose File" [ref=e61]
+        - generic [ref=e62]:
+          - generic [ref=e63]: Hero 横幅 Hero Banner
+          - button "Choose File" [ref=e64]
+        - generic [ref=e65]:
+          - generic [ref=e66]: 备用照片 Extra Photos (multi)
+          - button "Choose File" [ref=e67]
+    - generic [ref=e68]:
+      - generic [ref=e69] [cursor=pointer]:
+        - generic [ref=e70]: 社交 / 学术 ID / Social IDs
+        - emphasis [ref=e71]: ▾
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]: Google Scholar URL
+            - textbox "https://..." [ref=e76]: https://scholar.google.com/
+          - generic [ref=e77]:
+            - generic [ref=e78]: ORCID URL
+            - textbox "https://..." [ref=e79]: https://orcid.org/
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: GitHub URL
+            - textbox "https://..." [ref=e83]: https://github.com/
+          - generic [ref=e84]:
+            - generic [ref=e85]: LinkedIn URL
+            - textbox "https://..." [ref=e86]: https://www.linkedin.com/
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: X/Twitter URL
+            - textbox "https://..." [ref=e90]
+          - generic [ref=e91]:
+            - generic [ref=e92]: ResearchGate URL
+            - textbox "https://..." [ref=e93]
+        - generic [ref=e95]:
+          - generic [ref=e96]: 个人主页 Personal Homepage
+          - textbox "https://..." [ref=e97]
+    - generic [ref=e98]:
+      - generic [ref=e99] [cursor=pointer]:
+        - generic [ref=e100]: 简介 / Bio
+        - emphasis [ref=e101]: ▾
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - generic [ref=e105]: 中文简介 Bio (ZH)
+          - textbox "中文简介..." [ref=e106]: 李文琦，北京大学信息管理系博雅博士后。她于北京大学信息管理系获情报学博士学位，并在华盛顿大学人本设计与工程系获理学硕士学位。研究方向涵盖数字人文、人机交互与数据行为，关注人文学者的数据实践与数据管护，以及如何借助 AI 服务于文化遗产的保护与公众参与。研究成果发表于 JASIST、ACM CHI、JCDL 等国内外重要期刊与会议。在进入学术界之前，她在微软（美国）与阿里巴巴累计四年用户体验设计经验。
+        - generic [ref=e107]:
+          - generic [ref=e108]: 英文简介 Bio (EN)
+          - textbox "English bio..." [ref=e109]: Li Wenqi is a Boya Postdoctoral Fellow in the Department of Information Management and the Digital Humanities Research Center at Peking University. She holds a PhD in Information Science from Peking University and an M.S. in Human-Centered Design & Engineering from the University of Washington. Her research spans digital humanities, human-computer interaction, and data behavior. She has examined humanities scholars' data practices and data curation approaches that support the shift toward data-driven research in the humanities. More recently, her work explores how AI can be applied to the preservation and public engagement of cultural heritage. Her research has been published in venues including JASIST, ACM CHI, and JCDL, and she has contributed to digital curation projects focused on ancient Chinese texts. Prior to entering academia, she gained four years of industry experience as a user experience designer at Microsoft and Alibaba Cloud.
+    - generic [ref=e110]:
+      - generic [ref=e111] [cursor=pointer]:
+        - generic [ref=e112]: 研究方向 / Research Areas
+        - emphasis [ref=e113]: ▾
+      - generic [ref=e114]:
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - generic [ref=e118]: "#1"
+              - generic [ref=e119]:
+                - button "↑" [ref=e120] [cursor=pointer]
+                - button "↓" [ref=e121] [cursor=pointer]
+                - button "✕" [ref=e122] [cursor=pointer]
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - generic [ref=e125]: ZH
+                - textbox "中文方向" [ref=e126]: 数字人文
+              - generic [ref=e127]:
+                - generic [ref=e128]: EN
+                - textbox "English area" [ref=e129]: Digital Humanities
+          - generic [ref=e130]:
+            - generic [ref=e131]:
+              - generic [ref=e132]: "#2"
+              - generic [ref=e133]:
+                - button "↑" [ref=e134] [cursor=pointer]
+                - button "↓" [ref=e135] [cursor=pointer]
+                - button "✕" [ref=e136] [cursor=pointer]
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]: ZH
+                - textbox "中文方向" [ref=e140]: 数字文化遗产
+              - generic [ref=e141]:
+                - generic [ref=e142]: EN
+                - textbox "English area" [ref=e143]: Digital Cultural Heritage
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e146]: "#3"
+              - generic [ref=e147]:
+                - button "↑" [ref=e148] [cursor=pointer]
+                - button "↓" [ref=e149] [cursor=pointer]
+                - button "✕" [ref=e150] [cursor=pointer]
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - generic [ref=e153]: ZH
+                - textbox "中文方向" [ref=e154]: 人机交互
+              - generic [ref=e155]:
+                - generic [ref=e156]: EN
+                - textbox "English area" [ref=e157]: Human-Computer Interaction
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - generic [ref=e160]: "#4"
+              - generic [ref=e161]:
+                - button "↑" [ref=e162] [cursor=pointer]
+                - button "↓" [ref=e163] [cursor=pointer]
+                - button "✕" [ref=e164] [cursor=pointer]
+            - generic [ref=e165]:
+              - generic [ref=e166]:
+                - generic [ref=e167]: ZH
+                - textbox "中文方向" [ref=e168]: 数据行为
+              - generic [ref=e169]:
+                - generic [ref=e170]: EN
+                - textbox "English area" [ref=e171]: Data Behavior
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - generic [ref=e174]: "#5"
+              - generic [ref=e175]:
+                - button "↑" [ref=e176] [cursor=pointer]
+                - button "↓" [ref=e177] [cursor=pointer]
+                - button "✕" [ref=e178] [cursor=pointer]
+            - generic [ref=e179]:
+              - generic [ref=e180]:
+                - generic [ref=e181]: ZH
+                - textbox "中文方向" [ref=e182]: 数据管护
+              - generic [ref=e183]:
+                - generic [ref=e184]: EN
+                - textbox "English area" [ref=e185]: Data Curation
+        - button "+ 添加研究方向" [ref=e186] [cursor=pointer]
+    - generic [ref=e187]:
+      - generic [ref=e188] [cursor=pointer]:
+        - generic [ref=e189]: News 动态 / News
+        - emphasis [ref=e190]: ▾
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e194]:
+              - generic [ref=e195]: "#1"
+              - generic [ref=e196]:
+                - button "↑" [ref=e197] [cursor=pointer]
+                - button "↓" [ref=e198] [cursor=pointer]
+                - button "✕" [ref=e199] [cursor=pointer]
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - generic [ref=e202]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e203]: 2026-04
+              - generic [ref=e204]:
+                - generic [ref=e205]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e206]
+            - generic [ref=e207]:
+              - generic [ref=e208]:
+                - generic [ref=e209]: 中文 ZH
+                - textbox "中文动态..." [ref=e210]: 专利「一种AI智能体系统及协同知识建构方法」（202511737406.2）获授权。
+              - generic [ref=e211]:
+                - generic [ref=e212]: 英文 EN
+                - textbox "English news..." [ref=e213]: Patent "An AI Agent System and Collaborative Knowledge Construction Method" (202511737406.2) has been granted.
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - generic [ref=e216]: "#2"
+              - generic [ref=e217]:
+                - button "↑" [ref=e218] [cursor=pointer]
+                - button "↓" [ref=e219] [cursor=pointer]
+                - button "✕" [ref=e220] [cursor=pointer]
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - generic [ref=e223]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e224]: 2026-01
+              - generic [ref=e225]:
+                - generic [ref=e226]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e227]
+            - generic [ref=e228]:
+              - generic [ref=e229]:
+                - generic [ref=e230]: 中文 ZH
+                - textbox "中文动态..." [ref=e231]: "论文《Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript》发表于 Information Research, 31(iConf): 392-409。"
+              - generic [ref=e232]:
+                - generic [ref=e233]: 英文 EN
+                - textbox "English news..." [ref=e234]: "Paper \"Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript\" published in Information Research, 31(iConf): 392-409."
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - generic [ref=e237]: "#3"
+              - generic [ref=e238]:
+                - button "↑" [ref=e239] [cursor=pointer]
+                - button "↓" [ref=e240] [cursor=pointer]
+                - button "✕" [ref=e241] [cursor=pointer]
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - generic [ref=e244]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e245]: 2025-10
+              - generic [ref=e246]:
+                - generic [ref=e247]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e248]
+            - generic [ref=e249]:
+              - generic [ref=e250]:
+                - generic [ref=e251]: 中文 ZH
+                - textbox "中文动态..." [ref=e252]: 论文《Engaging with AI in Crowdsourced Digitization of Ancient Texts》荣获 ASIS&T 2025 Best Conference Paper。
+              - generic [ref=e253]:
+                - generic [ref=e254]: 英文 EN
+                - textbox "English news..." [ref=e255]: Paper "Engaging with AI in Crowdsourced Digitization of Ancient Texts" received the Best Conference Paper award at ASIS&T 2025.
+          - generic [ref=e256]:
+            - generic [ref=e257]:
+              - generic [ref=e258]: "#4"
+              - generic [ref=e259]:
+                - button "↑" [ref=e260] [cursor=pointer]
+                - button "↓" [ref=e261] [cursor=pointer]
+                - button "✕" [ref=e262] [cursor=pointer]
+            - generic [ref=e263]:
+              - generic [ref=e264]:
+                - generic [ref=e265]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e266]: 2025-04
+              - generic [ref=e267]:
+                - generic [ref=e268]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e269]
+            - generic [ref=e270]:
+              - generic [ref=e271]:
+                - generic [ref=e272]: 中文 ZH
+                - textbox "中文动态..." [ref=e273]: "论文《Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content》发表于 CHI 2025，已在横滨作口头报告。"
+              - generic [ref=e274]:
+                - generic [ref=e275]: 英文 EN
+                - textbox "English news..." [ref=e276]: "Paper \"Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content\" published at CHI 2025; presented in Yokohama, Japan."
+          - generic [ref=e277]:
+            - generic [ref=e278]:
+              - generic [ref=e279]: "#5"
+              - generic [ref=e280]:
+                - button "↑" [ref=e281] [cursor=pointer]
+                - button "↓" [ref=e282] [cursor=pointer]
+                - button "✕" [ref=e283] [cursor=pointer]
+            - generic [ref=e284]:
+              - generic [ref=e285]:
+                - generic [ref=e286]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e287]: 2024-09
+              - generic [ref=e288]:
+                - generic [ref=e289]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e290]
+            - generic [ref=e291]:
+              - generic [ref=e292]:
+                - generic [ref=e293]: 中文 ZH
+                - textbox "中文动态..." [ref=e294]: 加入北京大学信息管理系，担任博雅博士后 · 助理研究员。
+              - generic [ref=e295]:
+                - generic [ref=e296]: 英文 EN
+                - textbox "English news..." [ref=e297]: Joined the Department of Information Management at Peking University as a Boya Postdoctoral Fellow and Assistant Researcher.
+          - generic [ref=e298]:
+            - generic [ref=e299]:
+              - generic [ref=e300]: "#6"
+              - generic [ref=e301]:
+                - button "↑" [ref=e302] [cursor=pointer]
+                - button "↓" [ref=e303] [cursor=pointer]
+                - button "✕" [ref=e304] [cursor=pointer]
+            - generic [ref=e305]:
+              - generic [ref=e306]:
+                - generic [ref=e307]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e308]: 2024-06
+              - generic [ref=e309]:
+                - generic [ref=e310]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e311]
+            - generic [ref=e312]:
+              - generic [ref=e313]:
+                - generic [ref=e314]: 中文 ZH
+                - textbox "中文动态..." [ref=e315]: 荣获2024年北京市优秀毕业生及北京大学优秀毕业生称号。
+              - generic [ref=e316]:
+                - generic [ref=e317]: 英文 EN
+                - textbox "English news..." [ref=e318]: Received the 2024 Beijing Outstanding Graduate and Peking University Outstanding Graduate awards.
+          - generic [ref=e319]:
+            - generic [ref=e320]:
+              - generic [ref=e321]: "#7"
+              - generic [ref=e322]:
+                - button "↑" [ref=e323] [cursor=pointer]
+                - button "↓" [ref=e324] [cursor=pointer]
+                - button "✕" [ref=e325] [cursor=pointer]
+            - generic [ref=e326]:
+              - generic [ref=e327]:
+                - generic [ref=e328]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e329]: 2023-10
+              - generic [ref=e330]:
+                - generic [ref=e331]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e332]
+            - generic [ref=e333]:
+              - generic [ref=e334]:
+                - generic [ref=e335]: 中文 ZH
+                - textbox "中文动态..." [ref=e336]: 荣获2023年国家奖学金及北京大学三好学生标兵称号。
+              - generic [ref=e337]:
+                - generic [ref=e338]: 英文 EN
+                - textbox "English news..." [ref=e339]: Received the 2023 National Scholarship and the Peking University Outstanding Student Award.
+          - generic [ref=e340]:
+            - generic [ref=e341]:
+              - generic [ref=e342]: "#8"
+              - generic [ref=e343]:
+                - button "↑" [ref=e344] [cursor=pointer]
+                - button "↓" [ref=e345] [cursor=pointer]
+                - button "✕" [ref=e346] [cursor=pointer]
+            - generic [ref=e347]:
+              - generic [ref=e348]:
+                - generic [ref=e349]: 日期 Date (YYYY-MM)
+                - textbox "YYYY-MM" [ref=e350]: 2023-03
+              - generic [ref=e351]:
+                - generic [ref=e352]: 链接 Link (optional)
+                - textbox "https://... (可选 optional)" [ref=e353]
+            - generic [ref=e354]:
+              - generic [ref=e355]:
+                - generic [ref=e356]: 中文 ZH
+                - textbox "中文动态..." [ref=e357]: 论文《历代史志目录的数据集成与可视化》发表于《中国图书馆学报》2023年第1期（FMS T1，高PCSI论文）。
+              - generic [ref=e358]:
+                - generic [ref=e359]: 英文 EN
+                - textbox "English news..." [ref=e360]: "Paper \"历代史志目录的数据集成与可视化\" published in 中国图书馆学报, 2023(01): 82-98 [FMS T1, Highly-cited]."
+        - button "+ 添加 News" [ref=e361] [cursor=pointer]
+    - generic [ref=e362]:
+      - generic [ref=e363] [cursor=pointer]:
+        - generic [ref=e364]: Publications / 学术成果
+        - emphasis [ref=e365]: ▾
+      - generic [ref=e366]:
+        - generic [ref=e367]:
+          - generic [ref=e368] [cursor=pointer]:
+            - generic [ref=e369]: 期刊论文 Journal Articles
+            - generic [ref=e370]: "9"
+            - emphasis [ref=e371]: ▾
+          - generic [ref=e372]:
+            - generic [ref=e373]:
+              - generic [ref=e374]:
+                - generic [ref=e375]:
+                  - generic [ref=e376]: "#1"
+                  - generic [ref=e377]:
+                    - button "↑" [ref=e378] [cursor=pointer]
+                    - button "↓" [ref=e379] [cursor=pointer]
+                    - button "✕" [ref=e380] [cursor=pointer]
+                - generic [ref=e381]:
+                  - generic [ref=e382]:
+                    - generic [ref=e383]: Category
+                    - combobox [ref=e384]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e385]:
+                    - generic [ref=e386]: Year
+                    - spinbutton [ref=e387]: "2026"
+                - generic [ref=e389]:
+                  - generic [ref=e390]: Authors 作者
+                  - textbox "Authors..." [ref=e391]: Wenqi Li, Zeyang Luo, Pengyi Zhang*
+                - generic [ref=e392]:
+                  - generic [ref=e393]:
+                    - generic [ref=e394]: 题目 ZH
+                    - textbox "中文题目" [ref=e395]: "Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript"
+                  - generic [ref=e396]:
+                    - generic [ref=e397]: 题目 EN
+                    - textbox "English title" [ref=e398]: "Exploring Immersive Cultural Heritage Experiences: A User Study of a VR Application Featuring Ancient Manuscript"
+                - generic [ref=e399]:
+                  - generic [ref=e400]:
+                    - generic [ref=e401]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e402]: Information Research
+                  - generic [ref=e403]:
+                    - generic [ref=e404]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e405]: Information Research
+                - generic [ref=e406]:
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e409]: "2026, 31(iConf): 392-409. [SSCI]"
+                  - generic [ref=e410]:
+                    - generic [ref=e411]: 注释 Note EN
+                    - textbox "Note EN" [ref=e412]: "2026, 31(iConf): 392-409. [SSCI]"
+                - generic [ref=e414]:
+                  - generic [ref=e415]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e416]
+              - generic [ref=e417]:
+                - generic [ref=e418]:
+                  - generic [ref=e419]: "#2"
+                  - generic [ref=e420]:
+                    - button "↑" [ref=e421] [cursor=pointer]
+                    - button "↓" [ref=e422] [cursor=pointer]
+                    - button "✕" [ref=e423] [cursor=pointer]
+                - generic [ref=e424]:
+                  - generic [ref=e425]:
+                    - generic [ref=e426]: Category
+                    - combobox [ref=e427]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e428]:
+                    - generic [ref=e429]: Year
+                    - spinbutton [ref=e430]: "2025"
+                - generic [ref=e432]:
+                  - generic [ref=e433]: Authors 作者
+                  - textbox "Authors..." [ref=e434]: Tianji Jiang, Wenqi Li, Jiqun Liu*
+                - generic [ref=e435]:
+                  - generic [ref=e436]:
+                    - generic [ref=e437]: 题目 ZH
+                    - textbox "中文题目" [ref=e438]: "The Landscape of Data Reuse in Interactive Information Retrieval: Motivations, Sources, and Evaluation of Reusability"
+                  - generic [ref=e439]:
+                    - generic [ref=e440]: 题目 EN
+                    - textbox "English title" [ref=e441]: "The Landscape of Data Reuse in Interactive Information Retrieval: Motivations, Sources, and Evaluation of Reusability"
+                - generic [ref=e442]:
+                  - generic [ref=e443]:
+                    - generic [ref=e444]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e445]: Journal of the Association for Information Science and Technology
+                  - generic [ref=e446]:
+                    - generic [ref=e447]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e448]: Journal of the Association for Information Science and Technology
+                - generic [ref=e449]:
+                  - generic [ref=e450]:
+                    - generic [ref=e451]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e452]: "2025, 76(9): 1258-1276. [Q1, FMS A]"
+                  - generic [ref=e453]:
+                    - generic [ref=e454]: 注释 Note EN
+                    - textbox "Note EN" [ref=e455]: "2025, 76(9): 1258-1276. [Q1, FMS A]"
+                - generic [ref=e457]:
+                  - generic [ref=e458]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e459]
+              - generic [ref=e460]:
+                - generic [ref=e461]:
+                  - generic [ref=e462]: "#3"
+                  - generic [ref=e463]:
+                    - button "↑" [ref=e464] [cursor=pointer]
+                    - button "↓" [ref=e465] [cursor=pointer]
+                    - button "✕" [ref=e466] [cursor=pointer]
+                - generic [ref=e467]:
+                  - generic [ref=e468]:
+                    - generic [ref=e469]: Category
+                    - combobox [ref=e470]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e471]:
+                    - generic [ref=e472]: Year
+                    - spinbutton [ref=e473]: "2025"
+                - generic [ref=e475]:
+                  - generic [ref=e476]: Authors 作者
+                  - textbox "Authors..." [ref=e477]: 李文琦,罗泽阳,张鹏翼*
+                - generic [ref=e478]:
+                  - generic [ref=e479]:
+                    - generic [ref=e480]: 题目 ZH
+                    - textbox "中文题目" [ref=e481]: 古文献VR体验中的用户信息需求类型与信息获取效果
+                  - generic [ref=e482]:
+                    - generic [ref=e483]: 题目 EN
+                    - textbox "English title" [ref=e484]: 古文献VR体验中的用户信息需求类型与信息获取效果
+                - generic [ref=e485]:
+                  - generic [ref=e486]:
+                    - generic [ref=e487]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e488]: 图书馆论坛
+                  - generic [ref=e489]:
+                    - generic [ref=e490]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e491]: 图书馆论坛
+                - generic [ref=e492]:
+                  - generic [ref=e493]:
+                    - generic [ref=e494]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e495]: "2025, 45(2): 35-41. [CSSCI]"
+                  - generic [ref=e496]:
+                    - generic [ref=e497]: 注释 Note EN
+                    - textbox "Note EN" [ref=e498]: "2025, 45(2): 35-41. [CSSCI]"
+                - generic [ref=e500]:
+                  - generic [ref=e501]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e502]
+              - generic [ref=e503]:
+                - generic [ref=e504]:
+                  - generic [ref=e505]: "#4"
+                  - generic [ref=e506]:
+                    - button "↑" [ref=e507] [cursor=pointer]
+                    - button "↓" [ref=e508] [cursor=pointer]
+                    - button "✕" [ref=e509] [cursor=pointer]
+                - generic [ref=e510]:
+                  - generic [ref=e511]:
+                    - generic [ref=e512]: Category
+                    - combobox [ref=e513]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e514]:
+                    - generic [ref=e515]: Year
+                    - spinbutton [ref=e516]: "2024"
+                - generic [ref=e518]:
+                  - generic [ref=e519]: Authors 作者
+                  - textbox "Authors..." [ref=e520]: Wenqi Li, Jun Wang*, Fengxiang Wang
+                - generic [ref=e521]:
+                  - generic [ref=e522]:
+                    - generic [ref=e523]: 题目 ZH
+                    - textbox "中文题目" [ref=e524]: "Curating the Chinese ancient book catalogs: Leveraging the dual roles of humanities scholars as experts and users in collaborative practice"
+                  - generic [ref=e525]:
+                    - generic [ref=e526]: 题目 EN
+                    - textbox "English title" [ref=e527]: "Curating the Chinese ancient book catalogs: Leveraging the dual roles of humanities scholars as experts and users in collaborative practice"
+                - generic [ref=e528]:
+                  - generic [ref=e529]:
+                    - generic [ref=e530]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e531]: Journal of the Association for Information Science and Technology
+                  - generic [ref=e532]:
+                    - generic [ref=e533]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e534]: Journal of the Association for Information Science and Technology
+                - generic [ref=e535]:
+                  - generic [ref=e536]:
+                    - generic [ref=e537]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e538]: "2024, 75(12): 1331-1349. [Q1, FMS A]"
+                  - generic [ref=e539]:
+                    - generic [ref=e540]: 注释 Note EN
+                    - textbox "Note EN" [ref=e541]: "2024, 75(12): 1331-1349. [Q1, FMS A]"
+                - generic [ref=e543]:
+                  - generic [ref=e544]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e545]
+              - generic [ref=e546]:
+                - generic [ref=e547]:
+                  - generic [ref=e548]: "#5"
+                  - generic [ref=e549]:
+                    - button "↑" [ref=e550] [cursor=pointer]
+                    - button "↓" [ref=e551] [cursor=pointer]
+                    - button "✕" [ref=e552] [cursor=pointer]
+                - generic [ref=e553]:
+                  - generic [ref=e554]:
+                    - generic [ref=e555]: Category
+                    - combobox [ref=e556]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e557]:
+                    - generic [ref=e558]: Year
+                    - spinbutton [ref=e559]: "2024"
+                - generic [ref=e561]:
+                  - generic [ref=e562]: Authors 作者
+                  - textbox "Authors..." [ref=e563]: Wenqi Li, Zhaoji Wang*, Hanxu Yu, Qianting Lai, Jun Wang*
+                - generic [ref=e564]:
+                  - generic [ref=e565]:
+                    - generic [ref=e566]: 题目 ZH
+                    - textbox "中文题目" [ref=e567]: "Book cluster: a new approach to explore the evolution of knowledge organization in ancient China"
+                  - generic [ref=e568]:
+                    - generic [ref=e569]: 题目 EN
+                    - textbox "English title" [ref=e570]: "Book cluster: a new approach to explore the evolution of knowledge organization in ancient China"
+                - generic [ref=e571]:
+                  - generic [ref=e572]:
+                    - generic [ref=e573]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e574]: Digital Scholarship in the Humanities
+                  - generic [ref=e575]:
+                    - generic [ref=e576]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e577]: Digital Scholarship in the Humanities
+                - generic [ref=e578]:
+                  - generic [ref=e579]:
+                    - generic [ref=e580]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e581]: "2024, 39(4): 1064-1074. [SSCI]"
+                  - generic [ref=e582]:
+                    - generic [ref=e583]: 注释 Note EN
+                    - textbox "Note EN" [ref=e584]: "2024, 39(4): 1064-1074. [SSCI]"
+                - generic [ref=e586]:
+                  - generic [ref=e587]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e588]
+              - generic [ref=e589]:
+                - generic [ref=e590]:
+                  - generic [ref=e591]: "#6"
+                  - generic [ref=e592]:
+                    - button "↑" [ref=e593] [cursor=pointer]
+                    - button "↓" [ref=e594] [cursor=pointer]
+                    - button "✕" [ref=e595] [cursor=pointer]
+                - generic [ref=e596]:
+                  - generic [ref=e597]:
+                    - generic [ref=e598]: Category
+                    - combobox [ref=e599]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e600]:
+                    - generic [ref=e601]: Year
+                    - spinbutton [ref=e602]: "2024"
+                - generic [ref=e604]:
+                  - generic [ref=e605]: Authors 作者
+                  - textbox "Authors..." [ref=e606]: Wenqi Li, Pengyi Zhang*, Jun Wang
+                - generic [ref=e607]:
+                  - generic [ref=e608]:
+                    - generic [ref=e609]: 题目 ZH
+                    - textbox "中文题目" [ref=e610]: Analysing humanities scholars' data seeking behaviour patterns using Ellis' model
+                  - generic [ref=e611]:
+                    - generic [ref=e612]: 题目 EN
+                    - textbox "English title" [ref=e613]: Analysing humanities scholars' data seeking behaviour patterns using Ellis' model
+                - generic [ref=e614]:
+                  - generic [ref=e615]:
+                    - generic [ref=e616]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e617]: Information Research
+                  - generic [ref=e618]:
+                    - generic [ref=e619]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e620]: Information Research
+                - generic [ref=e621]:
+                  - generic [ref=e622]:
+                    - generic [ref=e623]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e624]: "2024, 29(2): 401-418. [SSCI]"
+                  - generic [ref=e625]:
+                    - generic [ref=e626]: 注释 Note EN
+                    - textbox "Note EN" [ref=e627]: "2024, 29(2): 401-418. [SSCI]"
+                - generic [ref=e629]:
+                  - generic [ref=e630]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e631]
+              - generic [ref=e632]:
+                - generic [ref=e633]:
+                  - generic [ref=e634]: "#7"
+                  - generic [ref=e635]:
+                    - button "↑" [ref=e636] [cursor=pointer]
+                    - button "↓" [ref=e637] [cursor=pointer]
+                    - button "✕" [ref=e638] [cursor=pointer]
+                - generic [ref=e639]:
+                  - generic [ref=e640]:
+                    - generic [ref=e641]: Category
+                    - combobox [ref=e642]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e643]:
+                    - generic [ref=e644]: Year
+                    - spinbutton [ref=e645]: "2023"
+                - generic [ref=e647]:
+                  - generic [ref=e648]: Authors 作者
+                  - textbox "Authors..." [ref=e649]: 李文琦,王凤翔*,孙显斌,黄芷欣,李芃蓓
+                - generic [ref=e650]:
+                  - generic [ref=e651]:
+                    - generic [ref=e652]: 题目 ZH
+                    - textbox "中文题目" [ref=e653]: 历代史志目录的数据集成与可视化
+                  - generic [ref=e654]:
+                    - generic [ref=e655]: 题目 EN
+                    - textbox "English title" [ref=e656]: 历代史志目录的数据集成与可视化
+                - generic [ref=e657]:
+                  - generic [ref=e658]:
+                    - generic [ref=e659]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e660]: 中国图书馆学报
+                  - generic [ref=e661]:
+                    - generic [ref=e662]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e663]: 中国图书馆学报
+                - generic [ref=e664]:
+                  - generic [ref=e665]:
+                    - generic [ref=e666]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e667]: "2023, 49(01): 82-98. [FMS T1，高PCSI论文]"
+                  - generic [ref=e668]:
+                    - generic [ref=e669]: 注释 Note EN
+                    - textbox "Note EN" [ref=e670]: "2023, 49(01): 82-98. [FMS T1，高PCSI论文]"
+                - generic [ref=e672]:
+                  - generic [ref=e673]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e674]
+              - generic [ref=e675]:
+                - generic [ref=e676]:
+                  - generic [ref=e677]: "#8"
+                  - generic [ref=e678]:
+                    - button "↑" [ref=e679] [cursor=pointer]
+                    - button "↓" [ref=e680] [cursor=pointer]
+                    - button "✕" [ref=e681] [cursor=pointer]
+                - generic [ref=e682]:
+                  - generic [ref=e683]:
+                    - generic [ref=e684]: Category
+                    - combobox [ref=e685]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e686]:
+                    - generic [ref=e687]: Year
+                    - spinbutton [ref=e688]: "2022"
+                - generic [ref=e690]:
+                  - generic [ref=e691]: Authors 作者
+                  - textbox "Authors..." [ref=e692]: 李文琦
+                - generic [ref=e693]:
+                  - generic [ref=e694]:
+                    - generic [ref=e695]: 题目 ZH
+                    - textbox "中文题目" [ref=e696]: 数字人文中的交互式可视化应用研究综述
+                  - generic [ref=e697]:
+                    - generic [ref=e698]: 题目 EN
+                    - textbox "English title" [ref=e699]: 数字人文中的交互式可视化应用研究综述
+                - generic [ref=e700]:
+                  - generic [ref=e701]:
+                    - generic [ref=e702]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e703]: 图书情报知识
+                  - generic [ref=e704]:
+                    - generic [ref=e705]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e706]: 图书情报知识
+                - generic [ref=e707]:
+                  - generic [ref=e708]:
+                    - generic [ref=e709]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e710]: "2022, 39(05): 42-55. [FMS T2]"
+                  - generic [ref=e711]:
+                    - generic [ref=e712]: 注释 Note EN
+                    - textbox "Note EN" [ref=e713]: "2022, 39(05): 42-55. [FMS T2]"
+                - generic [ref=e715]:
+                  - generic [ref=e716]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e717]
+              - generic [ref=e718]:
+                - generic [ref=e719]:
+                  - generic [ref=e720]: "#9"
+                  - generic [ref=e721]:
+                    - button "↑" [ref=e722] [cursor=pointer]
+                    - button "↓" [ref=e723] [cursor=pointer]
+                    - button "✕" [ref=e724] [cursor=pointer]
+                - generic [ref=e725]:
+                  - generic [ref=e726]:
+                    - generic [ref=e727]: Category
+                    - combobox [ref=e728]:
+                      - option "journal" [selected]
+                      - option "conference"
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e729]:
+                    - generic [ref=e730]: Year
+                    - spinbutton [ref=e731]: "2022"
+                - generic [ref=e733]:
+                  - generic [ref=e734]: Authors 作者
+                  - textbox "Authors..." [ref=e735]: 李文琦,张鹏翼*
+                - generic [ref=e736]:
+                  - generic [ref=e737]:
+                    - generic [ref=e738]: 题目 ZH
+                    - textbox "中文题目" [ref=e739]: 数据行为的概念界定与模型构建
+                  - generic [ref=e740]:
+                    - generic [ref=e741]: 题目 EN
+                    - textbox "English title" [ref=e742]: 数据行为的概念界定与模型构建
+                - generic [ref=e743]:
+                  - generic [ref=e744]:
+                    - generic [ref=e745]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e746]: 图书情报工作
+                  - generic [ref=e747]:
+                    - generic [ref=e748]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e749]: 图书情报工作
+                - generic [ref=e750]:
+                  - generic [ref=e751]:
+                    - generic [ref=e752]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e753]: "2022, 66(23): 29-40. [FMS T2, 人大复印报刊资料全文转载]"
+                  - generic [ref=e754]:
+                    - generic [ref=e755]: 注释 Note EN
+                    - textbox "Note EN" [ref=e756]: "2022, 66(23): 29-40. [FMS T2, 人大复印报刊资料全文转载]"
+                - generic [ref=e758]:
+                  - generic [ref=e759]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e760]
+            - button "+ 添加期刊论文 Journal Articles" [ref=e761] [cursor=pointer]
+        - generic [ref=e762]:
+          - generic [ref=e763] [cursor=pointer]:
+            - generic [ref=e764]: 会议论文 Conference Papers
+            - generic [ref=e765]: "13"
+            - emphasis [ref=e766]: ▾
+          - generic [ref=e767]:
+            - generic [ref=e768]:
+              - generic [ref=e769]:
+                - generic [ref=e770]:
+                  - generic [ref=e771]: "#1"
+                  - generic [ref=e772]:
+                    - button "↑" [ref=e773] [cursor=pointer]
+                    - button "↓" [ref=e774] [cursor=pointer]
+                    - button "✕" [ref=e775] [cursor=pointer]
+                - generic [ref=e776]:
+                  - generic [ref=e777]:
+                    - generic [ref=e778]: Category
+                    - combobox [ref=e779]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e780]:
+                    - generic [ref=e781]: Year
+                    - spinbutton [ref=e782]: "2026"
+                - generic [ref=e784]:
+                  - generic [ref=e785]: Authors 作者
+                  - textbox "Authors..." [ref=e786]: Wenqi Li, Jinghan Zhang, Junyang Ma, Penyi Zhang
+                - generic [ref=e787]:
+                  - generic [ref=e788]:
+                    - generic [ref=e789]: 题目 ZH
+                    - textbox "中文题目" [ref=e790]: "From Platform Data to Personal Insight: How Users Make Sense of and Reflect on Personalized Social Media Annual Recaps"
+                  - generic [ref=e791]:
+                    - generic [ref=e792]: 题目 EN
+                    - textbox "English title" [ref=e793]: "From Platform Data to Personal Insight: How Users Make Sense of and Reflect on Personalized Social Media Annual Recaps"
+                - generic [ref=e794]:
+                  - generic [ref=e795]:
+                    - generic [ref=e796]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e797]: CHI 2026
+                  - generic [ref=e798]:
+                    - generic [ref=e799]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e800]: CHI 2026
+                - generic [ref=e801]:
+                  - generic [ref=e802]:
+                    - generic [ref=e803]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e804]: "CHI 2026: 1-20."
+                  - generic [ref=e805]:
+                    - generic [ref=e806]: 注释 Note EN
+                    - textbox "Note EN" [ref=e807]: "CHI 2026: 1-20."
+                - generic [ref=e809]:
+                  - generic [ref=e810]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e811]
+              - generic [ref=e812]:
+                - generic [ref=e813]:
+                  - generic [ref=e814]: "#2"
+                  - generic [ref=e815]:
+                    - button "↑" [ref=e816] [cursor=pointer]
+                    - button "↓" [ref=e817] [cursor=pointer]
+                    - button "✕" [ref=e818] [cursor=pointer]
+                - generic [ref=e819]:
+                  - generic [ref=e820]:
+                    - generic [ref=e821]: Category
+                    - combobox [ref=e822]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e823]:
+                    - generic [ref=e824]: Year
+                    - spinbutton [ref=e825]: "2026"
+                - generic [ref=e827]:
+                  - generic [ref=e828]: Authors 作者
+                  - textbox "Authors..." [ref=e829]: Tianji Jiang, Wenqi Li, Jiqun Liu
+                - generic [ref=e830]:
+                  - generic [ref=e831]:
+                    - generic [ref=e832]: 题目 ZH
+                    - textbox "中文题目" [ref=e833]: "Improving Data Reusability in Interactive IR: Insights from the Community"
+                  - generic [ref=e834]:
+                    - generic [ref=e835]: 题目 EN
+                    - textbox "English title" [ref=e836]: "Improving Data Reusability in Interactive IR: Insights from the Community"
+                - generic [ref=e837]:
+                  - generic [ref=e838]:
+                    - generic [ref=e839]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e840]: CHIIR 2026
+                  - generic [ref=e841]:
+                    - generic [ref=e842]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e843]: CHIIR 2026
+                - generic [ref=e844]:
+                  - generic [ref=e845]:
+                    - generic [ref=e846]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e847]: "CHIIR 2026: 524-528."
+                  - generic [ref=e848]:
+                    - generic [ref=e849]: 注释 Note EN
+                    - textbox "Note EN" [ref=e850]: "CHIIR 2026: 524-528."
+                - generic [ref=e852]:
+                  - generic [ref=e853]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e854]
+              - generic [ref=e855]:
+                - generic [ref=e856]:
+                  - generic [ref=e857]: "#3"
+                  - generic [ref=e858]:
+                    - button "↑" [ref=e859] [cursor=pointer]
+                    - button "↓" [ref=e860] [cursor=pointer]
+                    - button "✕" [ref=e861] [cursor=pointer]
+                - generic [ref=e862]:
+                  - generic [ref=e863]:
+                    - generic [ref=e864]: Category
+                    - combobox [ref=e865]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e866]:
+                    - generic [ref=e867]: Year
+                    - spinbutton [ref=e868]: "2025"
+                - generic [ref=e870]:
+                  - generic [ref=e871]: Authors 作者
+                  - textbox "Authors..." [ref=e872]: Wenqi Li, Jui-Ching Kuo, Manyu Sheng, Pengyi Zhang, Qunfang Wu
+                - generic [ref=e873]:
+                  - generic [ref=e874]:
+                    - generic [ref=e875]: 题目 ZH
+                    - textbox "中文题目" [ref=e876]: "Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content"
+                  - generic [ref=e877]:
+                    - generic [ref=e878]: 题目 EN
+                    - textbox "English title" [ref=e879]: "Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content"
+                - generic [ref=e880]:
+                  - generic [ref=e881]:
+                    - generic [ref=e882]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e883]: CHI 2025
+                  - generic [ref=e884]:
+                    - generic [ref=e885]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e886]: CHI 2025
+                - generic [ref=e887]:
+                  - generic [ref=e888]:
+                    - generic [ref=e889]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e890]: "CHI 2025: 1-17. [CCF A]"
+                  - generic [ref=e891]:
+                    - generic [ref=e892]: 注释 Note EN
+                    - textbox "Note EN" [ref=e893]: "CHI 2025: 1-17. [CCF A]"
+                - generic [ref=e895]:
+                  - generic [ref=e896]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e897]
+              - generic [ref=e898]:
+                - generic [ref=e899]:
+                  - generic [ref=e900]: "#4"
+                  - generic [ref=e901]:
+                    - button "↑" [ref=e902] [cursor=pointer]
+                    - button "↓" [ref=e903] [cursor=pointer]
+                    - button "✕" [ref=e904] [cursor=pointer]
+                - generic [ref=e905]:
+                  - generic [ref=e906]:
+                    - generic [ref=e907]: Category
+                    - combobox [ref=e908]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e909]:
+                    - generic [ref=e910]: Year
+                    - spinbutton [ref=e911]: "2025"
+                - generic [ref=e913]:
+                  - generic [ref=e914]: Authors 作者
+                  - textbox "Authors..." [ref=e915]: Chenyu Zhang, Wenqi Li*, Zeyang Luo, Pengyi Zhang
+                - generic [ref=e916]:
+                  - generic [ref=e917]:
+                    - generic [ref=e918]: 题目 ZH
+                    - textbox "中文题目" [ref=e919]: "Engaging with AI in Crowdsourced Digitization of Ancient Texts: User Perception and Interaction"
+                  - generic [ref=e920]:
+                    - generic [ref=e921]: 题目 EN
+                    - textbox "English title" [ref=e922]: "Engaging with AI in Crowdsourced Digitization of Ancient Texts: User Perception and Interaction"
+                - generic [ref=e923]:
+                  - generic [ref=e924]:
+                    - generic [ref=e925]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e926]: ASIS&T 2025
+                  - generic [ref=e927]:
+                    - generic [ref=e928]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e929]: ASIS&T 2025
+                - generic [ref=e930]:
+                  - generic [ref=e931]:
+                    - generic [ref=e932]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e933]: "ASIS&T 2025: 1167-1172. [EI, Best Conference Paper]"
+                  - generic [ref=e934]:
+                    - generic [ref=e935]: 注释 Note EN
+                    - textbox "Note EN" [ref=e936]: "ASIS&T 2025: 1167-1172. [EI, Best Conference Paper]"
+                - generic [ref=e938]:
+                  - generic [ref=e939]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e940]
+              - generic [ref=e941]:
+                - generic [ref=e942]:
+                  - generic [ref=e943]: "#5"
+                  - generic [ref=e944]:
+                    - button "↑" [ref=e945] [cursor=pointer]
+                    - button "↓" [ref=e946] [cursor=pointer]
+                    - button "✕" [ref=e947] [cursor=pointer]
+                - generic [ref=e948]:
+                  - generic [ref=e949]:
+                    - generic [ref=e950]: Category
+                    - combobox [ref=e951]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e952]:
+                    - generic [ref=e953]: Year
+                    - spinbutton [ref=e954]: "2025"
+                - generic [ref=e956]:
+                  - generic [ref=e957]: Authors 作者
+                  - textbox "Authors..." [ref=e958]: Wenqi Li, Zhenyi Tang, Pengyi Zhang*, Jun Wang
+                - generic [ref=e959]:
+                  - generic [ref=e960]:
+                    - generic [ref=e961]: 题目 ZH
+                    - textbox "中文题目" [ref=e962]: Collaborative Data Behaviors in Digital Humanities Research Teams
+                  - generic [ref=e963]:
+                    - generic [ref=e964]: 题目 EN
+                    - textbox "English title" [ref=e965]: Collaborative Data Behaviors in Digital Humanities Research Teams
+                - generic [ref=e966]:
+                  - generic [ref=e967]:
+                    - generic [ref=e968]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e969]: JCDL 2025
+                  - generic [ref=e970]:
+                    - generic [ref=e971]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e972]: JCDL 2025
+                - generic [ref=e973]:
+                  - generic [ref=e974]:
+                    - generic [ref=e975]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e976]: "JCDL 2025: 1-5. [EI]"
+                  - generic [ref=e977]:
+                    - generic [ref=e978]: 注释 Note EN
+                    - textbox "Note EN" [ref=e979]: "JCDL 2025: 1-5. [EI]"
+                - generic [ref=e981]:
+                  - generic [ref=e982]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e983]
+              - generic [ref=e984]:
+                - generic [ref=e985]:
+                  - generic [ref=e986]: "#6"
+                  - generic [ref=e987]:
+                    - button "↑" [ref=e988] [cursor=pointer]
+                    - button "↓" [ref=e989] [cursor=pointer]
+                    - button "✕" [ref=e990] [cursor=pointer]
+                - generic [ref=e991]:
+                  - generic [ref=e992]:
+                    - generic [ref=e993]: Category
+                    - combobox [ref=e994]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e995]:
+                    - generic [ref=e996]: Year
+                    - spinbutton [ref=e997]: "2025"
+                - generic [ref=e999]:
+                  - generic [ref=e1000]: Authors 作者
+                  - textbox "Authors..." [ref=e1001]: Zisheng Liu, Wenqi Li*, Haolei Liu, Pengyi Zhang
+                - generic [ref=e1002]:
+                  - generic [ref=e1003]:
+                    - generic [ref=e1004]: 题目 ZH
+                    - textbox "中文题目" [ref=e1005]: "\"I feel recognized and developed a sense of belonging\": Sustaining Volunteer Participation in Ancient Text Collation"
+                  - generic [ref=e1006]:
+                    - generic [ref=e1007]: 题目 EN
+                    - textbox "English title" [ref=e1008]: "\"I feel recognized and developed a sense of belonging\": Sustaining Volunteer Participation in Ancient Text Collation"
+                - generic [ref=e1009]:
+                  - generic [ref=e1010]:
+                    - generic [ref=e1011]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1012]: CSCW Companion 2025
+                  - generic [ref=e1013]:
+                    - generic [ref=e1014]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1015]: CSCW Companion 2025
+                - generic [ref=e1016]:
+                  - generic [ref=e1017]:
+                    - generic [ref=e1018]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1019]: "CSCW Companion 2025: 367-372. [CCF A]"
+                  - generic [ref=e1020]:
+                    - generic [ref=e1021]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1022]: "CSCW Companion 2025: 367-372. [CCF A]"
+                - generic [ref=e1024]:
+                  - generic [ref=e1025]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1026]
+              - generic [ref=e1027]:
+                - generic [ref=e1028]:
+                  - generic [ref=e1029]: "#7"
+                  - generic [ref=e1030]:
+                    - button "↑" [ref=e1031] [cursor=pointer]
+                    - button "↓" [ref=e1032] [cursor=pointer]
+                    - button "✕" [ref=e1033] [cursor=pointer]
+                - generic [ref=e1034]:
+                  - generic [ref=e1035]:
+                    - generic [ref=e1036]: Category
+                    - combobox [ref=e1037]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1038]:
+                    - generic [ref=e1039]: Year
+                    - spinbutton [ref=e1040]: "2023"
+                - generic [ref=e1042]:
+                  - generic [ref=e1043]: Authors 作者
+                  - textbox "Authors..." [ref=e1044]: Wenqi Li, Tzu-yi Ho, Jun Wang*
+                - generic [ref=e1045]:
+                  - generic [ref=e1046]:
+                    - generic [ref=e1047]: 题目 ZH
+                    - textbox "中文题目" [ref=e1048]: "Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs"
+                  - generic [ref=e1049]:
+                    - generic [ref=e1050]: 题目 EN
+                    - textbox "English title" [ref=e1051]: "Towards a Useful Chinese Annotation Tool: An Examination of Annotators' Practice and Needs"
+                - generic [ref=e1052]:
+                  - generic [ref=e1053]:
+                    - generic [ref=e1054]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1055]: iConference 2023
+                  - generic [ref=e1056]:
+                    - generic [ref=e1057]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1058]: iConference 2023
+                - generic [ref=e1059]:
+                  - generic [ref=e1060]:
+                    - generic [ref=e1061]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1062]: "iConference 2023: 326-340. [EI]"
+                  - generic [ref=e1063]:
+                    - generic [ref=e1064]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1065]: "iConference 2023: 326-340. [EI]"
+                - generic [ref=e1067]:
+                  - generic [ref=e1068]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1069]
+              - generic [ref=e1070]:
+                - generic [ref=e1071]:
+                  - generic [ref=e1072]: "#8"
+                  - generic [ref=e1073]:
+                    - button "↑" [ref=e1074] [cursor=pointer]
+                    - button "↓" [ref=e1075] [cursor=pointer]
+                    - button "✕" [ref=e1076] [cursor=pointer]
+                - generic [ref=e1077]:
+                  - generic [ref=e1078]:
+                    - generic [ref=e1079]: Category
+                    - combobox [ref=e1080]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1081]:
+                    - generic [ref=e1082]: Year
+                    - spinbutton [ref=e1083]: "2023"
+                - generic [ref=e1085]:
+                  - generic [ref=e1086]: Authors 作者
+                  - textbox "Authors..." [ref=e1087]: Wenqi Li, Pengyi Zhang*, Jun Wang
+                - generic [ref=e1088]:
+                  - generic [ref=e1089]:
+                    - generic [ref=e1090]: 题目 ZH
+                    - textbox "中文题目" [ref=e1091]: Humanities Scholars' Understanding of Data and the Implications for Humanities Data Curation
+                  - generic [ref=e1092]:
+                    - generic [ref=e1093]: 题目 EN
+                    - textbox "English title" [ref=e1094]: Humanities Scholars' Understanding of Data and the Implications for Humanities Data Curation
+                - generic [ref=e1095]:
+                  - generic [ref=e1096]:
+                    - generic [ref=e1097]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1098]: ASIS&T 2023
+                  - generic [ref=e1099]:
+                    - generic [ref=e1100]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1101]: ASIS&T 2023
+                - generic [ref=e1102]:
+                  - generic [ref=e1103]:
+                    - generic [ref=e1104]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1105]: "ASIS&T 2023: 1034-1036."
+                  - generic [ref=e1106]:
+                    - generic [ref=e1107]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1108]: "ASIS&T 2023: 1034-1036."
+                - generic [ref=e1110]:
+                  - generic [ref=e1111]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1112]
+              - generic [ref=e1113]:
+                - generic [ref=e1114]:
+                  - generic [ref=e1115]: "#9"
+                  - generic [ref=e1116]:
+                    - button "↑" [ref=e1117] [cursor=pointer]
+                    - button "↓" [ref=e1118] [cursor=pointer]
+                    - button "✕" [ref=e1119] [cursor=pointer]
+                - generic [ref=e1120]:
+                  - generic [ref=e1121]:
+                    - generic [ref=e1122]: Category
+                    - combobox [ref=e1123]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1124]:
+                    - generic [ref=e1125]: Year
+                    - spinbutton [ref=e1126]: "2023"
+                - generic [ref=e1128]:
+                  - generic [ref=e1129]: Authors 作者
+                  - textbox "Authors..." [ref=e1130]: Sanwoo Lee, Wenqi Li*, Pengyi Zhang, Jun Wang
+                - generic [ref=e1131]:
+                  - generic [ref=e1132]:
+                    - generic [ref=e1133]: 题目 ZH
+                    - textbox "中文题目" [ref=e1134]: Characterizing Data Practices in Research Papers Across Four Disciplines
+                  - generic [ref=e1135]:
+                    - generic [ref=e1136]: 题目 EN
+                    - textbox "English title" [ref=e1137]: Characterizing Data Practices in Research Papers Across Four Disciplines
+                - generic [ref=e1138]:
+                  - generic [ref=e1139]:
+                    - generic [ref=e1140]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1141]: iConference 2023
+                  - generic [ref=e1142]:
+                    - generic [ref=e1143]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1144]: iConference 2023
+                - generic [ref=e1145]:
+                  - generic [ref=e1146]:
+                    - generic [ref=e1147]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1148]: "iConference 2023: 359-368. [EI]"
+                  - generic [ref=e1149]:
+                    - generic [ref=e1150]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1151]: "iConference 2023: 359-368. [EI]"
+                - generic [ref=e1153]:
+                  - generic [ref=e1154]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1155]
+              - generic [ref=e1156]:
+                - generic [ref=e1157]:
+                  - generic [ref=e1158]: "#10"
+                  - generic [ref=e1159]:
+                    - button "↑" [ref=e1160] [cursor=pointer]
+                    - button "↓" [ref=e1161] [cursor=pointer]
+                    - button "✕" [ref=e1162] [cursor=pointer]
+                - generic [ref=e1163]:
+                  - generic [ref=e1164]:
+                    - generic [ref=e1165]: Category
+                    - combobox [ref=e1166]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1167]:
+                    - generic [ref=e1168]: Year
+                    - spinbutton [ref=e1169]: "2021"
+                - generic [ref=e1171]:
+                  - generic [ref=e1172]: Authors 作者
+                  - textbox "Authors..." [ref=e1173]: Wenqi Li, Fengxiang Wang, Jun Wang*
+                - generic [ref=e1174]:
+                  - generic [ref=e1175]:
+                    - generic [ref=e1176]: 题目 ZH
+                    - textbox "中文题目" [ref=e1177]: Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization
+                  - generic [ref=e1178]:
+                    - generic [ref=e1179]: 题目 EN
+                    - textbox "English title" [ref=e1180]: Exploring the Classification of Traditional Chinese Bibliographies through Interactive Visualization
+                - generic [ref=e1181]:
+                  - generic [ref=e1182]:
+                    - generic [ref=e1183]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1184]: JCDL 2021
+                  - generic [ref=e1185]:
+                    - generic [ref=e1186]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1187]: JCDL 2021
+                - generic [ref=e1188]:
+                  - generic [ref=e1189]:
+                    - generic [ref=e1190]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1191]: "JCDL 2021: 246-249. [EI]"
+                  - generic [ref=e1192]:
+                    - generic [ref=e1193]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1194]: "JCDL 2021: 246-249. [EI]"
+                - generic [ref=e1196]:
+                  - generic [ref=e1197]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1198]
+              - generic [ref=e1199]:
+                - generic [ref=e1200]:
+                  - generic [ref=e1201]: "#11"
+                  - generic [ref=e1202]:
+                    - button "↑" [ref=e1203] [cursor=pointer]
+                    - button "↓" [ref=e1204] [cursor=pointer]
+                    - button "✕" [ref=e1205] [cursor=pointer]
+                - generic [ref=e1206]:
+                  - generic [ref=e1207]:
+                    - generic [ref=e1208]: Category
+                    - combobox [ref=e1209]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1210]:
+                    - generic [ref=e1211]: Year
+                    - spinbutton [ref=e1212]: "2021"
+                - generic [ref=e1214]:
+                  - generic [ref=e1215]: Authors 作者
+                  - textbox "Authors..." [ref=e1216]: Wenqi Li, Chenyu Li*, Yuwei Yang
+                - generic [ref=e1217]:
+                  - generic [ref=e1218]:
+                    - generic [ref=e1219]: 题目 ZH
+                    - textbox "中文题目" [ref=e1220]: "Baby Steps for Easier Accessibility: Our practice of making Alibaba Cloud Console more inclusive by taking baby steps"
+                  - generic [ref=e1221]:
+                    - generic [ref=e1222]: 题目 EN
+                    - textbox "English title" [ref=e1223]: "Baby Steps for Easier Accessibility: Our practice of making Alibaba Cloud Console more inclusive by taking baby steps"
+                - generic [ref=e1224]:
+                  - generic [ref=e1225]:
+                    - generic [ref=e1226]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1227]: CHI EA 2021
+                  - generic [ref=e1228]:
+                    - generic [ref=e1229]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1230]: CHI EA 2021
+                - generic [ref=e1231]:
+                  - generic [ref=e1232]:
+                    - generic [ref=e1233]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1234]: "CHI EA 2021: 1-5. [CCF A]"
+                  - generic [ref=e1235]:
+                    - generic [ref=e1236]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1237]: "CHI EA 2021: 1-5. [CCF A]"
+                - generic [ref=e1239]:
+                  - generic [ref=e1240]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1241]
+              - generic [ref=e1242]:
+                - generic [ref=e1243]:
+                  - generic [ref=e1244]: "#12"
+                  - generic [ref=e1245]:
+                    - button "↑" [ref=e1246] [cursor=pointer]
+                    - button "↓" [ref=e1247] [cursor=pointer]
+                    - button "✕" [ref=e1248] [cursor=pointer]
+                - generic [ref=e1249]:
+                  - generic [ref=e1250]:
+                    - generic [ref=e1251]: Category
+                    - combobox [ref=e1252]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1253]:
+                    - generic [ref=e1254]: Year
+                    - spinbutton [ref=e1255]: "2019"
+                - generic [ref=e1257]:
+                  - generic [ref=e1258]: Authors 作者
+                  - textbox "Authors..." [ref=e1259]: Wenqi Li*, Chenyu Li, Yuwei Yang
+                - generic [ref=e1260]:
+                  - generic [ref=e1261]:
+                    - generic [ref=e1262]: 题目 ZH
+                    - textbox "中文题目" [ref=e1263]: How Consistent Is Your GUI Design?
+                  - generic [ref=e1264]:
+                    - generic [ref=e1265]: 题目 EN
+                    - textbox "English title" [ref=e1266]: How Consistent Is Your GUI Design?
+                - generic [ref=e1267]:
+                  - generic [ref=e1268]:
+                    - generic [ref=e1269]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1270]: CSCW Companion 2019
+                  - generic [ref=e1271]:
+                    - generic [ref=e1272]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1273]: CSCW Companion 2019
+                - generic [ref=e1274]:
+                  - generic [ref=e1275]:
+                    - generic [ref=e1276]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1277]: "CSCW Companion 2019: 278-282. [CCF A]"
+                  - generic [ref=e1278]:
+                    - generic [ref=e1279]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1280]: "CSCW Companion 2019: 278-282. [CCF A]"
+                - generic [ref=e1282]:
+                  - generic [ref=e1283]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1284]
+              - generic [ref=e1285]:
+                - generic [ref=e1286]:
+                  - generic [ref=e1287]: "#13"
+                  - generic [ref=e1288]:
+                    - button "↑" [ref=e1289] [cursor=pointer]
+                    - button "↓" [ref=e1290] [cursor=pointer]
+                    - button "✕" [ref=e1291] [cursor=pointer]
+                - generic [ref=e1292]:
+                  - generic [ref=e1293]:
+                    - generic [ref=e1294]: Category
+                    - combobox [ref=e1295]:
+                      - option "journal"
+                      - option "conference" [selected]
+                      - option "under_review"
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1296]:
+                    - generic [ref=e1297]: Year
+                    - spinbutton [ref=e1298]: "2016"
+                - generic [ref=e1300]:
+                  - generic [ref=e1301]: Authors 作者
+                  - textbox "Authors..." [ref=e1302]: Daniela K Rosner*, Saba Kawas, Wenqi Li, Nicole Tilly, Yi-Chen Sung
+                - generic [ref=e1303]:
+                  - generic [ref=e1304]:
+                    - generic [ref=e1305]: 题目 ZH
+                    - textbox "中文题目" [ref=e1306]: "Out of time, out of place: Reflections on design workshops as a research method"
+                  - generic [ref=e1307]:
+                    - generic [ref=e1308]: 题目 EN
+                    - textbox "English title" [ref=e1309]: "Out of time, out of place: Reflections on design workshops as a research method"
+                - generic [ref=e1310]:
+                  - generic [ref=e1311]:
+                    - generic [ref=e1312]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1313]: CSCW 2016
+                  - generic [ref=e1314]:
+                    - generic [ref=e1315]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1316]: CSCW 2016
+                - generic [ref=e1317]:
+                  - generic [ref=e1318]:
+                    - generic [ref=e1319]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1320]: "CSCW 2016: 1131-1141. [CCF A]"
+                  - generic [ref=e1321]:
+                    - generic [ref=e1322]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1323]: "CSCW 2016: 1131-1141. [CCF A]"
+                - generic [ref=e1325]:
+                  - generic [ref=e1326]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1327]
+            - button "+ 添加会议论文 Conference Papers" [ref=e1328] [cursor=pointer]
+        - generic [ref=e1329]:
+          - generic [ref=e1330] [cursor=pointer]:
+            - generic [ref=e1331]: 在审论文 Under Review
+            - generic [ref=e1332]: "3"
+            - emphasis [ref=e1333]: ▾
+          - generic [ref=e1334]:
+            - generic [ref=e1335]:
+              - generic [ref=e1336]:
+                - generic [ref=e1337]:
+                  - generic [ref=e1338]: "#1"
+                  - generic [ref=e1339]:
+                    - button "↑" [ref=e1340] [cursor=pointer]
+                    - button "↓" [ref=e1341] [cursor=pointer]
+                    - button "✕" [ref=e1342] [cursor=pointer]
+                - generic [ref=e1343]:
+                  - generic [ref=e1344]:
+                    - generic [ref=e1345]: Category
+                    - combobox [ref=e1346]:
+                      - option "journal"
+                      - option "conference"
+                      - option "under_review" [selected]
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1347]:
+                    - generic [ref=e1348]: Year
+                    - spinbutton [ref=e1349]: "2025"
+                - generic [ref=e1351]:
+                  - generic [ref=e1352]: Authors 作者
+                  - textbox "Authors..." [ref=e1353]: Wenqi Li, Pengyi Zhang, Jun Wang, Jiuzhen Zhang*
+                - generic [ref=e1354]:
+                  - generic [ref=e1355]:
+                    - generic [ref=e1356]: 题目 ZH
+                    - textbox "中文题目" [ref=e1357]: "Data-driven or Structure-driven: Towards A Process Model of Data Behavior in Humanities Research"
+                  - generic [ref=e1358]:
+                    - generic [ref=e1359]: 题目 EN
+                    - textbox "English title" [ref=e1360]: "Data-driven or Structure-driven: Towards A Process Model of Data Behavior in Humanities Research"
+                - generic [ref=e1361]:
+                  - generic [ref=e1362]:
+                    - generic [ref=e1363]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1364]: Journal of the Association for Information Science and Technology
+                  - generic [ref=e1365]:
+                    - generic [ref=e1366]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1367]: Journal of the Association for Information Science and Technology
+                - generic [ref=e1368]:
+                  - generic [ref=e1369]:
+                    - generic [ref=e1370]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1371]: "[Q1, FMS A, Major Revision]"
+                  - generic [ref=e1372]:
+                    - generic [ref=e1373]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1374]: "[Q1, FMS A, Major Revision]"
+                - generic [ref=e1376]:
+                  - generic [ref=e1377]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1378]
+              - generic [ref=e1379]:
+                - generic [ref=e1380]:
+                  - generic [ref=e1381]: "#2"
+                  - generic [ref=e1382]:
+                    - button "↑" [ref=e1383] [cursor=pointer]
+                    - button "↓" [ref=e1384] [cursor=pointer]
+                    - button "✕" [ref=e1385] [cursor=pointer]
+                - generic [ref=e1386]:
+                  - generic [ref=e1387]:
+                    - generic [ref=e1388]: Category
+                    - combobox [ref=e1389]:
+                      - option "journal"
+                      - option "conference"
+                      - option "under_review" [selected]
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1390]:
+                    - generic [ref=e1391]: Year
+                    - spinbutton [ref=e1392]: "2025"
+                - generic [ref=e1394]:
+                  - generic [ref=e1395]: Authors 作者
+                  - textbox "Authors..." [ref=e1396]: 李文琦,张鹏翼*,王军
+                - generic [ref=e1397]:
+                  - generic [ref=e1398]:
+                    - generic [ref=e1399]: 题目 ZH
+                    - textbox "中文题目" [ref=e1400]: 数据管护模型的系统性综述与理论框架构建
+                  - generic [ref=e1401]:
+                    - generic [ref=e1402]: 题目 EN
+                    - textbox "English title" [ref=e1403]: 数据管护模型的系统性综述与理论框架构建
+                - generic [ref=e1404]:
+                  - generic [ref=e1405]:
+                    - generic [ref=e1406]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1407]: 图书情报知识
+                  - generic [ref=e1408]:
+                    - generic [ref=e1409]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1410]: 图书情报知识
+                - generic [ref=e1411]:
+                  - generic [ref=e1412]:
+                    - generic [ref=e1413]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1414]: "[FMS T2, 录用前格式修订]"
+                  - generic [ref=e1415]:
+                    - generic [ref=e1416]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1417]: "[FMS T2, 录用前格式修订]"
+                - generic [ref=e1419]:
+                  - generic [ref=e1420]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1421]
+              - generic [ref=e1422]:
+                - generic [ref=e1423]:
+                  - generic [ref=e1424]: "#3"
+                  - generic [ref=e1425]:
+                    - button "↑" [ref=e1426] [cursor=pointer]
+                    - button "↓" [ref=e1427] [cursor=pointer]
+                    - button "✕" [ref=e1428] [cursor=pointer]
+                - generic [ref=e1429]:
+                  - generic [ref=e1430]:
+                    - generic [ref=e1431]: Category
+                    - combobox [ref=e1432]:
+                      - option "journal"
+                      - option "conference"
+                      - option "under_review" [selected]
+                      - option "book"
+                      - option "patent"
+                  - generic [ref=e1433]:
+                    - generic [ref=e1434]: Year
+                    - spinbutton [ref=e1435]: "2025"
+                - generic [ref=e1437]:
+                  - generic [ref=e1438]: Authors 作者
+                  - textbox "Authors..." [ref=e1439]: 杨佳兴,吴亚南,李文琦*,张鹏翼,王军
+                - generic [ref=e1440]:
+                  - generic [ref=e1441]:
+                    - generic [ref=e1442]: 题目 ZH
+                    - textbox "中文题目" [ref=e1443]: AIGC赋能图书馆典藏活化的方法与路径研究
+                  - generic [ref=e1444]:
+                    - generic [ref=e1445]: 题目 EN
+                    - textbox "English title" [ref=e1446]: AIGC赋能图书馆典藏活化的方法与路径研究
+                - generic [ref=e1447]:
+                  - generic [ref=e1448]:
+                    - generic [ref=e1449]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1450]: 图书馆论坛
+                  - generic [ref=e1451]:
+                    - generic [ref=e1452]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1453]: 图书馆论坛
+                - generic [ref=e1454]:
+                  - generic [ref=e1455]:
+                    - generic [ref=e1456]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1457]
+                  - generic [ref=e1458]:
+                    - generic [ref=e1459]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1460]
+                - generic [ref=e1462]:
+                  - generic [ref=e1463]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1464]
+            - button "+ 添加在审论文 Under Review" [ref=e1465] [cursor=pointer]
+        - generic [ref=e1466]:
+          - generic [ref=e1467] [cursor=pointer]:
+            - generic [ref=e1468]: 专著/章节 Books & Chapters
+            - generic [ref=e1469]: "2"
+            - emphasis [ref=e1470]: ▾
+          - generic [ref=e1471]:
+            - generic [ref=e1472]:
+              - generic [ref=e1473]:
+                - generic [ref=e1474]:
+                  - generic [ref=e1475]: "#1"
+                  - generic [ref=e1476]:
+                    - button "↑" [ref=e1477] [cursor=pointer]
+                    - button "↓" [ref=e1478] [cursor=pointer]
+                    - button "✕" [ref=e1479] [cursor=pointer]
+                - generic [ref=e1480]:
+                  - generic [ref=e1481]:
+                    - generic [ref=e1482]: Category
+                    - combobox [ref=e1483]:
+                      - option "journal"
+                      - option "conference"
+                      - option "under_review"
+                      - option "book" [selected]
+                      - option "patent"
+                  - generic [ref=e1484]:
+                    - generic [ref=e1485]: Year
+                    - spinbutton [ref=e1486]: "2025"
+                - generic [ref=e1488]:
+                  - generic [ref=e1489]: Authors 作者
+                  - textbox "Authors..." [ref=e1490]: Pengyi Zhang, Wenqi Li, Kathleen Gregory
+                - generic [ref=e1491]:
+                  - generic [ref=e1492]:
+                    - generic [ref=e1493]: 题目 ZH
+                    - textbox "中文题目" [ref=e1494]: "Data Behaviour: How People Interact with Data and Datasets"
+                  - generic [ref=e1495]:
+                    - generic [ref=e1496]: 题目 EN
+                    - textbox "English title" [ref=e1497]: "Data Behaviour: How People Interact with Data and Datasets"
+                - generic [ref=e1498]:
+                  - generic [ref=e1499]:
+                    - generic [ref=e1500]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1501]: Cambridge University Press
+                  - generic [ref=e1502]:
+                    - generic [ref=e1503]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1504]: Cambridge University Press
+                - generic [ref=e1505]:
+                  - generic [ref=e1506]:
+                    - generic [ref=e1507]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1508]: "[在编]"
+                  - generic [ref=e1509]:
+                    - generic [ref=e1510]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1511]: "[在编]"
+                - generic [ref=e1513]:
+                  - generic [ref=e1514]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1515]
+              - generic [ref=e1516]:
+                - generic [ref=e1517]:
+                  - generic [ref=e1518]: "#2"
+                  - generic [ref=e1519]:
+                    - button "↑" [ref=e1520] [cursor=pointer]
+                    - button "↓" [ref=e1521] [cursor=pointer]
+                    - button "✕" [ref=e1522] [cursor=pointer]
+                - generic [ref=e1523]:
+                  - generic [ref=e1524]:
+                    - generic [ref=e1525]: Category
+                    - combobox [ref=e1526]:
+                      - option "journal"
+                      - option "conference"
+                      - option "under_review"
+                      - option "book" [selected]
+                      - option "patent"
+                  - generic [ref=e1527]:
+                    - generic [ref=e1528]: Year
+                    - spinbutton [ref=e1529]: "2025"
+                - generic [ref=e1531]:
+                  - generic [ref=e1532]: Authors 作者
+                  - textbox "Authors..." [ref=e1533]: Wenqi Li, Chenyu Li, Yuwei Yang
+                - generic [ref=e1534]:
+                  - generic [ref=e1535]:
+                    - generic [ref=e1536]: 题目 ZH
+                    - textbox "中文题目" [ref=e1537]: "Access by Design: Small Steps Toward Big Accessibility Wins"
+                  - generic [ref=e1538]:
+                    - generic [ref=e1539]: 题目 EN
+                    - textbox "English title" [ref=e1540]: "Access by Design: Small Steps Toward Big Accessibility Wins"
+                - generic [ref=e1541]:
+                  - generic [ref=e1542]:
+                    - generic [ref=e1543]: 来源 Venue ZH
+                    - textbox "期刊/会议 ZH" [ref=e1544]: "UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer"
+                  - generic [ref=e1545]:
+                    - generic [ref=e1546]: 来源 Venue EN
+                    - textbox "Venue EN" [ref=e1547]: "UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer"
+                - generic [ref=e1548]:
+                  - generic [ref=e1549]:
+                    - generic [ref=e1550]: 注释 Note ZH
+                    - textbox "注释 ZH" [ref=e1551]: "[待出版]"
+                  - generic [ref=e1552]:
+                    - generic [ref=e1553]: 注释 Note EN
+                    - textbox "Note EN" [ref=e1554]: "[待出版]"
+                - generic [ref=e1556]:
+                  - generic [ref=e1557]: 链接 Link
+                  - textbox "DOI / URL (可选)" [ref=e1558]
+            - button "+ 添加专著/章节 Books & Chapters" [ref=e1559] [cursor=pointer]
+        - generic [ref=e1560]:
+          - generic [ref=e1561] [cursor=pointer]:
+            - generic [ref=e1562]: 专利 Patents
+            - generic [ref=e1563]: "1"
+            - emphasis [ref=e1564]: ▾
+          - generic [ref=e1565]:
+            - generic [ref=e1567]:
+              - generic [ref=e1568]:
+                - generic [ref=e1569]: "#1"
+                - generic [ref=e1570]:
+                  - button "↑" [ref=e1571] [cursor=pointer]
+                  - button "↓" [ref=e1572] [cursor=pointer]
+                  - button "✕" [ref=e1573] [cursor=pointer]
+              - generic [ref=e1574]:
+                - generic [ref=e1575]:
+                  - generic [ref=e1576]: Category
+                  - combobox [ref=e1577]:
+                    - option "journal"
+                    - option "conference"
+                    - option "under_review"
+                    - option "book"
+                    - option "patent" [selected]
+                - generic [ref=e1578]:
+                  - generic [ref=e1579]: Year
+                  - spinbutton [ref=e1580]: "2026"
+              - generic [ref=e1582]:
+                - generic [ref=e1583]: Authors 作者
+                - textbox "Authors..." [ref=e1584]: 张鹏翼,李文琦,唐震怡等
+              - generic [ref=e1585]:
+                - generic [ref=e1586]:
+                  - generic [ref=e1587]: 题目 ZH
+                  - textbox "中文题目" [ref=e1588]: 一种AI智能体系统及协同知识建构方法（202511737406.2）
+                - generic [ref=e1589]:
+                  - generic [ref=e1590]: 题目 EN
+                  - textbox "English title" [ref=e1591]: 一种AI智能体系统及协同知识建构方法（202511737406.2）
+              - generic [ref=e1592]:
+                - generic [ref=e1593]:
+                  - generic [ref=e1594]: 来源 Venue ZH
+                  - textbox "期刊/会议 ZH" [ref=e1595]: 已授权
+                - generic [ref=e1596]:
+                  - generic [ref=e1597]: 来源 Venue EN
+                  - textbox "Venue EN" [ref=e1598]: 已授权
+              - generic [ref=e1599]:
+                - generic [ref=e1600]:
+                  - generic [ref=e1601]: 注释 Note ZH
+                  - textbox "注释 ZH" [ref=e1602]: 授权日期：2026-04-24
+                - generic [ref=e1603]:
+                  - generic [ref=e1604]: 注释 Note EN
+                  - textbox "Note EN" [ref=e1605]: 授权日期：2026-04-24
+              - generic [ref=e1607]:
+                - generic [ref=e1608]: 链接 Link
+                - textbox "DOI / URL (可选)" [ref=e1609]
+            - button "+ 添加专利 Patents" [ref=e1610] [cursor=pointer]
