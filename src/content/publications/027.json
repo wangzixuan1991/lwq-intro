@@ -1,0 +1,17 @@
+{
+  "category": "book",
+  "year": 2025,
+  "authors": "Wenqi Li, Chenyu Li, Yuwei Yang",
+  "title": {
+    "zh": "Access by Design: Small Steps Toward Big Accessibility Wins",
+    "en": "Access by Design: Small Steps Toward Big Accessibility Wins"
+  },
+  "venue": {
+    "zh": "UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer",
+    "en": "UX Research Casebook: Evaluative Case Studies to Influence Product Strategy (1st ed.). Springer"
+  },
+  "note": {
+    "zh": "[待出版]",
+    "en": "[待出版]"
+  }
+}

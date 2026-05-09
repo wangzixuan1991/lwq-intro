@@ -1,0 +1,17 @@
+{
+  "category": "conference",
+  "year": 2019,
+  "authors": "Wenqi Li*, Chenyu Li, Yuwei Yang",
+  "title": {
+    "zh": "How Consistent Is Your GUI Design?",
+    "en": "How Consistent Is Your GUI Design?"
+  },
+  "venue": {
+    "zh": "CSCW Companion 2019",
+    "en": "CSCW Companion 2019"
+  },
+  "note": {
+    "zh": "CSCW Companion 2019: 278-282. [CCF A]",
+    "en": "CSCW Companion 2019: 278-282. [CCF A]"
+  }
+}

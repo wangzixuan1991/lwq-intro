@@ -1,0 +1,17 @@
+{
+  "category": "conference",
+  "year": 2025,
+  "authors": "Wenqi Li, Jui-Ching Kuo, Manyu Sheng, Pengyi Zhang, Qunfang Wu",
+  "title": {
+    "zh": "Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content",
+    "en": "Beyond Explicit and Implicit: How Users Provide Feedback to Shape Personalized Recommendation Content"
+  },
+  "venue": {
+    "zh": "CHI 2025",
+    "en": "CHI 2025"
+  },
+  "note": {
+    "zh": "CHI 2025: 1-17. [CCF A]",
+    "en": "CHI 2025: 1-17. [CCF A]"
+  }
+}

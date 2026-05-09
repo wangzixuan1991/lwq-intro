@@ -1,0 +1,17 @@
+{
+  "category": "conference",
+  "year": 2026,
+  "authors": "Tianji Jiang, Wenqi Li, Jiqun Liu",
+  "title": {
+    "zh": "Improving Data Reusability in Interactive IR: Insights from the Community",
+    "en": "Improving Data Reusability in Interactive IR: Insights from the Community"
+  },
+  "venue": {
+    "zh": "CHIIR 2026",
+    "en": "CHIIR 2026"
+  },
+  "note": {
+    "zh": "CHIIR 2026: 524-528.",
+    "en": "CHIIR 2026: 524-528."
+  }
+}

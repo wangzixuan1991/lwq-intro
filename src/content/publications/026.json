@@ -1,0 +1,17 @@
+{
+  "category": "book",
+  "year": 2025,
+  "authors": "Pengyi Zhang, Wenqi Li, Kathleen Gregory",
+  "title": {
+    "zh": "Data Behaviour: How People Interact with Data and Datasets",
+    "en": "Data Behaviour: How People Interact with Data and Datasets"
+  },
+  "venue": {
+    "zh": "Cambridge University Press",
+    "en": "Cambridge University Press"
+  },
+  "note": {
+    "zh": "[在编]",
+    "en": "[在编]"
+  }
+}
