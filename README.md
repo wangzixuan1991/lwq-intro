@@ -10,20 +10,37 @@ Astro + Tailwind 静态站。双语（中/英）+ 11 套可切换审美主题。
 
 **本地代码路径**：`/Users/wangzx2026/Desktop/lwq-intro`
 
+带 approve gate 的两段式部署：
+
 ```
-本地修改 → git commit → git push origin main
-                                ↓
-                          GitHub (wangzixuan1991/lwq-intro)
-                                ↓ (auto-trigger)
-                          Vercel build
-                                ↓ ~30s
-                          https://lwq-intro.vercel.app
+[改动 / 预览阶段]
+  本地改 → git commit & push origin dev
+                ↓
+            GitHub dev 分支
+                ↓ (auto)
+            Vercel 预览构建
+                ↓ ~30s
+   https://lwq-intro-git-dev-gtzixuan-9605s-projects.vercel.app
+                ↓
+            人类审核 ✓
+
+[上线阶段 · 需 approve]
+  你说 "deploy" → git checkout main && git merge dev && git push origin main
+                ↓
+            GitHub main 分支
+                ↓ (auto)
+            Vercel 生产构建
+                ↓ ~30s
+            https://lwq-intro.vercel.app
 ```
 
-- **Source of truth**：GitHub repo `wangzixuan1991/lwq-intro`（main 分支）
-- **只动本地这个文件夹**，git push 后 Vercel 自动构建上线
-- 不要去 GitHub 网页编辑、不要去 Vercel 后台改设置
-- 备用部署：`gh-pages` 分支仍指向 `https://wangzixuan1991.github.io/lwq-intro/`（GitHub Pages，手动 push 时维护）
+**规则**：
+- **默认在 `dev` 分支**做所有修改
+- `main` 分支只通过 `dev` 合并更新，不直接推
+- 任何 push 到 `dev` → Vercel 自动给一个预览 URL
+- 用户在预览 URL 看完说 OK，才推 `main`
+- **Source of truth**：GitHub repo `wangzixuan1991/lwq-intro`
+- 不去 GitHub 网页编辑、不去 Vercel 后台改设置
 
 ---
 
