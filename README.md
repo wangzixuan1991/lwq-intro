@@ -44,6 +44,20 @@ Astro + Tailwind 静态站。双语（中/英）+ 11 套可切换审美主题。
 
 ---
 
+## 上线脚本
+
+经 approve 后，把当前 dev 合到 main 并推（触发生产部署）：
+
+```bash
+git checkout main && git pull && git merge dev --ff-only && git push origin main && git checkout dev
+```
+
+回滚最近一次生产部署（如发现 bug）：
+
+```bash
+git checkout main && git reset --hard HEAD~1 && git push --force-with-lease origin main && git checkout dev
+```
+
 ## 本地开发
 
 ```bash
