@@ -18,7 +18,7 @@ const teaching = (await getCollection('teaching')).sort((a, b) => b.data.period.
   <section class="max-w-page mx-auto px-6 pt-14 space-y-10">
     <div class="flex items-baseline justify-between flex-wrap gap-4">
       <h1 class="font-display text-3xl font-semibold">{s.nav.cv}</h1>
-      <a href={profile.cvPdf} class="text-sm border border-rule rounded-full px-4 py-2 hover:bg-surface no-underline">
+      <a href={`${import.meta.env.BASE_URL}${profile.cvPdf}`} class="text-sm border border-rule rounded-full px-4 py-2 hover:bg-surface no-underline">
         {s.hero.downloadCV}
       </a>
     </div>

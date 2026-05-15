@@ -41,7 +41,7 @@ const areas = profile.researchAreas[locale];
           {isZh ? '图 版 · 壹' : 'PLATE · I'}
         </span>
         <div class="portrait-box">
-          <img src={profile.avatar} alt={profile.name[locale]} loading="eager" decoding="async" />
+          <img src={`${import.meta.env.BASE_URL}${profile.avatar}`} alt={profile.name[locale]} loading="eager" decoding="async" />
         </div>
         <figcaption class="portrait-cap">
           <span>{isZh ? '李文琦' : 'Wenqi Li'}</span>

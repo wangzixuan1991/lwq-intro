@@ -16,8 +16,9 @@ export const pickLang = (item: Bilingual | undefined, locale: Locale): string =>
 };
 
 export const localePath = (locale: Locale, path: string): string => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
   if (locale === 'en') {
-    return path === '/' ? '/en/' : `/en${path}`;
+    return path === '/' ? `${base}/en/` : `${base}/en${path}`;
   }
-  return path;
+  return path === '/' ? `${base}/` : `${base}${path}`;
 };
