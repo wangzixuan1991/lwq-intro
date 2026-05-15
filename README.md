@@ -1,45 +1,87 @@
 # 李文琦个人网站 / Wenqi Li Personal Site
 
-Astro + Tailwind 静态站，双语（中/英），3 个可切换 theme，部署到 GitHub Pages。
+Astro + Tailwind 静态站。双语（中/英）+ 11 套可切换审美主题。
+
+🔗 **线上**：https://lwq-intro.vercel.app
+
+---
+
+## 工作流（最重要）
+
+**本地代码路径**：`/Users/wangzx2026/Desktop/lwq-intro`
+
+```
+本地修改 → git commit → git push origin main
+                                ↓
+                          GitHub (wangzixuan1991/lwq-intro)
+                                ↓ (auto-trigger)
+                          Vercel build
+                                ↓ ~30s
+                          https://lwq-intro.vercel.app
+```
+
+- **Source of truth**：GitHub repo `wangzixuan1991/lwq-intro`（main 分支）
+- **只动本地这个文件夹**，git push 后 Vercel 自动构建上线
+- 不要去 GitHub 网页编辑、不要去 Vercel 后台改设置
+- 备用部署：`gh-pages` 分支仍指向 `https://wangzixuan1991.github.io/lwq-intro/`（GitHub Pages，手动 push 时维护）
+
+---
 
 ## 本地开发
 
 ```bash
 pnpm install
 pnpm dev          # http://localhost:4321/lwq-intro/
-pnpm build        # → dist/
+pnpm build        # 构建到 dist/
 ```
+
+`astro.config.mjs` 通过 `process.env.VERCEL` 切换 base path：
+- Vercel：site=`lwq-intro.vercel.app`，base=`/`
+- GitHub Pages：site=`wangzixuan1991.github.io`，base=`/lwq-intro/`
+
+---
+
+## 主题系统
+
+11 套已 commit 的审美方向，右下角浮动切换器：
+
+| # | id | 字体（display / body） |
+|---|---|---|
+| 01 | editorial-noir（默认） | Fraunces / Source Serif 4 |
+| 02 | brutal-minimal | Bricolage Grotesque / Albert Sans |
+| 03 | maximalist-chaos | Anton / Newsreader |
+| 04 | retro-futuristic | Orbitron / Syne |
+| 05 | organic-natural | DM Serif Display / Lora |
+| 06 | luxury-refined | Cormorant Garamond / Cardo |
+| 07 | playful-toy | Fredoka / Quicksand |
+| 08 | brutalist-raw | JetBrains Mono 全栈 |
+| 09 | art-deco | Cinzel / EB Garamond |
+| 10 | soft-pastel | Instrument Serif / DM Sans |
+| 11 | industrial | Archivo / DM Mono |
+
+每套有自己的色板、字体、装饰语法（分隔线/eyebrow 形态/h 标题大小）。最终选定一套后，删除其余 + `ThemeSwitcher` 组件即可。
+
+---
 
 ## 内容收集器
 
 `collector/index.html` 是给李文琦填内容的工具。双击打开 → 填写 → 点 `导出 JSON`。
-也可线上访问：`https://wangzx_microsoft.github.io/lwq-intro/collector/`
-
-## 导入她填好的内容
 
 ```bash
 pnpm import-content path/to/lwq-content-YYYYMMDD.json
-pnpm build
 git commit -am "content: import from collector" && git push
 ```
 
-## 风格切换
+---
 
-右下角浮动按钮 `Theme: A · B · C`：
-- **A · Editorial** — 衬线大标题 + 米白底 + 暖金，温润学术
-- **B · Modern Minimal** — 紧凑无衬线 + 强对比，冷峻克制
-- **C · Classical Premium** — 极简留白 + 灰阶，奢华克制
+## 仓库 / 部署链接
 
-李文琦确认风格后，删除其余两个 theme 与 `ThemeSwitcher` 组件。
+- GitHub repo：https://github.com/wangzixuan1991/lwq-intro
+- Vercel 项目：https://vercel.com/gtzixuan-9605s-projects/lwq-intro
+- GitHub 账号：`wangzixuan1991`（personal，gt.zixuan@gmail.com）
+- Vercel 账号：`gtzixuan-9605`（已通过 GitHub App 绑定 repo）
 
-## 部署
-
-push 到 `main` → GitHub Actions 构建 → 发布到 `https://wangzx_microsoft.github.io/lwq-intro/`。
-
-需要 GitHub repo 的 Pages 设置改为 `Source: GitHub Actions`：
-```bash
-gh api -X POST /repos/wangzx_microsoft/lwq-intro/pages -f build_type=workflow
-```
+---
 
 ## 文档
 
