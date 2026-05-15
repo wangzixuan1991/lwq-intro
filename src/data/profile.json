@@ -22,11 +22,15 @@
     "zh": ["数字人文", "数字文化遗产", "人机交互", "数据行为", "数据管护"],
     "en": ["Digital Humanities", "Digital Cultural Heritage", "Human-Computer Interaction", "Data Behavior", "Data Curation"]
   },
+  "tagline": {
+    "zh": "数字人文 × 人机交互 × 文化遗产 — 以 AI 服务于文化的保护与公众参与。",
+    "en": "Digital humanities × HCI × cultural heritage — applying AI to preservation and public engagement."
+  },
   "bio": {
     "zh": "李文琦，北京大学信息管理系博雅博士后。她于北京大学信息管理系获情报学博士学位，并在华盛顿大学人本设计与工程系获理学硕士学位。研究方向涵盖数字人文、人机交互与数据行为，关注人文学者的数据实践与数据管护，以及如何借助 AI 服务于文化遗产的保护与公众参与。研究成果发表于 JASIST、ACM CHI、JCDL 等国内外重要期刊与会议。在进入学术界之前，她在微软（美国）与阿里巴巴累计四年用户体验设计经验。",
     "en": "Li Wenqi is a Boya Postdoctoral Fellow in the Department of Information Management and the Digital Humanities Research Center at Peking University. She holds a PhD in Information Science from Peking University and an M.S. in Human-Centered Design & Engineering from the University of Washington. Her research spans digital humanities, human-computer interaction, and data behavior. She has examined humanities scholars' data practices and data curation approaches that support the shift toward data-driven research in the humanities. More recently, her work explores how AI can be applied to the preservation and public engagement of cultural heritage. Her research has been published in venues including JASIST, ACM CHI, and JCDL, and she has contributed to digital curation projects focused on ancient Chinese texts. Prior to entering academia, she gained four years of industry experience as a user experience designer at Microsoft and Alibaba Cloud."
   },
   "heroImage": "/lwq-intro/images/hero-placeholder.svg",
-  "avatar": "/lwq-intro/images/avatar-placeholder.svg",
+  "avatar": "/lwq-intro/images/lwq-portrait.png",
   "cvPdf": "/lwq-intro/cv-placeholder.pdf"
 }

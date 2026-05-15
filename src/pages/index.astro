@@ -14,50 +14,141 @@ const exp = (await getCollection('experience')).sort((a, b) => b.data.period.loc
 <BaseLayout locale={locale}>
   <Hero locale={locale} />
 
-  <section class="max-w-page mx-auto px-6 mt-12">
-    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.bio}</h2>
-    <p class="max-w-prose text-base leading-relaxed text-ink/90 whitespace-pre-line">
-      {profile.bio[locale]}
-    </p>
-  </section>
-
-  <section class="max-w-page mx-auto px-6 mt-10">
-    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.research_areas}</h2>
-    <div class="flex flex-wrap gap-2">
-      {profile.researchAreas[locale].map((tag) => (
-        <span class="px-3 py-1 rounded-full border border-rule text-sm text-ink/80">{tag}</span>
-      ))}
+  <!-- Bio · readable single column -->
+  <section class="page-section">
+    <div class="max-w-page mx-auto px-6">
+      <header class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-h">{s.sections.bio}</h2>
+      </header>
+      <div class="bio-body">
+        <p>{profile.bio[locale]}</p>
+      </div>
     </div>
   </section>
 
-  <section class="max-w-page mx-auto px-6 mt-10">
-    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.education}</h2>
-    <ul class="space-y-2 text-sm">
-      {edu.map((e) => (
-        <li class="flex flex-col sm:flex-row sm:gap-4">
-          <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
-          <span><strong>{pickLang(e.data.school, locale)}</strong> · {pickLang(e.data.degree, locale)}</span>
-        </li>
-      ))}
-    </ul>
+  <!-- News · what's happening now -->
+  <section class="page-section">
+    <div class="max-w-page mx-auto px-6">
+      <header class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-h">{s.sections.news}</h2>
+      </header>
+      <NewsList locale={locale} />
+    </div>
   </section>
 
-  <section class="max-w-page mx-auto px-6 mt-10">
-    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.experience}</h2>
-    <ul class="space-y-2 text-sm">
-      {exp.map((e) => (
-        <li class="flex flex-col sm:flex-row sm:gap-4">
-          <span class="text-muted font-mono shrink-0 sm:w-32 tabular-nums">{e.data.period}</span>
-          <span><strong>{pickLang(e.data.org, locale)}</strong> · {pickLang(e.data.title, locale)}</span>
-        </li>
-      ))}
-    </ul>
+  <!-- Education -->
+  <section class="page-section">
+    <div class="max-w-page mx-auto px-6">
+      <header class="section-header">
+        <span class="section-num">03</span>
+        <h2 class="section-h">{s.sections.education}</h2>
+      </header>
+      <ul class="cv-list">
+        {edu.map((e) => (
+          <li>
+            <span class="meta cv-period">{e.data.period}</span>
+            <div class="cv-body">
+              <div class="cv-primary">{pickLang(e.data.school, locale)}</div>
+              <div class="cv-secondary">{pickLang(e.data.degree, locale)}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
-  <hr class="emdash my-12 max-w-page mx-auto" />
-
-  <section class="max-w-page mx-auto px-6">
-    <h2 class="font-display text-xl font-semibold mb-4">{s.sections.news}</h2>
-    <NewsList locale={locale} />
+  <!-- Experience -->
+  <section class="page-section">
+    <div class="max-w-page mx-auto px-6">
+      <header class="section-header">
+        <span class="section-num">04</span>
+        <h2 class="section-h">{s.sections.experience}</h2>
+      </header>
+      <ul class="cv-list">
+        {exp.map((e) => (
+          <li>
+            <span class="meta cv-period">{e.data.period}</span>
+            <div class="cv-body">
+              <div class="cv-primary">{pickLang(e.data.org, locale)}</div>
+              <div class="cv-secondary">{pickLang(e.data.title, locale)}</div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
+
+  <style>
+    .page-section {
+      margin-top: clamp(4rem, 7vw, 6.5rem);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.4rem;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--c-rule);
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      color: var(--c-accent);
+    }
+    .section-h {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+      line-height: 1.1;
+      color: var(--c-ink);
+    }
+
+    .bio-body {
+      max-width: 68ch;
+    }
+    .bio-body p {
+      font-family: var(--font-serif);
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: var(--c-ink-soft);
+      white-space: pre-line;
+    }
+    .bio-body p::first-letter {
+      font-family: var(--font-display);
+      font-size: 3.6rem;
+      line-height: 0.9;
+      float: left;
+      margin: 0.3rem 0.6rem 0 0;
+      color: var(--c-accent);
+      font-weight: 500;
+    }
+
+    .cv-list { list-style: none; padding: 0; margin: 0; }
+    .cv-list li {
+      display: grid;
+      grid-template-columns: 12rem 1fr;
+      gap: 1.5rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--c-rule);
+    }
+    @media (max-width: 640px) {
+      .cv-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+    .cv-period { color: var(--c-muted); padding-top: 0.15rem; }
+    .cv-primary {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--c-ink);
+    }
+    .cv-secondary {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--c-muted);
+      margin-top: 0.15rem;
+    }
+  </style>
 </BaseLayout>

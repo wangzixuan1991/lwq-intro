@@ -1,36 +1,238 @@
+/* ─────────────────────────────────────────────────────────────
+   11 committed aesthetic directions × frontend-design discipline.
+   Each theme: distinct typography + palette + decorative grammar.
+   Contrast: body text ≥ 7:1 on background where possible (WCAG AAA).
+   Default = editorial-noir (theme 7).
+   ───────────────────────────────────────────────────────────── */
+
 :root,
-[data-theme="editorial"] {
-  --c-bg: #F8F5EE;
-  --c-surface: #FFFDF7;
-  --c-ink: #1F1B16;
-  --c-muted: #6B5F4E;
-  --c-accent: #9C8B6E;
-  --c-rule: #D7CDB8;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Source Serif 4', 'Cormorant Garamond', Georgia, serif;
-  --font-display: var(--font-serif);
+[data-theme="editorial-noir"] {
+  /* 7 · editorial-noir  ·  Fraunces × Source Serif 4 × 北大红 */
+  --c-bg: #14141A;
+  --c-surface: #1C1C24;
+  --c-surface-2: #23232E;
+  --c-ink: #F5F1E8;        /* 文字主色 — high-contrast bone */
+  --c-ink-soft: #E0DACC;   /* fixed from muddy #BFBBB1 → 8.5:1 contrast */
+  --c-muted: #9A9486;
+  --c-muted-2: #5A574F;
+  --c-muted-3: #2E2C29;
+  --c-accent: #8B0012;     /* 北大红 */
+  --c-accent-bright: #C13B3E;
+  --c-rule: rgba(245, 241, 232, 0.10);
+  --c-rule-strong: rgba(245, 241, 232, 0.22);
+  --font-display: 'Fraunces', 'Source Serif 4', Georgia, serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Albert Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'EDITORIAL · NOIR';
 }
 
-[data-theme="modern"] {
+[data-theme="brutal-minimal"] {
+  /* 1 · brutal-minimal  ·  Bricolage Grotesque × Albert Sans */
   --c-bg: #FFFFFF;
-  --c-surface: #F7F7F8;
-  --c-ink: #0A0A0A;
-  --c-muted: #6B7280;
-  --c-accent: #0066FF;
-  --c-rule: #E5E7EB;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: var(--font-sans);
-  --font-display: 'Inter Tight', var(--font-sans);
+  --c-surface: #FAFAFA;
+  --c-surface-2: #F2F2F2;
+  --c-ink: #050505;
+  --c-ink-soft: #1A1A1A;
+  --c-muted: #6E6E6E;
+  --c-muted-2: #A8A8A8;
+  --c-muted-3: #DCDCDC;
+  --c-accent: #050505;
+  --c-accent-bright: #050505;
+  --c-rule: rgba(5,5,5,0.12);
+  --c-rule-strong: rgba(5,5,5,0.30);
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-serif: 'Albert Sans', system-ui, sans-serif;
+  --font-sans: 'Albert Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'BRUTAL · MINIMAL';
 }
 
-[data-theme="classical"] {
-  --c-bg: #FAFAFA;
+[data-theme="maximalist-chaos"] {
+  /* 2 · maximalist-chaos  ·  Anton × Newsreader italic */
+  --c-bg: #FFF1E6;
+  --c-surface: #FFE6D1;
+  --c-surface-2: #FFD5B0;
+  --c-ink: #0B0B0B;
+  --c-ink-soft: #1F1F1F;
+  --c-muted: #5C2A1C;
+  --c-muted-2: #8E5E45;
+  --c-muted-3: #C8A88F;
+  --c-accent: #E63462;     /* hot pink-red */
+  --c-accent-bright: #00BFA6; /* teal */
+  --c-rule: rgba(11,11,11,0.18);
+  --c-rule-strong: rgba(11,11,11,0.50);
+  --font-display: 'Anton', 'Arial Narrow', sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Newsreader', Georgia, serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --theme-label: 'MAXIMALIST · CHAOS';
+}
+
+[data-theme="retro-futuristic"] {
+  /* 3 · retro-futuristic  ·  Orbitron × Syne */
+  --c-bg: #0F0E2A;
+  --c-surface: #181640;
+  --c-surface-2: #221F58;
+  --c-ink: #F2E9D8;
+  --c-ink-soft: #D8CEBA;
+  --c-muted: #9B92C2;
+  --c-muted-2: #5E558A;
+  --c-muted-3: #2E2858;
+  --c-accent: #FF5EB1;     /* neon magenta */
+  --c-accent-bright: #FF9F45; /* sunset orange */
+  --c-rule: rgba(242,233,216,0.14);
+  --c-rule-strong: rgba(242,233,216,0.32);
+  --font-display: 'Orbitron', 'Eurostile', sans-serif;
+  --font-serif: 'Syne', system-ui, sans-serif;
+  --font-sans: 'Syne', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --theme-label: 'RETRO · FUTURISTIC';
+}
+
+[data-theme="organic-natural"] {
+  /* 4 · organic-natural  ·  DM Serif Display × Lora */
+  --c-bg: #F4EEDF;
+  --c-surface: #EBE3CE;
+  --c-surface-2: #DDD2B5;
+  --c-ink: #1F2418;
+  --c-ink-soft: #2E342A;
+  --c-muted: #6C7259;
+  --c-muted-2: #97977E;
+  --c-muted-3: #C7C2A8;
+  --c-accent: #4A6B3E;     /* moss */
+  --c-accent-bright: #7A4628; /* clay */
+  --c-rule: rgba(31,36,24,0.14);
+  --c-rule-strong: rgba(31,36,24,0.30);
+  --font-display: 'DM Serif Display', 'Lora', Georgia, serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'ORGANIC · NATURAL';
+}
+
+[data-theme="luxury-refined"] {
+  /* 5 · luxury-refined  ·  Cormorant Garamond × Cardo */
+  --c-bg: #F4EEDB; /* champagne ivory — NOT yellow, pale putty */
+  --c-surface: #ECE4CC;
+  --c-surface-2: #E2D8B8;
+  --c-ink: #1A1714;
+  --c-ink-soft: #2E2620;
+  --c-muted: #6E5F4E;
+  --c-muted-2: #95877A;
+  --c-muted-3: #CDC4B0;
+  --c-accent: #4A1722;     /* burgundy */
+  --c-accent-bright: #8E2E3F;
+  --c-rule: rgba(26,23,20,0.14);
+  --c-rule-strong: rgba(26,23,20,0.30);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Cardo', Georgia, serif;
+  --font-sans: 'Albert Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'LUXURY · REFINED';
+}
+
+[data-theme="playful-toy"] {
+  /* 6 · playful-toy  ·  Fredoka × Quicksand */
+  --c-bg: #FFEDF1;
   --c-surface: #FFFFFF;
-  --c-ink: #1D1D1F;
-  --c-muted: #86868B;
-  --c-accent: #1D1D1F;
-  --c-rule: #D2D2D7;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-serif: 'Inter Tight', sans-serif;
-  --font-display: var(--font-serif);
+  --c-surface-2: #FFD8E2;
+  --c-ink: #1B0F2E;
+  --c-ink-soft: #2A1A40;
+  --c-muted: #6E5A88;
+  --c-muted-2: #A89AC0;
+  --c-muted-3: #D6CCE5;
+  --c-accent: #FF3D71;
+  --c-accent-bright: #2C5DFF;
+  --c-rule: rgba(27,15,46,0.14);
+  --c-rule-strong: rgba(27,15,46,0.30);
+  --font-display: 'Fredoka', 'Quicksand', system-ui, sans-serif;
+  --font-serif: 'Quicksand', system-ui, sans-serif;
+  --font-sans: 'Quicksand', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+  --theme-label: 'PLAYFUL · TOY';
+}
+
+[data-theme="brutalist-raw"] {
+  /* 8 · brutalist-raw  ·  JetBrains Mono everywhere */
+  --c-bg: #FFFFFF;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #F0F0F0;
+  --c-ink: #000000;
+  --c-ink-soft: #000000;
+  --c-muted: #333333;
+  --c-muted-2: #666666;
+  --c-muted-3: #BBBBBB;
+  --c-accent: #FF0000;
+  --c-accent-bright: #FF0000;
+  --c-rule: rgba(0,0,0,0.30);
+  --c-rule-strong: #000000;
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+  --font-serif: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'BRUTALIST · RAW';
+}
+
+[data-theme="art-deco"] {
+  /* 9 · art-deco-geometric  ·  Cinzel × EB Garamond */
+  --c-bg: #0D0D18;
+  --c-surface: #161628;
+  --c-surface-2: #20203A;
+  --c-ink: #E8DEC4;
+  --c-ink-soft: #D2C7AE;
+  --c-muted: #9A8E78;
+  --c-muted-2: #645B4C;
+  --c-muted-3: #2E2A24;
+  --c-accent: #C2185B;     /* deco rose */
+  --c-accent-bright: #2D8B6B; /* deep emerald */
+  --c-rule: rgba(232,222,196,0.15);
+  --c-rule-strong: rgba(232,222,196,0.34);
+  --font-display: 'Cinzel', 'EB Garamond', serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans: 'EB Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'ART DECO · GEOMETRIC';
+}
+
+[data-theme="soft-pastel"] {
+  /* 10 · soft-pastel  ·  Instrument Serif × DM Sans */
+  --c-bg: #FFF2EF;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #FFE3DC;
+  --c-ink: #2E1A2E;
+  --c-ink-soft: #43254A;
+  --c-muted: #7E6588;
+  --c-muted-2: #B5A1BD;
+  --c-muted-3: #DDCDDD;
+  --c-accent: #E0699E;     /* blush */
+  --c-accent-bright: #94CFC0; /* mint */
+  --c-rule: rgba(46,26,46,0.10);
+  --c-rule-strong: rgba(46,26,46,0.24);
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'SOFT · PASTEL';
+}
+
+[data-theme="industrial"] {
+  /* 11 · industrial-utilitarian  ·  Archivo × DM Mono */
+  --c-bg: #EFEAD8;        /* kraft / drafting paper */
+  --c-surface: #E5DDC4;
+  --c-surface-2: #D5CBAA;
+  --c-ink: #0F0F0F;
+  --c-ink-soft: #1F1F1F;
+  --c-muted: #4F4A3A;
+  --c-muted-2: #807960;
+  --c-muted-3: #B5AC8A;
+  --c-accent: #BE2A1A;     /* cinnabar */
+  --c-accent-bright: #1F3A66; /* blueprint navy */
+  --c-rule: rgba(15,15,15,0.20);
+  --c-rule-strong: rgba(15,15,15,0.40);
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-serif: 'Archivo', system-ui, sans-serif;
+  --font-sans: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'DM Mono', 'JetBrains Mono', ui-monospace, monospace;
+  --theme-label: 'INDUSTRIAL · UTILITARIAN';
 }

@@ -5,11 +5,23 @@ interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const s = t(locale);
 ---
-<footer class="border-t border-rule mt-20">
-  <div class="max-w-page mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-3 text-xs text-muted">
-    <div>© {new Date().getFullYear()} {profile.name[locale]} · {s.footer.rights}</div>
-    <div class="flex gap-4">
-      <a href={`mailto:${profile.email}`} class="text-muted hover:text-accent">{profile.email}</a>
+<footer class="mt-24 relative z-[2]" style="border-top: 1px solid var(--c-rule);">
+  <div class="max-w-page mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+    <div class="md:col-span-2">
+      <div class="eyebrow">{s.footer.colophon}</div>
+      <p class="mt-3 font-serif text-sm leading-relaxed max-w-prose" style="color: var(--c-ink-soft);">
+        {s.footer.colophonText}
+      </p>
     </div>
+    <div class="md:text-right">
+      <div class="eyebrow">{s.footer.contact}</div>
+      <a href={`mailto:${profile.email}`} class="block mt-3 hover:text-accent" style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--c-ink-soft);">
+        {profile.email}
+      </a>
+    </div>
+  </div>
+  <div class="max-w-page mx-auto px-6 pb-10 flex flex-col sm:flex-row justify-between gap-2 meta" style="color: var(--c-muted-2);">
+    <div>© {new Date().getFullYear()} {profile.name[locale]} · {s.footer.rights}</div>
+    <div>{s.footer.year} · {s.footer.location}</div>
   </div>
 </footer>

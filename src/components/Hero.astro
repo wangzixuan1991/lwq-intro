@@ -1,44 +1,328 @@
 ---
-import { type Locale } from '../lib/i18n';
+import { t, type Locale } from '../lib/i18n';
 import profile from '../data/profile.json';
 
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const s = t(locale);
+const isZh = locale === 'zh';
 
-const social: Array<{ key: string; label: string; href: string }> = [];
-if (profile.social.googleScholar) social.push({ key: 'gs', label: 'Google Scholar', href: profile.social.googleScholar });
-if (profile.social.orcid) social.push({ key: 'or', label: 'ORCID', href: profile.social.orcid });
-if (profile.social.github) social.push({ key: 'gh', label: 'GitHub', href: profile.social.github });
-if (profile.social.linkedin) social.push({ key: 'li', label: 'LinkedIn', href: profile.social.linkedin });
-if (profile.social.twitter) social.push({ key: 'tw', label: 'X', href: profile.social.twitter });
+const social: Array<{ label: string; href: string }> = [];
+if (profile.social.googleScholar) social.push({ label: 'Google Scholar', href: profile.social.googleScholar });
+if (profile.social.orcid) social.push({ label: 'ORCID', href: profile.social.orcid });
+if (profile.social.github) social.push({ label: 'GitHub', href: profile.social.github });
+if (profile.social.linkedin) social.push({ label: 'LinkedIn', href: profile.social.linkedin });
+
+const areas = profile.researchAreas[locale];
 ---
-<section class="relative">
-  <div class="h-48 sm:h-64 md:h-80 w-full overflow-hidden">
-    <img src={profile.heroImage} alt="" class="w-full h-full object-cover" aria-hidden="true" />
+<section class="hero" aria-label="profile">
+  <!-- Top runner / running head -->
+  <div class="hero-runner top">
+    <span class="runner-left">
+      <span class="runner-dot" aria-hidden="true"></span>
+      <span>{isZh ? '学者档案 · 李文琦' : 'SCHOLAR · WENQI LI'}</span>
+    </span>
+    <span class="runner-right">
+      <span>{isZh ? '图版 · 壹' : 'FOLIO · I'}</span>
+      <span aria-hidden="true" class="runner-sep">／</span>
+      <span>{isZh ? '丙午 · 二〇二六' : 'MMXXVI'}</span>
+    </span>
   </div>
-  <div class="max-w-page mx-auto px-6 -mt-16 sm:-mt-20 md:-mt-24 relative">
-    <div class="flex flex-col md:flex-row items-start gap-5 md:gap-10">
-      <img
-        src={profile.avatar}
-        alt={profile.name[locale]}
-        width="160"
-        height="160"
-        class="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full border-4 border-bg shadow-lg bg-surface object-cover shrink-0"
-      />
-      <div class="pt-3 md:pt-20 flex-1 min-w-0">
-        <h1 class="font-display text-3xl sm:text-4xl font-semibold leading-tight">
-          {profile.name[locale]}
-          {locale === 'zh' && <span class="text-muted text-xl ml-2 font-normal">Wenqi Li</span>}
-        </h1>
-        <p class="text-muted text-base mt-2">{profile.title[locale]}</p>
-        <p class="text-muted text-sm mt-1">{profile.affiliation[locale]}</p>
-        <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-          <a href={`mailto:${profile.email}`} class="text-ink/80 hover:text-accent no-underline">{profile.email}</a>
-          {social.map((s) => (
-            <a href={s.href} target="_blank" rel="noopener" class="text-ink/80 hover:text-accent no-underline">{s.label}</a>
-          ))}
+
+  <!-- Stage: name + portrait as ONE composition -->
+  <div class="hero-stage">
+    <div class="stage-inner">
+      <h1 class="hero-name reveal reveal-1" lang={locale}>
+        {profile.name[locale]}
+      </h1>
+
+      <figure class="hero-portrait reveal reveal-2" aria-label={profile.name[locale]}>
+        <span class="portrait-plate" aria-hidden="true">
+          {isZh ? '图 版 · 壹' : 'PLATE · I'}
+        </span>
+        <div class="portrait-box">
+          <img src={profile.avatar} alt={profile.name[locale]} loading="eager" decoding="async" />
         </div>
-      </div>
+        <figcaption class="portrait-cap">
+          <span>{isZh ? '李文琦' : 'Wenqi Li'}</span>
+          <span class="cap-rule" aria-hidden="true"></span>
+          <span>{isZh ? '北京大学' : 'PEKING UNIVERSITY'}</span>
+        </figcaption>
+      </figure>
+
+      <!-- Italic dedication-style tagline, pulled into negative space at left-bottom of name -->
+      <p class="hero-tagline reveal reveal-3">
+        <span class="tag-mark" aria-hidden="true">— </span>{profile.tagline[locale]}
+      </p>
     </div>
   </div>
+
+  <!-- Caption strip beneath stage: red rule + role + affiliation, asymmetric -->
+  <div class="hero-caption reveal reveal-3">
+    <div class="caption-inner">
+      <div class="caption-left">
+        <span class="red-rule" aria-hidden="true"></span>
+        <p class="cap-role">{profile.title[locale]}</p>
+        <p class="cap-affil">{profile.affiliation[locale]}</p>
+      </div>
+      <ul class="caption-areas" aria-label={s.sections.research_areas}>
+        {areas.map((tag, i) => (
+          <li>
+            <span class="area-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="area-text">{tag}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom runner: contact colophon -->
+  <div class="hero-runner bottom">
+    <span class="runner-left">
+      <span class="runner-eyebrow">{s.hero.correspondence}</span>
+      <a href={`mailto:${profile.email}`} class="runner-email">{profile.email}</a>
+    </span>
+    <span class="runner-right">
+      {social.map((sn, i) => (
+        <>
+          <a href={sn.href} target="_blank" rel="noopener" class="runner-social">{sn.label}</a>
+          {i < social.length - 1 && <span aria-hidden="true" class="runner-sep">·</span>}
+        </>
+      ))}
+    </span>
+  </div>
 </section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 96vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Runners (top/bottom marginalia) ────────────────────── */
+  .hero-runner {
+    max-width: 1240px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1.1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+  .hero-runner.top { border-bottom: 1px solid var(--c-rule); }
+  .hero-runner.bottom {
+    border-top: 1px solid var(--c-rule);
+    margin-top: auto;
+  }
+  .runner-left, .runner-right {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .runner-dot {
+    width: 6px; height: 6px; background: var(--c-accent); border-radius: 50%;
+  }
+  .runner-sep { color: var(--c-muted-2); }
+  .runner-eyebrow { color: var(--c-muted); }
+  .runner-email {
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--c-ink);
+    margin-left: 0.4rem;
+  }
+  .runner-email:hover { color: var(--c-accent); }
+  .runner-social {
+    color: var(--c-muted);
+    font-size: 0.66rem;
+  }
+  .runner-social:hover { color: var(--c-accent); }
+
+  /* ── Stage: name + portrait composition ─────────────────── */
+  .hero-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: clamp(2rem, 6vw, 5rem) 0;
+  }
+  .stage-inner {
+    position: relative;
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 18vw, 16rem);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    font-weight: 400;
+    color: var(--c-ink);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    max-width: 95%;
+    /* Slight optical pull to overcome serif's left bearing */
+    margin-left: -0.04em;
+  }
+  /* Chinese has even spacing; Latin needs tighter */
+  .hero-name[lang="en"] { letter-spacing: -0.05em; line-height: 0.92; }
+
+  /* Portrait OVERLAPS the right side of the name — the bold compositional move */
+  .hero-portrait {
+    position: absolute;
+    right: 2rem;
+    bottom: -1rem;
+    width: clamp(190px, 26vw, 320px);
+    margin: 0;
+    z-index: 2;
+  }
+  .portrait-box {
+    aspect-ratio: 4 / 5;
+    background: var(--c-surface);
+    overflow: hidden;
+    border: 1px solid var(--c-rule-strong);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.55);
+  }
+  .portrait-box img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    filter: contrast(1.04);
+  }
+  /* Vertical PLATE mark in the left margin of the portrait */
+  .portrait-plate {
+    position: absolute;
+    left: -1.4rem;
+    top: 0;
+    bottom: 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.4rem;
+  }
+  .portrait-cap {
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-ink-soft);
+  }
+  .cap-rule { flex: 1; height: 1px; background: var(--c-rule-strong); }
+
+  /* Tagline tucked into the negative space below name, left-aligned to name */
+  .hero-tagline {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 28ch;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 1.2vw + 0.7rem, 1.55rem);
+    line-height: 1.45;
+    color: var(--c-ink-soft);
+    letter-spacing: -0.005em;
+  }
+  .tag-mark { color: var(--c-accent); font-style: normal; }
+
+  /* ── Caption strip ──────────────────────────────────────── */
+  .hero-caption {
+    border-top: 1px solid var(--c-rule);
+  }
+  .caption-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .red-rule {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--c-accent);
+    margin-bottom: 1rem;
+  }
+  .cap-role {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.15rem, 1.2vw + 0.55rem, 1.5rem);
+    line-height: 1.3;
+    color: var(--c-ink);
+  }
+  .cap-affil {
+    margin-top: 0.4rem;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--c-ink-soft);
+  }
+
+  .caption-areas {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 1.5rem;
+  }
+  .caption-areas li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--c-rule);
+  }
+  .area-num {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    color: var(--c-accent);
+    min-width: 1.4rem;
+  }
+  .area-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--c-ink);
+    letter-spacing: 0.01em;
+  }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-portrait {
+      position: relative;
+      right: auto; bottom: auto;
+      margin: 1.5rem 0 0 auto;
+      width: 55%;
+    }
+    .portrait-plate { display: none; }
+    .hero-name { font-size: clamp(4rem, 16vw, 7rem); }
+    .caption-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .caption-areas { grid-template-columns: 1fr; }
+    .hero-runner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+</style>

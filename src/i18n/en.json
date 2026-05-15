@@ -1,6 +1,12 @@
 {
   "nav": { "home": "Home", "research": "Research", "projects": "Projects", "teaching": "Teaching", "cv": "CV" },
-  "hero": { "viewCV": "View CV", "downloadCV": "Download CV (PDF)" },
+  "hero": {
+    "eyebrow": "Peking University · Information Management",
+    "viewCV": "View CV",
+    "downloadCV": "Download CV (PDF)",
+    "correspondence": "Correspondence",
+    "scrollHint": "Scroll"
+  },
   "sections": {
     "bio": "About",
     "education": "Education",
@@ -21,5 +27,13 @@
     "teaching_exp": "Teaching",
     "contact": "Contact"
   },
-  "footer": { "rights": "All rights reserved", "switchLang": "中" }
+  "footer": {
+    "rights": "All rights reserved",
+    "switchLang": "中",
+    "colophon": "Colophon",
+    "colophonText": "Set in Fraunces & Source Serif 4. Built with Astro + Tailwind.",
+    "contact": "Contact",
+    "location": "Beijing · Zhongguancun",
+    "year": "MMXXVI"
+  }
 }

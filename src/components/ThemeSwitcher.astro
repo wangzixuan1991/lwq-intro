@@ -1,23 +1,156 @@
 ---
-// Floating theme switcher. Persists to localStorage; restored on page load (in BaseLayout head script).
+const themes = [
+  { id: 'editorial-noir',    label: 'Editorial · Noir',        bg: '#14141A', ac: '#8B0012' },
+  { id: 'brutal-minimal',    label: 'Brutal · Minimal',         bg: '#FFFFFF', ac: '#050505' },
+  { id: 'maximalist-chaos',  label: 'Maximalist · Chaos',       bg: '#FFF1E6', ac: '#E63462' },
+  { id: 'retro-futuristic',  label: 'Retro · Futuristic',       bg: '#0F0E2A', ac: '#FF5EB1' },
+  { id: 'organic-natural',   label: 'Organic · Natural',        bg: '#F4EEDF', ac: '#4A6B3E' },
+  { id: 'luxury-refined',    label: 'Luxury · Refined',         bg: '#F4EEDB', ac: '#4A1722' },
+  { id: 'playful-toy',       label: 'Playful · Toy',            bg: '#FFEDF1', ac: '#FF3D71' },
+  { id: 'brutalist-raw',     label: 'Brutalist · Raw',          bg: '#FFFFFF', ac: '#FF0000' },
+  { id: 'art-deco',          label: 'Art Deco · Geometric',     bg: '#0D0D18', ac: '#C2185B' },
+  { id: 'soft-pastel',       label: 'Soft · Pastel',            bg: '#FFF2EF', ac: '#E0699E' },
+  { id: 'industrial',        label: 'Industrial · Utilitarian', bg: '#EFEAD8', ac: '#BE2A1A' },
+];
 ---
-<div class="fixed bottom-5 right-5 z-40 flex items-center gap-1 bg-surface border border-rule rounded-full shadow-md px-3 py-1.5 text-xs">
-  <span class="text-muted hidden sm:inline mr-1">Theme</span>
-  <button data-theme-set="editorial" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Editorial theme">A</button>
-  <button data-theme-set="modern" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Modern theme">B</button>
-  <button data-theme-set="classical" class="px-2 py-1 rounded-full hover:bg-bg transition-colors" aria-label="Classical theme">C</button>
+<div id="theme-switcher" class="fixed bottom-5 right-5 z-50 select-none">
+  <button
+    id="ts-toggle"
+    aria-expanded="false"
+    aria-controls="ts-panel"
+    class="ts-btn"
+  >
+    <span class="ts-dot" aria-hidden="true"></span>
+    <span class="ts-current">Theme</span>
+    <span aria-hidden="true" style="opacity:0.5;font-size:0.7em;">▾</span>
+  </button>
+
+  <div id="ts-panel" class="ts-panel" hidden>
+    <div class="ts-panel-head">Aesthetic Direction · 11</div>
+    <ul class="ts-list">
+      {themes.map((t, i) => (
+        <li>
+          <button class="ts-row" data-theme-set={t.id} aria-label={`apply ${t.label} theme`}>
+            <span class="ts-num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="ts-swatch" style={`background:${t.bg};`}>
+              <span style={`background:${t.ac};`}></span>
+            </span>
+            <span class="ts-label">{t.label}</span>
+            <span class="ts-tick" aria-hidden="true">✓</span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
+
+<style is:global>
+  #theme-switcher { font-family: var(--font-mono); }
+  .ts-btn {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.55rem 0.9rem;
+    background: var(--c-surface); color: var(--c-ink);
+    border: 1px solid var(--c-rule-strong);
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 24px -8px rgba(0,0,0,0.45);
+    transition: background 160ms ease, border-color 160ms ease;
+  }
+  .ts-btn:hover { border-color: var(--c-accent); }
+  .ts-dot { width: 7px; height: 7px; background: var(--c-accent); border-radius: 50%; display: inline-block; }
+  .ts-current { font-weight: 500; }
+
+  .ts-panel {
+    position: absolute; bottom: calc(100% + 8px); right: 0;
+    width: 280px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-rule-strong);
+    box-shadow: 0 20px 60px -16px rgba(0,0,0,0.55);
+    padding: 0.6rem 0.5rem 0.7rem;
+  }
+  .ts-panel[hidden] { display: none; }
+  .ts-panel-head {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--c-muted); padding: 0.4rem 0.6rem 0.6rem;
+    border-bottom: 1px solid var(--c-rule);
+    margin-bottom: 0.4rem;
+  }
+  .ts-list { list-style: none; margin: 0; padding: 0; max-height: 60vh; overflow: auto; }
+  .ts-row {
+    display: grid; grid-template-columns: 1.8rem 1.2rem 1fr 0.8rem;
+    align-items: center; gap: 0.55rem;
+    width: 100%;
+    padding: 0.45rem 0.5rem;
+    background: transparent; border: 0; cursor: pointer;
+    color: var(--c-ink-soft); font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+    text-align: left;
+    transition: background 140ms ease, color 140ms ease;
+  }
+  .ts-row:hover { background: var(--c-surface-2); color: var(--c-ink); }
+  .ts-row[aria-current="true"] { color: var(--c-ink); }
+  .ts-row[aria-current="true"] .ts-tick { opacity: 1; color: var(--c-accent); }
+  .ts-num { color: var(--c-muted); }
+  .ts-swatch {
+    width: 18px; height: 18px;
+    border: 1px solid var(--c-rule-strong);
+    position: relative;
+    display: inline-block;
+  }
+  .ts-swatch > span {
+    position: absolute; right: 0; bottom: 0;
+    width: 8px; height: 8px;
+  }
+  .ts-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ts-tick { opacity: 0; font-size: 0.85rem; }
+</style>
+
 <script is:inline>
   (function () {
+    var labels = {
+      'editorial-noir': 'EDITORIAL · NOIR',
+      'brutal-minimal': 'BRUTAL · MINIMAL',
+      'maximalist-chaos': 'MAXIMALIST · CHAOS',
+      'retro-futuristic': 'RETRO · FUTURISTIC',
+      'organic-natural': 'ORGANIC · NATURAL',
+      'luxury-refined': 'LUXURY · REFINED',
+      'playful-toy': 'PLAYFUL · TOY',
+      'brutalist-raw': 'BRUTALIST · RAW',
+      'art-deco': 'ART DECO · GEOMETRIC',
+      'soft-pastel': 'SOFT · PASTEL',
+      'industrial': 'INDUSTRIAL · UTILITARIAN'
+    };
+    var toggle = document.getElementById('ts-toggle');
+    var panel = document.getElementById('ts-panel');
+    var current = document.querySelector('.ts-current');
+
+    function getActive() {
+      return document.documentElement.dataset.theme || 'editorial-noir';
+    }
     function refresh() {
-      var current = document.documentElement.dataset.theme || 'editorial';
-      document.querySelectorAll('[data-theme-set]').forEach(function (btn) {
+      var active = getActive();
+      if (current) current.textContent = labels[active] || 'EDITORIAL · NOIR';
+      document.querySelectorAll('.ts-row').forEach(function (btn) {
         var name = btn.getAttribute('data-theme-set');
-        btn.style.fontWeight = name === current ? '700' : '400';
-        btn.style.color = name === current ? 'var(--c-accent)' : 'var(--c-ink)';
+        if (name === active) btn.setAttribute('aria-current', 'true');
+        else btn.removeAttribute('aria-current');
       });
     }
-    document.querySelectorAll('[data-theme-set]').forEach(function (btn) {
+    function setPanel(open) {
+      if (open) { panel.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
+      else      { panel.hidden = true;  toggle.setAttribute('aria-expanded', 'false'); }
+    }
+    if (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setPanel(panel.hidden);
+      });
+    }
+    document.addEventListener('click', function (e) {
+      if (!panel || panel.hidden) return;
+      if (!panel.contains(e.target) && e.target !== toggle) setPanel(false);
+    });
+    document.querySelectorAll('.ts-row').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var name = btn.getAttribute('data-theme-set');
         document.documentElement.dataset.theme = name;
@@ -25,6 +158,9 @@
         refresh();
       });
     });
+    // Re-read data-theme on every focus/visibility (catches programmatic changes)
+    var mo = new MutationObserver(refresh);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     refresh();
   })();
 </script>

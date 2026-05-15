@@ -8,19 +8,19 @@ const { locale, limit } = Astro.props;
 const items = (await getCollection('news')).sort((a, b) => b.data.date.localeCompare(a.data.date));
 const list = limit ? items.slice(0, limit) : items;
 ---
-<ul class="space-y-3">
+<ul class="space-y-0">
   {list.map((it) => (
-    <li class="flex gap-3 text-sm leading-relaxed">
-      <span class="text-muted font-mono shrink-0 tabular-nums">[{it.data.date}]</span>
-      <span class="text-ink/90">
+    <li class="grid grid-cols-12 gap-4 py-4" style="border-bottom: 1px solid var(--c-rule);">
+      <span class="col-span-12 sm:col-span-3 meta self-start pt-1">{it.data.date}</span>
+      <div class="col-span-12 sm:col-span-9 font-serif text-[1rem] leading-relaxed" style="color: var(--c-ink-soft);">
         {pickLang(it.data.text, locale)}
         {it.data.link && (
           <>
-            {' · '}
-            <a href={it.data.link} target="_blank" rel="noopener">link</a>
+            {' '}
+            <a href={it.data.link} target="_blank" rel="noopener" class="ml-1 hover:text-accent" style="color: var(--c-accent);">→</a>
           </>
         )}
-      </span>
+      </div>
     </li>
   ))}
 </ul>
