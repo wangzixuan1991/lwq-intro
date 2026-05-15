@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#1C1C24"/>
+  <!-- subtle vertical rule pair -->
+  <line x1="20" y1="0" x2="20" y2="200" stroke="#EAE7E0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="180" y1="0" x2="180" y2="200" stroke="#EAE7E0" stroke-opacity="0.06" stroke-width="1"/>
+  <!-- abstract editorial monogram: serif W L -->
+  <text x="100" y="118" text-anchor="middle"
+        font-family="'Fraunces','Source Serif 4',Georgia,serif"
+        font-size="78" font-style="italic" font-weight="400"
+        fill="#EAE7E0" opacity="0.85">WL</text>
+  <!-- single hair-thin accent -->
+  <line x1="80" y1="148" x2="120" y2="148" stroke="#8B0012" stroke-width="1.2"/>
+  <text x="100" y="172" text-anchor="middle"
+        font-family="'JetBrains Mono',ui-monospace,monospace"
+        font-size="7.5" letter-spacing="2.2"
+        fill="#7E7A72">PORTRAIT FORTHCOMING</text>
+</svg>
